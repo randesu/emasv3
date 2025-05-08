@@ -13,11 +13,11 @@ return new class extends Migration
     {
         Schema::create('transaksis', function (Blueprint $table) {
             $table->id('id_transaksi');
-            $table->int('id_pembeli');
-            $table->int('total_bayar');
-            $table->int('id_checkout');
-            $table->varchar('barcode');
-            $table->int('status_pembayaran');
+            $table->integer('id_pembeli');
+            $table->integer('total_bayar');
+            $table->integer('id_checkout');
+            $table->string('barcode');
+            $table->integer('status_pembayaran');
         });
     }
 
