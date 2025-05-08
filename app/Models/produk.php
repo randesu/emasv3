@@ -17,4 +17,14 @@ class produk extends Model
     {
         return $this->hasMany(checkout::class);
     }
+
+    public function produkToWishlist()
+    {
+        return $this->belongsTo(wishlist::class);
+    }
+
+    public function produkToCustomer()
+    {
+        return $this->belongsTo(customer::class);
+    }
 }

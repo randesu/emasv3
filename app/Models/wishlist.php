@@ -14,4 +14,9 @@ class wishlist extends Model
     */
    protected $fillable = ['id_pembeli', 'id_produk'];
 
+   public function wishlistToProduk()
+    {
+        return $this->hasMany(produk::class);
+    }
+
 }

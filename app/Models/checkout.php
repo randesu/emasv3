@@ -18,4 +18,14 @@ class checkout extends Model
     {
         return $this->belongsTo(produk::class);
     }
+
+    public function transaksiToCheckout()
+    {
+        return $this->belongsTo(checkout::class);
+    }
+
+    public function checkoutToKeranjang()
+    {
+        return $this->belongsTo(kerajang::class);
+    }
 }

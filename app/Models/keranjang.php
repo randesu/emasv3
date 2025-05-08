@@ -13,5 +13,10 @@ class keranjang extends Model
     {
         return $this->hasMany(produk::class);
     }
+    
+    public function keranjangToCheckout()
+    {
+        return $this->hasOne(checkout::class);
+    }
 
 }
