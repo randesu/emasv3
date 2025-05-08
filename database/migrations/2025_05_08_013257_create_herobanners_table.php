@@ -13,6 +13,9 @@ return new class extends Migration
     {
         Schema::create('herobanners', function (Blueprint $table) {
             $table->id();
+            $table->string('nama');
+            $table->string('gambar');
+            $table->boolean('set_active');
             $table->timestamps();
         });
     }
