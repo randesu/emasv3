@@ -17,7 +17,7 @@ return new class extends Migration
             $table->integer('total_beli');
             $table->text('alamat_pembeli');
             $table->integer('metode_pembayaran');
-            $table->timestamps('timestamps');
+            $table->timestamps();
         });
     }
 

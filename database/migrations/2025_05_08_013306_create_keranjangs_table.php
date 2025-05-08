@@ -13,9 +13,9 @@ return new class extends Migration
     {
         Schema::create('keranjangs', function (Blueprint $table) {
             $table->id('id_keranjang');
-            $table->int('id_pembeli');
-            $table->int('id_produk');
-            $table->id('jumlah_beli');
+            $table->integer('id_pembeli');
+            $table->integer('id_produk');
+            $table->integer('jumlah_beli');
             
         });
     }
