@@ -13,8 +13,8 @@ return new class extends Migration
     {
         Schema::create('wishlists', function (Blueprint $table) {
             $table->id('id_wishlist');
-            $table->int('id_pembeli');
-            $table->int('id_produk');
+            $table->integer('id_pembeli');
+            $table->integer('id_produk');
         });
     }
 
