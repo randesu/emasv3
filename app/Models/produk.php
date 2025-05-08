@@ -12,4 +12,9 @@ class produk extends Model
     {
         return $this->belongsTo(keranjang::class);
     }
+
+    public function produkToCheckout()
+    {
+        return $this->hasMany(checkout::class);
+    }
 }
