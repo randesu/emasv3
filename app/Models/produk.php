@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Models;
+use Illuminate\Support\Str;
 
 use Illuminate\Database\Eloquent\Model;
 
@@ -26,5 +27,17 @@ class produk extends Model
     public function produkToCustomer()
     {
         return $this->belongsTo(customer::class);
+    }
+
+    protected static function boot()
+    {
+        parent::boot();
+
+        // Generate slug before saving
+        static::saving(function ($product) {
+            if (empty($product->slug)) {
+                $product->slug = Str::slug($product->nama_produk);
+            }
+        });
     }
 }
