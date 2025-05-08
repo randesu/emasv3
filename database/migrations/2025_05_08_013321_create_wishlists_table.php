@@ -12,8 +12,9 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('wishlists', function (Blueprint $table) {
-            $table->id();
-            $table->timestamps();
+            $table->id('id_wishlist');
+            $table->int('id_pembeli');
+            $table->int('id_produk');
         });
     }
 
