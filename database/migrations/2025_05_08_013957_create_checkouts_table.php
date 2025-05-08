@@ -12,8 +12,12 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('checkouts', function (Blueprint $table) {
-            $table->id();
-            $table->timestamps();
+            $table->id('id_checkout');
+            $table->integer('id_pembeli');
+            $table->integer('total_beli');
+            $table->text('alamat_pembeli');
+            $table->integer('metode_pembayaran');
+            $table->timestamps('timestamps');
         });
     }
 
