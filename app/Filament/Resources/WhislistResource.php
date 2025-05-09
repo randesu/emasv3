@@ -23,10 +23,21 @@ class WhislistResource extends Resource
     {
         return $form
             ->schema([
-                //
+                Forms\Components\Card::make()
+                    ->schema([
+                        Forms\Components\TextInput::make('id_pembeli')
+                            ->label('ID Pembeli')
+                            ->numeric()
+                            ->required(),
+    
+                        Forms\Components\TextInput::make('id_produk')
+                            ->label('ID Produk')
+                            ->numeric()
+                            ->required(),
+                    ]),
             ]);
     }
-
+    
     public static function table(Table $table): Table
     {
         return $table

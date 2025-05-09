@@ -23,7 +23,37 @@ class CheckoutResource extends Resource
     {
         return $form
             ->schema([
-                //
+                Forms\Components\Card::make()
+                    ->schema([
+                        // ID Pembeli - relasi
+                        Forms\Components\Select::make('id_pembeli')
+                            ->label('Nama Pembeli')
+                            ->relationship('pembeli', 'nama_pembeli') // pastikan relasi 'pembeli' tersedia di model
+                            ->searchable()
+                            ->required(),
+    
+                        // Total Beli
+                        Forms\Components\TextInput::make('total_beli')
+                            ->label('Total Beli')
+                            ->numeric()
+                            ->required(),
+    
+                        // Alamat Pembeli
+                        Forms\Components\Textarea::make('alamat_pembeli')
+                            ->label('Alamat Pembeli')
+                            ->required()
+                            ->rows(3),
+    
+                        // Metode Pembayaran (asumsi integer seperti 1 = COD, 2 = Transfer)
+                        Forms\Components\Select::make('metode_pembayaran')
+                            ->label('Metode Pembayaran')
+                            ->options([
+                                1 => 'COD',
+                                2 => 'Transfer Bank',
+                                3 => 'QRIS',
+                            ])
+                            ->required(),
+                    ]),
             ]);
     }
 

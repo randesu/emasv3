@@ -23,7 +23,21 @@ class HerobannerResource extends Resource
     {
         return $form
             ->schema([
-                //
+                Forms\Components\Card::make()
+                    ->schema([
+                        // Nama Banner
+                        Forms\Components\TextInput::make('nama')
+                            ->label('Nama Banner')
+                            ->required()
+                            ->maxLength(255),
+    
+                        // Gambar Banner
+                        Forms\Components\FileUpload::make('gambar')
+                            ->label('Gambar Banner')
+                            ->image()
+                            ->directory('hero-banners') // direktori penyimpanan di storage/app/public
+                            ->required(),
+                    ]),
             ]);
     }
 

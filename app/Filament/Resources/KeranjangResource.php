@@ -23,7 +23,28 @@ class KeranjangResource extends Resource
     {
         return $form
             ->schema([
-                //
+                Forms\Components\Card::make()
+                    ->schema([
+                        // Relasi ke pembeli
+                        Forms\Components\Select::make('id_pembeli')
+                            ->label('Nama Pembeli')
+                            ->relationship('pembeli', 'nama_pembeli') // pastikan relasi 'pembeli' ada di model Keranjang
+                            ->searchable()
+                            ->required(),
+    
+                        // Relasi ke produk
+                        Forms\Components\Select::make('id_produk')
+                            ->label('Nama Produk')
+                            ->relationship('produk', 'name') // pastikan relasi 'produk' ada di model Keranjang
+                            ->searchable()
+                            ->required(),
+    
+                        // Jumlah Beli
+                        Forms\Components\TextInput::make('jumlah_beli')
+                            ->label('Jumlah Beli')
+                            ->numeric()
+                            ->required(),
+                    ]),
             ]);
     }
 
