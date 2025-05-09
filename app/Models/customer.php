@@ -24,4 +24,9 @@ class customer extends Model
     {
         return $this->hasMany(transaksi::class);
     }
+
+    public function customerToKeranjang()
+    {
+        return $this->belongsTo(keranjang::class);
+    }
 }

@@ -2,16 +2,17 @@
 
 namespace App\Filament\Resources;
 
-use App\Filament\Resources\KeranjangResource\Pages;
-use App\Filament\Resources\KeranjangResource\RelationManagers;
-use App\Models\Keranjang;
 use Filament\Forms;
-use Filament\Forms\Form;
-use Filament\Resources\Resource;
 use Filament\Tables;
+use Filament\Forms\Form;
+use App\Models\Keranjang;
 use Filament\Tables\Table;
+use Filament\Resources\Resource;
+use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Builder;
+use App\Filament\Resources\KeranjangResource\Pages;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
+use App\Filament\Resources\KeranjangResource\RelationManagers;
 
 class KeranjangResource extends Resource
 {
@@ -36,15 +37,16 @@ class KeranjangResource extends Resource
                         // Relasi ke pembeli
                         Forms\Components\Select::make('id_pembeli')
                             ->label('Nama Pembeli')
-                            ->relationship('pembeli', 'nama_pembeli') // pastikan relasi 'pembeli' ada di model Keranjang
-                            ->searchable()
+                            ->relationship('keranjangToPembeli', 'nama_pembeli') // pastikan relasi 'pembeli' ada di model Keranjang
+                            // ->searchable()
                             ->required(),
     
                         // Relasi ke produk
                         Forms\Components\Select::make('id_produk')
                             ->label('Nama Produk')
-                            ->relationship('produk', 'name') // pastikan relasi 'produk' ada di model Keranjang
-                            ->searchable()
+                            ->relationship('keranjangToProduk', 'id') // pastikan relasi 'produk' ada di model Keranjang
+                            // ->searchable()
+                            ->getOptionLabelFromRecordUsing(fn (Model $record) => "{$record->id} - {$record->nama_produk}")
                             ->required(),
     
                         // Jumlah Beli

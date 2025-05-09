@@ -87,10 +87,10 @@ public static function table(Table $table): Table
                 ->label('No HP')
                 ->searchable(),
 
-            Tables\Columns\TextColumn::make('created_at')
-                ->label('Tanggal Daftar')
-                ->dateTime()
-                ->sortable(),
+            // Tables\Columns\TextColumn::make('created_at')
+            //     ->label('Tanggal Daftar')
+            //     ->dateTime()
+            //     ->sortable(),
         ])
         ->filters([
             //

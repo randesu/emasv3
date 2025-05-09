@@ -19,4 +19,9 @@ class keranjang extends Model
         return $this->hasOne(checkout::class);
     }
 
+    public function keranjangToPembeli()
+    {
+        return $this->hasMany(customer::class);
+    }
+
 }
