@@ -17,7 +17,7 @@ class KeranjangResource extends Resource
 {
     protected static ?string $model = Keranjang::class;
 
-    protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
+    protected static ?string $navigationIcon = 'heroicon-o-shopping-bag';
 
     
     protected static ?string $navigationGroup = 'Master Data';

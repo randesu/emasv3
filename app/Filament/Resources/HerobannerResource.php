@@ -17,7 +17,7 @@ class HerobannerResource extends Resource
 {
     protected static ?string $model = Herobanner::class;
 
-    protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
+    protected static ?string $navigationIcon = 'heroicon-o-photo';
 
     
     protected static ?string $navigationGroup = 'Master Data';
