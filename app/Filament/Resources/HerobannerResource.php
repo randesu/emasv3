@@ -2,16 +2,17 @@
 
 namespace App\Filament\Resources;
 
-use App\Filament\Resources\HerobannerResource\Pages;
-use App\Filament\Resources\HerobannerResource\RelationManagers;
-use App\Models\Herobanner;
 use Filament\Forms;
-use Filament\Forms\Form;
-use Filament\Resources\Resource;
 use Filament\Tables;
+use Filament\Forms\Form;
+use App\Models\Herobanner;
 use Filament\Tables\Table;
+use Forms\Components\Select;
+use Filament\Resources\Resource;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
+use App\Filament\Resources\HerobannerResource\Pages;
+use App\Filament\Resources\HerobannerResource\RelationManagers;
 
 class HerobannerResource extends Resource
 {
@@ -38,6 +39,14 @@ class HerobannerResource extends Resource
                             ->label('Nama Banner')
                             ->required()
                             ->maxLength(255),
+
+                        Forms\Components\Select::make('set_active')
+                            ->label('Status banner')
+                            ->required()
+                            ->options([
+                                'true' => 'Aktif',
+                                'false' => 'Mati',
+                            ]),
     
                         // Gambar Banner
                         Forms\Components\FileUpload::make('gambar')
@@ -53,12 +62,12 @@ class HerobannerResource extends Resource
     {
         return $table
             ->columns([
-                TextColumn::make('nama')
+                Tables\Columns\TextColumn::make('nama')
                     ->label('Nama Banner')
                     ->searchable()
                     ->sortable(),
     
-                ImageColumn::make('gambar')
+                    Tables\Columns\ImageColumn::make('gambar')
                     ->label('Gambar')
                     ->circular(),
             ])
