@@ -50,6 +50,12 @@ class ProdukResource extends Resource
                       ->placeholder('Nama Produk')
                       ->required(),
 
+                    Forms\Components\TextInput::make('category_id')
+                      ->label('Kategory Produk')
+                      ->relationship('category', 'name')
+                      ->placeholder('Pilih Kategori Produk')
+                      ->required(),
+
                     Forms\Components\TextInput::make('harga')
                         ->integer()
                         ->label('Harga Produk')
@@ -82,29 +88,29 @@ class ProdukResource extends Resource
         return $table
             ->columns([
                 // Gambar produk
-                ImageColumn::make('gambar_produk')
+                Tables\Columns\ImageColumn::make('gambar_produk')
                     ->label('Gambar')
                     ->circular(),
     
                 // Nama produk
-                TextColumn::make('nama_produk')
+                Tables\Columns\TextColumn::make('nama_produk')
                     ->label('Nama Produk')
                     ->searchable()
                     ->sortable(),
     
                 // Harga produk
-                TextColumn::make('harga_produk')
+                Tables\Columns\TextColumn::make('harga_produk')
                     ->label('Harga')
                     ->money('IDR')
                     ->sortable(),
     
                 // Stok produk
-                TextColumn::make('stok_produk')
+                Tables\Columns\TextColumn::make('stok_produk')
                     ->label('Stok')
                     ->sortable(),
     
                 // Kategori (jika ada relasi)
-                TextColumn::make('kategori.nama')
+                Tables\Columns\TextColumn::make('kategori.nama')
                     ->label('Kategori')
                     ->sortable(),
             ])

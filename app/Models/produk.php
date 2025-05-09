@@ -7,11 +7,16 @@ use Illuminate\Database\Eloquent\Model;
 
 class produk extends Model
 {
-    protected $fillable = ['nama_produk','harga','kode_produk', 'slug','berat_barang','kadar_barang','gambar_produk'];
+    protected $fillable = ['nama_produk','harga','kode_produk', 'slug','berat_barang','kadar_barang','gambar_produk', 'category_id'];
 
     public function produkToKeranjang()
     {
         return $this->belongsTo(keranjang::class);
+    }
+
+    public function produkToCategory()
+    {
+        return $this->hasMany(Category::class);
     }
 
     public function produkToCheckout()
