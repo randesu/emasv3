@@ -69,10 +69,43 @@ class CheckoutResource extends Resource
     {
         return $table
             ->columns([
-                //
+                // Kolom nama pembeli dari relasi
+                Tables\Columns\TextColumn::make('pembeli.nama_pembeli')
+                    ->label('Nama Pembeli')
+                    ->searchable()
+                    ->sortable(),
+    
+                // Total Beli
+                Tables\Columns\TextColumn::make('total_beli')
+                    ->label('Total Beli')
+                    ->numeric()
+                    ->sortable(),
+    
+                // Alamat Pembeli
+                Tables\Columns\TextColumn::make('alamat_pembeli')
+                    ->label('Alamat')
+                    ->limit(30)
+                    ->wrap(),
+    
+                // Metode Pembayaran dengan label
+                Tables\Columns\TextColumn::make('metode_pembayaran')
+                    ->label('Metode Pembayaran')
+                    ->formatStateUsing(fn ($state) => match ($state) {
+                        1 => 'COD',
+                        2 => 'Transfer Bank',
+                        3 => 'QRIS',
+                        default => 'Tidak Diketahui',
+                    }),
             ])
             ->filters([
-                //
+                // Contoh filter berdasarkan metode pembayaran
+                Tables\Filters\SelectFilter::make('metode_pembayaran')
+                    ->label('Metode Pembayaran')
+                    ->options([
+                        1 => 'COD',
+                        2 => 'Transfer Bank',
+                        3 => 'QRIS',
+                    ]),
             ])
             ->actions([
                 Tables\Actions\EditAction::make(),
@@ -83,14 +116,14 @@ class CheckoutResource extends Resource
                 ]),
             ]);
     }
-
+    
     public static function getRelations(): array
     {
         return [
-            //
+            // Tambahkan relasi jika Checkout memiliki detail transaksi atau lainnya
         ];
     }
-
+    
     public static function getPages(): array
     {
         return [
