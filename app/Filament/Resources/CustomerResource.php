@@ -20,12 +20,43 @@ class CustomerResource extends Resource
     protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
 
     public static function form(Form $form): Form
-    {
-        return $form
-            ->schema([
-                //
-            ]);
-    }
+{
+    return $form
+        ->schema([
+            Forms\Components\Card::make()
+                ->schema([
+                    Forms\Components\TextInput::make('nama_pembeli')
+                        ->label('Nama Pembeli')
+                        ->placeholder('Masukkan nama lengkap')
+                        ->required(),
+
+                    Forms\Components\TextInput::make('username_pembeli')
+                        ->label('Username')
+                        ->placeholder('Masukkan username')
+                        ->required(),
+
+                    Forms\Components\TextInput::make('password_pembeli')
+                        ->label('Password')
+                        ->placeholder('Masukkan password')
+                        ->password()
+                        ->required(),
+
+                    Forms\Components\Textarea::make('alamat_pembeli')
+                        ->label('Alamat')
+                        ->placeholder('Masukkan alamat lengkap')
+                        ->rows(3)
+                        ->required(),
+
+                    Forms\Components\TextInput::make('no_hp')
+                        ->label('No HP')
+                        ->placeholder('Masukkan nomor HP')
+                        ->numeric()
+                        ->tel()
+                        ->required(),
+                ]),
+        ]);
+}
+
 
     public static function table(Table $table): Table
     {
