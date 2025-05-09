@@ -71,11 +71,50 @@ class TransaksiResource extends Resource
             ]);
     }
 
+    use Filament\Tables;
+    use Filament\Tables\Table;
+    use Filament\Tables\Columns\TextColumn;
+    
     public static function table(Table $table): Table
     {
         return $table
             ->columns([
-                //
+                // Nama Pembeli
+                TextColumn::make('pembeli.nama_pembeli')
+                    ->label('Nama Pembeli')
+                    ->searchable()
+                    ->sortable(),
+    
+                // Total Bayar
+                TextColumn::make('total_bayar')
+                    ->label('Total Bayar')
+                    ->money('IDR')
+                    ->sortable(),
+    
+                // Nama Checkout (atau ID Checkout)
+                TextColumn::make('checkout.id')
+                    ->label('ID Checkout')
+                    ->sortable(),
+    
+                // Barcode
+                TextColumn::make('barcode')
+                    ->label('Barcode')
+                    ->copyable()
+                    ->searchable(),
+    
+                // Status Pembayaran
+                TextColumn::make('status_pembayaran')
+                    ->label('Status Pembayaran')
+                    ->formatStateUsing(fn ($state) => $state == 1 ? 'Sudah Bayar' : 'Belum Bayar')
+                    ->badge()
+                    ->color(fn ($state) => $state == 1 ? 'success' : 'warning')
+                    ->sortable(),
+    
+                // Tanggal Transaksi
+                TextColumn::make('created_at')
+                    ->label('Tanggal')
+                    ->dateTime()
+                    ->sortable(),
             ])
             ->filters([
                 //
@@ -89,14 +128,14 @@ class TransaksiResource extends Resource
                 ]),
             ]);
     }
-
+    
     public static function getRelations(): array
     {
         return [
-            //
+            // tambahkan jika transaksi memiliki relasi lain seperti detail_transaksi
         ];
     }
-
+    
     public static function getPages(): array
     {
         return [
@@ -104,5 +143,5 @@ class TransaksiResource extends Resource
             'create' => Pages\CreateTransaksi::route('/create'),
             'edit' => Pages\EditTransaksi::route('/{record}/edit'),
         ];
-    }
+    }    
 }
