@@ -77,11 +77,6 @@ class ProdukResource extends Resource
             ]);
     }
 
-    use Filament\Tables;
-    use Filament\Tables\Table;
-    use Filament\Tables\Columns\TextColumn;
-    use Filament\Tables\Columns\ImageColumn;
-    
     public static function table(Table $table): Table
     {
         return $table

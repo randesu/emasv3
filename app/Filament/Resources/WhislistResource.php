@@ -45,10 +45,6 @@ class WhislistResource extends Resource
                     ]),
             ]);
     }
-
-    use Filament\Tables;
-    use Filament\Tables\Columns\TextColumn;
-    use Filament\Tables\Table;
     
     public static function table(Table $table): Table
     {

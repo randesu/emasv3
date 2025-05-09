@@ -71,10 +71,6 @@ class TransaksiResource extends Resource
             ]);
     }
 
-    use Filament\Tables;
-    use Filament\Tables\Table;
-    use Filament\Tables\Columns\TextColumn;
-    
     public static function table(Table $table): Table
     {
         return $table
