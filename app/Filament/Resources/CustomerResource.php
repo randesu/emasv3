@@ -65,39 +65,59 @@ class CustomerResource extends Resource
         ]);
 }
 
+public static function table(Table $table): Table
+{
+    return $table
+        ->columns([
+            TextColumn::make('nama_pembeli')
+                ->label('Nama Pembeli')
+                ->searchable()
+                ->sortable(),
 
-    public static function table(Table $table): Table
-    {
-        return $table
-            ->columns([
-                //
-            ])
-            ->filters([
-                //
-            ])
-            ->actions([
-                Tables\Actions\EditAction::make(),
-            ])
-            ->bulkActions([
-                Tables\Actions\BulkActionGroup::make([
-                    Tables\Actions\DeleteBulkAction::make(),
-                ]),
-            ]);
-    }
+            TextColumn::make('username_pembeli')
+                ->label('Username')
+                ->searchable()
+                ->sortable(),
 
-    public static function getRelations(): array
-    {
-        return [
+            TextColumn::make('alamat_pembeli')
+                ->label('Alamat')
+                ->limit(30),
+
+            TextColumn::make('no_hp')
+                ->label('No HP')
+                ->searchable(),
+
+            TextColumn::make('created_at')
+                ->label('Tanggal Daftar')
+                ->dateTime()
+                ->sortable(),
+        ])
+        ->filters([
             //
-        ];
-    }
+        ])
+        ->actions([
+            Tables\Actions\EditAction::make(),
+        ])
+        ->bulkActions([
+            Tables\Actions\BulkActionGroup::make([
+                Tables\Actions\DeleteBulkAction::make(),
+            ]),
+        ]);
+}
 
-    public static function getPages(): array
-    {
-        return [
-            'index' => Pages\ListCustomers::route('/'),
-            'create' => Pages\CreateCustomer::route('/create'),
-            'edit' => Pages\EditCustomer::route('/{record}/edit'),
-        ];
-    }
+public static function getRelations(): array
+{
+    return [
+        // Tambahkan relasi ke transaksi, keranjang, atau lainnya jika diperlukan
+    ];
+}
+
+public static function getPages(): array
+{
+    return [
+        'index' => Pages\ListCustomers::route('/'),
+        'create' => Pages\CreateCustomer::route('/create'),
+        'edit' => Pages\EditCustomer::route('/{record}/edit'),
+    ];
+}
 }

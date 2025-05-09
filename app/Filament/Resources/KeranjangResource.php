@@ -60,7 +60,17 @@ class KeranjangResource extends Resource
     {
         return $table
             ->columns([
-                //
+                TextColumn::make('id_pembeli')
+                    ->label('ID Pembeli')
+                    ->sortable(),
+    
+                TextColumn::make('id_produk')
+                    ->label('ID Produk')
+                    ->sortable(),
+    
+                TextColumn::make('jumlah_beli')
+                    ->label('Jumlah Beli')
+                    ->sortable(),
             ])
             ->filters([
                 //
@@ -74,14 +84,14 @@ class KeranjangResource extends Resource
                 ]),
             ]);
     }
-
+    
     public static function getRelations(): array
     {
         return [
-            //
+            // Tambahkan relasi jika ada (misalnya relasi ke Produk atau Pembeli)
         ];
     }
-
+    
     public static function getPages(): array
     {
         return [
@@ -89,5 +99,5 @@ class KeranjangResource extends Resource
             'create' => Pages\CreateKeranjang::route('/create'),
             'edit' => Pages\EditKeranjang::route('/{record}/edit'),
         ];
-    }
+    }    
 }

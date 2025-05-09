@@ -81,9 +81,32 @@ class ProdukResource extends Resource
     {
         return $table
             ->columns([
-                Tables\Columns\ImageColumn::make('gambar_produk')->circular(),
-                Tables\Columns\TextColumn::make('nama_produk')->searchable(),
-                //
+                // Gambar produk
+                ImageColumn::make('gambar_produk')
+                    ->label('Gambar')
+                    ->circular(),
+    
+                // Nama produk
+                TextColumn::make('nama_produk')
+                    ->label('Nama Produk')
+                    ->searchable()
+                    ->sortable(),
+    
+                // Harga produk
+                TextColumn::make('harga_produk')
+                    ->label('Harga')
+                    ->money('IDR')
+                    ->sortable(),
+    
+                // Stok produk
+                TextColumn::make('stok_produk')
+                    ->label('Stok')
+                    ->sortable(),
+    
+                // Kategori (jika ada relasi)
+                TextColumn::make('kategori.nama')
+                    ->label('Kategori')
+                    ->sortable(),
             ])
             ->filters([
                 //
@@ -97,14 +120,14 @@ class ProdukResource extends Resource
                 ]),
             ]);
     }
-
+    
     public static function getRelations(): array
     {
         return [
-            //
+            // tambahkan relasi jika produk punya relasi detail lain
         ];
     }
-
+    
     public static function getPages(): array
     {
         return [
@@ -112,5 +135,5 @@ class ProdukResource extends Resource
             'create' => Pages\CreateProduk::route('/create'),
             'edit' => Pages\EditProduk::route('/{record}/edit'),
         ];
-    }
+    }    
 }

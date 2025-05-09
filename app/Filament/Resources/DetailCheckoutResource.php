@@ -67,7 +67,22 @@ class DetailCheckoutResource extends Resource
     {
         return $table
             ->columns([
-                //
+                TextColumn::make('id_produk')
+                    ->label('ID Produk')
+                    ->sortable(),
+    
+                TextColumn::make('total_beli')
+                    ->label('Total Beli')
+                    ->sortable(),
+    
+                TextColumn::make('harga_produk')
+                    ->label('Harga Produk')
+                    ->money('IDR', true)
+                    ->sortable(),
+    
+                TextColumn::make('id_pembeli')
+                    ->label('ID Pembeli')
+                    ->sortable(),
             ])
             ->filters([
                 //
@@ -81,14 +96,15 @@ class DetailCheckoutResource extends Resource
                 ]),
             ]);
     }
-
+    
     public static function getRelations(): array
     {
         return [
-            //
+            // Tambahkan relasi jika diperlukan, contoh:
+            // RelationManagers\ProdukRelationManager::class,
         ];
     }
-
+    
     public static function getPages(): array
     {
         return [

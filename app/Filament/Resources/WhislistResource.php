@@ -50,10 +50,26 @@ class WhislistResource extends Resource
     {
         return $table
             ->columns([
-                //
+                // Kolom Nama Pembeli
+                TextColumn::make('pembeli.nama_pembeli')
+                    ->label('Nama Pembeli')
+                    ->searchable()
+                    ->sortable(),
+    
+                // Kolom Nama Produk
+                TextColumn::make('produk.name')
+                    ->label('Nama Produk')
+                    ->searchable()
+                    ->sortable(),
+    
+                // Kolom Tanggal Ditambahkan
+                TextColumn::make('created_at')
+                    ->label('Ditambahkan Pada')
+                    ->dateTime()
+                    ->sortable(),
             ])
             ->filters([
-                //
+                // filter bisa ditambahkan nanti jika diperlukan
             ])
             ->actions([
                 Tables\Actions\EditAction::make(),
@@ -64,14 +80,14 @@ class WhislistResource extends Resource
                 ]),
             ]);
     }
-
+    
     public static function getRelations(): array
     {
         return [
-            //
+            // Tambahkan relasi jika resource ini memiliki relasi tambahan (misalnya komentar, rating, dll)
         ];
     }
-
+    
     public static function getPages(): array
     {
         return [
@@ -80,4 +96,4 @@ class WhislistResource extends Resource
             'edit' => Pages\EditWhislist::route('/{record}/edit'),
         ];
     }
-}
+}    
