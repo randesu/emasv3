@@ -50,11 +50,11 @@ class ProdukResource extends Resource
                       ->placeholder('Nama Produk')
                       ->required(),
 
-                    Forms\Components\TextInput::make('category_id')
-                      ->label('Kategory Produk')
-                      ->relationship('category', 'name')
-                      ->placeholder('Pilih Kategori Produk')
+                      Forms\Components\Select::make('category_id')
+                      ->label('Kategori Produk')
+                      ->relationship('produkToCategory', 'name')
                       ->required(),
+                      
 
                     Forms\Components\TextInput::make('harga')
                         ->integer()

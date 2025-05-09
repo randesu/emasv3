@@ -16,7 +16,7 @@ class produk extends Model
 
     public function produkToCategory()
     {
-        return $this->hasMany(Category::class);
+        return $this->hasMany(category::class);
     }
 
     public function produkToCheckout()
