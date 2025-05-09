@@ -19,6 +19,14 @@ class DetailCheckoutResource extends Resource
 
     protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
 
+    
+    protected static ?string $navigationGroup = 'Master Data';
+
+    public static function getNavigationSort(): ?int
+    {
+        return 5;
+    }
+
     public static function form(Form $form): Form
     {
         return $form
