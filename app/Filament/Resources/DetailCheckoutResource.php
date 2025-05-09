@@ -23,7 +23,35 @@ class DetailCheckoutResource extends Resource
     {
         return $form
             ->schema([
-                //
+                Forms\Components\Card::make()
+                    ->schema([
+                        // Produk (relasi)
+                        Forms\Components\Select::make('id_produk')
+                            ->label('Nama Produk')
+                            ->relationship('produk', 'name') // pastikan ada relasi 'produk' di model
+                            ->searchable()
+                            ->required(),
+    
+                        // Total Beli
+                        Forms\Components\TextInput::make('total_beli')
+                            ->label('Total Beli')
+                            ->numeric()
+                            ->required(),
+    
+                        // Harga Produk
+                        Forms\Components\TextInput::make('harga_produk')
+                            ->label('Harga Produk')
+                            ->numeric()
+                            ->prefix('Rp')
+                            ->required(),
+    
+                        // Pembeli (relasi)
+                        Forms\Components\Select::make('id_pembeli')
+                            ->label('Nama Pembeli')
+                            ->relationship('pembeli', 'nama_pembeli') // pastikan ada relasi 'pembeli' di model
+                            ->searchable()
+                            ->required(),
+                    ]),
             ]);
     }
 

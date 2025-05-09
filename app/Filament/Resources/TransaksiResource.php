@@ -23,7 +23,43 @@ class TransaksiResource extends Resource
     {
         return $form
             ->schema([
-                //
+                Forms\Components\Card::make()
+                    ->schema([
+                        // ID Pembeli - relasi ke tabel pembeli
+                        Forms\Components\Select::make('id_pembeli')
+                            ->label('Nama Pembeli')
+                            ->relationship('pembeli', 'nama_pembeli') // asumsi relasi di model Transaksi
+                            ->searchable()
+                            ->required(),
+    
+                        // Total Bayar
+                        Forms\Components\TextInput::make('total_bayar')
+                            ->label('Total Bayar')
+                            ->numeric()
+                            ->prefix('Rp')
+                            ->required(),
+    
+                        // ID Checkout - relasi ke tabel checkout
+                        Forms\Components\Select::make('id_checkout')
+                            ->label('Kode Checkout')
+                            ->relationship('checkout', 'kode_checkout') // asumsi field 'kode_checkout' di tabel checkout
+                            ->searchable()
+                            ->required(),
+    
+                        // Barcode
+                        Forms\Components\TextInput::make('barcode')
+                            ->label('Barcode')
+                            ->required(),
+    
+                        // Status Pembayaran (misal: 0 = Belum Dibayar, 1 = Sudah Dibayar)
+                        Forms\Components\Select::make('status_pembayaran')
+                            ->label('Status Pembayaran')
+                            ->options([
+                                0 => 'Belum Dibayar',
+                                1 => 'Sudah Dibayar',
+                            ])
+                            ->required(),
+                    ]),
             ]);
     }
 
