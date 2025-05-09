@@ -67,20 +67,20 @@ class DetailCheckoutResource extends Resource
     {
         return $table
             ->columns([
-                TextColumn::make('id_produk')
+                Tables\Columns\TextColumn::make('id_produk')
                     ->label('ID Produk')
                     ->sortable(),
     
-                TextColumn::make('total_beli')
+                Tables\Columns\TextColumn::make('total_beli')
                     ->label('Total Beli')
                     ->sortable(),
     
-                TextColumn::make('harga_produk')
+                Tables\Columns\TextColumn::make('harga_produk')
                     ->label('Harga Produk')
                     ->money('IDR', true)
                     ->sortable(),
     
-                TextColumn::make('id_pembeli')
+                Tables\Columns\TextColumn::make('id_pembeli')
                     ->label('ID Pembeli')
                     ->sortable(),
             ])

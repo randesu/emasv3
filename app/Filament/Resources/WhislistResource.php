@@ -51,19 +51,19 @@ class WhislistResource extends Resource
         return $table
             ->columns([
                 // Kolom Nama Pembeli
-                TextColumn::make('pembeli.nama_pembeli')
+                Tables\Columns\TextColumn::make('pembeli.nama_pembeli')
                     ->label('Nama Pembeli')
                     ->searchable()
                     ->sortable(),
     
                 // Kolom Nama Produk
-                TextColumn::make('produk.name')
+                Tables\Columns\TextColumn::make('produk.name')
                     ->label('Nama Produk')
                     ->searchable()
                     ->sortable(),
     
                 // Kolom Tanggal Ditambahkan
-                TextColumn::make('created_at')
+                Tables\Columns\TextColumn::make('created_at')
                     ->label('Ditambahkan Pada')
                     ->dateTime()
                     ->sortable(),

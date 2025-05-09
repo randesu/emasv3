@@ -60,15 +60,15 @@ class KeranjangResource extends Resource
     {
         return $table
             ->columns([
-                TextColumn::make('id_pembeli')
+                Tables\Columns\TextColumn::make('id_pembeli')
                     ->label('ID Pembeli')
                     ->sortable(),
     
-                TextColumn::make('id_produk')
+                Tables\Columns\TextColumn::make('id_produk')
                     ->label('ID Produk')
                     ->sortable(),
     
-                TextColumn::make('jumlah_beli')
+                Tables\Columns\TextColumn::make('jumlah_beli')
                     ->label('Jumlah Beli')
                     ->sortable(),
             ])
