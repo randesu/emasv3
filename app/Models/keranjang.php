@@ -21,7 +21,7 @@ class keranjang extends Model
 
     public function keranjangToPembeli()
     {
-        return $this->hasMany(customer::class);
+        return $this->belongsTo(customer::class);
     }
 
 }

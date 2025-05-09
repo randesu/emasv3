@@ -6,6 +6,7 @@ use Filament\Forms;
 use Filament\Tables;
 use Filament\Forms\Form;
 use App\Models\Keranjang;
+use App\Models\customer;
 use Filament\Tables\Table;
 use Filament\Resources\Resource;
 use Illuminate\Database\Eloquent\Model;
@@ -62,8 +63,9 @@ class KeranjangResource extends Resource
     {
         return $table
             ->columns([
-                Tables\Columns\TextColumn::make('id_pembeli')
+                Tables\Columns\TextColumn::make('keranjangToPembeli.nama_pembeli')
                     ->label('ID Pembeli')
+                   // ->getOptionLabelFromRecordUsing(fn (Model $record) => "{$record->id} - {$record->nama_pembeli}")
                     ->sortable(),
     
                 Tables\Columns\TextColumn::make('id_produk')
