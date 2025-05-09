@@ -69,25 +69,25 @@ public static function table(Table $table): Table
 {
     return $table
         ->columns([
-            TextColumn::make('nama_pembeli')
+            Tables\Columns\TextColumn::make('nama_pembeli')
                 ->label('Nama Pembeli')
                 ->searchable()
                 ->sortable(),
 
-            TextColumn::make('username_pembeli')
+            Tables\Columns\TextColumn::make('username_pembeli')
                 ->label('Username')
                 ->searchable()
                 ->sortable(),
 
-            TextColumn::make('alamat_pembeli')
+            Tables\Columns\TextColumn::make('alamat_pembeli')
                 ->label('Alamat')
                 ->limit(30),
 
-            TextColumn::make('no_hp')
+            Tables\Columns\TextColumn::make('no_hp')
                 ->label('No HP')
                 ->searchable(),
 
-            TextColumn::make('created_at')
+            Tables\Columns\TextColumn::make('created_at')
                 ->label('Tanggal Daftar')
                 ->dateTime()
                 ->sortable(),

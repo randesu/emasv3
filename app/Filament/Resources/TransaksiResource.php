@@ -76,30 +76,30 @@ class TransaksiResource extends Resource
         return $table
             ->columns([
                 // Nama Pembeli
-                TextColumn::make('pembeli.nama_pembeli')
+                Tables\Columns\TextColumn::make('pembeli.nama_pembeli')
                     ->label('Nama Pembeli')
                     ->searchable()
                     ->sortable(),
     
                 // Total Bayar
-                TextColumn::make('total_bayar')
+                Tables\Columns\TextColumn::make('total_bayar')
                     ->label('Total Bayar')
                     ->money('IDR')
                     ->sortable(),
     
                 // Nama Checkout (atau ID Checkout)
-                TextColumn::make('checkout.id')
+                Tables\Columns\TextColumn::make('checkout.id')
                     ->label('ID Checkout')
                     ->sortable(),
     
                 // Barcode
-                TextColumn::make('barcode')
+                Tables\Columns\TextColumn::make('barcode')
                     ->label('Barcode')
                     ->copyable()
                     ->searchable(),
     
                 // Status Pembayaran
-                TextColumn::make('status_pembayaran')
+                Tables\Columns\TextColumn::make('status_pembayaran')
                     ->label('Status Pembayaran')
                     ->formatStateUsing(fn ($state) => $state == 1 ? 'Sudah Bayar' : 'Belum Bayar')
                     ->badge()
@@ -107,7 +107,7 @@ class TransaksiResource extends Resource
                     ->sortable(),
     
                 // Tanggal Transaksi
-                TextColumn::make('created_at')
+                Tables\Columns\TextColumn::make('created_at')
                     ->label('Tanggal')
                     ->dateTime()
                     ->sortable(),
