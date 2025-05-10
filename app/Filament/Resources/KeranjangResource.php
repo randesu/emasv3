@@ -31,33 +31,40 @@ class KeranjangResource extends Resource
 
     public static function form(Form $form): Form
     {
-        return $form
-            ->schema([
-                Forms\Components\Card::make()
-                    ->schema([
-                        // Relasi ke pembeli
-                        Forms\Components\Select::make('id_pembeli')
-                            ->label('Nama Pembeli')
-                            ->relationship('customer', 'id')
-                            ->getOptionLabelFromRecordUsing(fn (Model $record) => "{$record->id} - {$record->nama_pembeli}") // pastikan relasi 'pembeli' ada di model Keranjang
-                            // ->searchable()
-                            ->required(),
+        // return $form
+            // ->schema([
+            //     Forms\Components\Card::make()
+            //         ->schema([
+            //             // Relasi ke pembeli
+            //             Forms\Components\Select::make('id_pembeli')
+            //                 ->label('Nama Pembeli')
+            //                 ->relationship('customer', 'id')
+            //                 ->getOptionLabelFromRecordUsing(fn (Model $record) => "{$record->id} - {$record->nama_pembeli}") // pastikan relasi 'pembeli' ada di model Keranjang
+            //                 // ->searchable()
+            //                 ->required(),
     
-                        // Relasi ke produk
-                        Forms\Components\Select::make('id_produk')
-                            ->label('Nama Produk')
-                            ->relationship('produk', 'id') // pastikan relasi 'produk' ada di model Keranjang
-                            // ->searchable()
-                            ->getOptionLabelFromRecordUsing(fn (Model $record) => "{$record->id} - {$record->nama_produk}")
-                            ->required(),
+            //             // Relasi ke produk
+            //             Forms\Components\Select::make('id_produk')
+            //                 ->label('Nama Produk')
+            //                 ->relationship('produk', 'id') // pastikan relasi 'produk' ada di model Keranjang
+            //                 // ->searchable()
+            //                 ->getOptionLabelFromRecordUsing(fn (Model $record) => "{$record->id} - {$record->nama_produk}")
+            //                 ->required(),
     
-                        // Jumlah Beli
-                        Forms\Components\TextInput::make('jumlah_beli')
-                            ->label('Jumlah Beli')
-                            ->numeric()
-                            ->required(),
-                    ]),
-            ]);
+            //             // Jumlah Beli
+            //             Forms\Components\TextInput::make('jumlah_beli')
+            //                 ->label('Jumlah Beli')
+            //                 ->numeric()
+            //                 ->required(),
+            //         ]),
+            // ]);
+    }
+
+    
+    //ini untuk menghilangkan tombol New Keranjang
+    public static function canCreate(): bool
+    {
+        return false;
     }
 
     public static function getEloquentQuery(): Builder
@@ -72,11 +79,11 @@ class KeranjangResource extends Resource
             ->columns([
                 
                 Tables\Columns\TextColumn::make('customer.nama_pembeli')
-                    ->label('ID Pembeli')
+                    ->label('Nama Pembeli')
                     ->sortable(),
     
                 Tables\Columns\TextColumn::make('produk.nama_produk')
-                    ->label('ID Produk')
+                    ->label('Nama Produk')
                     ->sortable(),
                 
                 Tables\Columns\TextColumn::make('produk.harga')
@@ -87,7 +94,7 @@ class KeranjangResource extends Resource
                     ->label('Jumlah Beli')
                     ->sortable(),
                 
-                Tables\Columns\TextColumn::make('total_harga')
+                Tables\Columns\TextColumn::make('produk.id')
                     ->label('Total Harga')
                     ->formatStateUsing(function ($record) {
                         if (!$record->produk) {
@@ -100,14 +107,16 @@ class KeranjangResource extends Resource
             ->filters([
                 //
             ])
-            ->actions([
-                Tables\Actions\EditAction::make(),
-            ])
-            ->bulkActions([
-                Tables\Actions\BulkActionGroup::make([
-                    Tables\Actions\DeleteBulkAction::make(),
-                ]),
-            ])
+
+            //ini bagian dari tombol hapus edit dan select data
+            // ->actions([
+            //     Tables\Actions\EditAction::make(),
+            // ])
+            // ->bulkActions([
+            //     Tables\Actions\BulkActionGroup::make([
+            //         Tables\Actions\DeleteBulkAction::make(),
+            //     ]),
+            // ])
             ;
     }
     
@@ -115,7 +124,7 @@ class KeranjangResource extends Resource
     {
         return [
             
-            //ambahkan relasi jika ada (misalnya relasi ke Produk atau Pembeli)
+            //tambahkan relasi jika ada (misalnya relasi ke Produk atau Pembeli)
         ];
     }
     
@@ -123,8 +132,8 @@ class KeranjangResource extends Resource
     {
         return [
             'index' => Pages\ListKeranjangs::route('/'),
-            'create' => Pages\CreateKeranjang::route('/create'),
-            'edit' => Pages\EditKeranjang::route('/{record}/edit'),
+            // 'create' => Pages\CreateKeranjang::route('/create'),
+            // 'edit' => Pages\EditKeranjang::route('/{record}/edit'),
         ];
     }    
 }
