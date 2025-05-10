@@ -15,6 +15,11 @@ class customer extends Model
         return $this->hasMany(produk::class);
     }
 
+    //     public function checkout()
+    // {
+    //     return $this->hasMany(checkout::class);
+    // }
+
     public function customerToUser()
     {
         return $this->belongsTo(user::class);

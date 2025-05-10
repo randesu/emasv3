@@ -7,11 +7,19 @@ use App\Filament\Resources\TransaksiResource\RelationManagers;
 use App\Models\Transaksi;
 use Filament\Forms;
 use Filament\Forms\Form;
+use Filament\Forms\Components\Select;
 use Filament\Resources\Resource;
 use Filament\Tables;
 use Filament\Tables\Table;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
+
+
+use Filament\Forms\Components\TextInput;
+use Filament\Forms\Components\Placeholder;
+use Filament\Forms\Components\Hidden;
+use Filament\Forms\Get;
+use Filament\Forms\Set;
 
 class TransaksiResource extends Resource
 {
@@ -34,25 +42,36 @@ class TransaksiResource extends Resource
                 Forms\Components\Card::make()
                     ->schema([
                         // ID Pembeli - relasi ke tabel pembeli
-                        Forms\Components\Select::make('id_pembeli')
+                        Select::make('id_pembeli')
                             ->label('Nama Pembeli')
-                            ->relationship('pembeli', 'nama_pembeli') // asumsi relasi di model Transaksi
-                            ->searchable()
-                            ->required(),
+                            ->relationship('customer', 'nama_pembeli')
+                            ->disabled() // agar tidak bisa dipilih manual
+                            ->dehydrated(), // tetap dikirim saat submit
+                        
     
                         // Total Bayar
-                        Forms\Components\TextInput::make('total_bayar')
+                        TextInput::make('total_bayar')
                             ->label('Total Bayar')
-                            ->numeric()
-                            ->prefix('Rp')
-                            ->required(),
+                            ->disabled() // agar tidak diubah manual
+                            ->dehydrated(), // tetap dikirim saat submit
+                        
     
                         // ID Checkout - relasi ke tabel checkout
-                        Forms\Components\Select::make('id_checkout')
+                        Select::make('id_checkout')
                             ->label('Kode Checkout')
-                            ->relationship('checkout', 'kode_checkout') // asumsi field 'kode_checkout' di tabel checkout
+                            ->relationship('checkout', 'id') // pastikan ini sesuai
                             ->searchable()
-                            ->required(),
+                            ->preload()
+                            ->required()
+                            ->reactive() // agar bisa trigger perubahan
+                            ->afterStateUpdated(function ($state, Set $set) {
+                                $checkout = \App\Models\Checkout::with('customer')->find($state);
+
+                                if ($checkout) {
+                                    $set('total_bayar', $checkout->total_beli);
+                                    $set('id_pembeli', $checkout->id_pembeli);
+                                }
+                            }),
     
                         // Barcode
                         Forms\Components\TextInput::make('barcode')
@@ -71,16 +90,21 @@ class TransaksiResource extends Resource
             ]);
     }
 
+public static function getEloquentQuery(): Builder
+{
+    return parent::getEloquentQuery()->with('customer');
+}
+
     public static function table(Table $table): Table
     {
         return $table
             ->columns([
                 // Nama Pembeli
-                Tables\Columns\TextColumn::make('pembeli.nama_pembeli')
-                    ->label('Nama Pembeli')
-                    ->searchable()
-                    ->sortable(),
-    
+                Tables\Columns\TextColumn::make('customer.nama_pembeli')
+                ->label('Nama Pembeli')
+                ->searchable()
+                ->sortable(),
+
                 // Total Bayar
                 Tables\Columns\TextColumn::make('total_bayar')
                     ->label('Total Bayar')
@@ -88,15 +112,15 @@ class TransaksiResource extends Resource
                     ->sortable(),
     
                 // Nama Checkout (atau ID Checkout)
-                Tables\Columns\TextColumn::make('checkout.id')
+                Tables\Columns\TextColumn::make('id_checkout')
                     ->label('ID Checkout')
                     ->sortable(),
     
                 // Barcode
-                Tables\Columns\TextColumn::make('barcode')
-                    ->label('Barcode')
-                    ->copyable()
-                    ->searchable(),
+                // Tables\Columns\TextColumn::make('barcode')
+                //     ->label('Barcode')
+                //     ->copyable()
+                //     ->searchable(),
     
                 // Status Pembayaran
                 Tables\Columns\TextColumn::make('status_pembayaran')
@@ -115,16 +139,22 @@ class TransaksiResource extends Resource
             ->filters([
                 //
             ])
-            ->actions([
-                Tables\Actions\EditAction::make(),
-            ])
-            ->bulkActions([
-                Tables\Actions\BulkActionGroup::make([
-                    Tables\Actions\DeleteBulkAction::make(),
-                ]),
-            ]);
+            // ->actions([
+            //     Tables\Actions\EditAction::make(),
+            // ])
+            // ->bulkActions([
+            //     Tables\Actions\BulkActionGroup::make([
+            //         Tables\Actions\DeleteBulkAction::make(),
+            //     ]),
+            // ])
+            ;
     }
     
+        //ini untuk menghilangkan tombol New Keranjang
+    public static function canCreate(): bool
+    {
+        return false;
+    }
     public static function getRelations(): array
     {
         return [

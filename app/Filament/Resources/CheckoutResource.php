@@ -8,6 +8,7 @@ use App\Models\Checkout;
 use Filament\Forms;
 use Filament\Forms\Form;
 use Filament\Resources\Resource;
+use Filament\Forms\Components\Select;
 use Filament\Tables;
 use Filament\Tables\Table;
 use Illuminate\Database\Eloquent\Builder;
@@ -34,10 +35,12 @@ class CheckoutResource extends Resource
                 Forms\Components\Card::make()
                     ->schema([
                         // ID Pembeli - relasi
-                        Forms\Components\Select::make('id_pembeli')
+                        Select::make('id_pembeli')
                             ->label('Nama Pembeli')
-                            ->relationship('pembeli', 'nama_pembeli') // pastikan relasi 'pembeli' tersedia di model
+                            ->relationship('customer', 'nama_pembeli')
+                            ->getOptionLabelFromRecordUsing(fn ($record) => "{$record->id} - {$record->nama_pembeli}")
                             ->searchable()
+                            ->preload()
                             ->required(),
     
                         // Total Beli
@@ -65,14 +68,18 @@ class CheckoutResource extends Resource
             ]);
     }
 
+    public static function getEloquentQuery(): Builder
+{
+    return parent::getEloquentQuery()->with('customer');
+}
+
     public static function table(Table $table): Table
     {
         return $table
             ->columns([
                 // Kolom nama pembeli dari relasi
-                Tables\Columns\TextColumn::make('pembeli.nama_pembeli')
+                    Tables\Columns\TextColumn::make('customer.nama_pembeli')
                     ->label('Nama Pembeli')
-                    ->searchable()
                     ->sortable(),
     
                 // Total Beli
