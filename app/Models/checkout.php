@@ -12,7 +12,7 @@ class checkout extends Model
      *
      * @var array
      */
-    protected $fillable = ['id_pembeli','total_beli','alamat_pembeli', 'metode_pembayaran','timestamps'];
+    protected $fillable = ['id_pembeli','total_beli','id_produk','alamat_pembeli', 'metode_pembayaran','timestamps'];
 
     public function checkoutToProduk()
     {
@@ -33,5 +33,16 @@ public function customer()
 {
     return $this->belongsTo(Customer::class, 'id_pembeli');
 }
+
+public function produk()
+{
+    return $this->belongsTo(Produk::class, 'id_produk');
+}
+
+public function pembeli()
+{
+    return $this->belongsTo(Customer::class, 'id_pembeli'); // jika ada
+}
+
 
 }

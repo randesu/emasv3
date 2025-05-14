@@ -48,6 +48,12 @@ class CheckoutResource extends Resource
                             ->label('Total Beli')
                             ->numeric()
                             ->required(),
+
+                        Forms\Components\TextInput::make('id_produk')
+                            ->label('id Produk')
+                            ->numeric(),
+                            // ->required()
+                            // ->rows(3),
     
                         // Alamat Pembeli
                         Forms\Components\Textarea::make('alamat_pembeli')
@@ -80,6 +86,10 @@ class CheckoutResource extends Resource
                 // Kolom nama pembeli dari relasi
                     Tables\Columns\TextColumn::make('customer.nama_pembeli')
                     ->label('Nama Pembeli')
+                    ->sortable(),
+
+                    Tables\Columns\TextColumn::make('id_produk')
+                    ->label('id Produk')
                     ->sortable(),
     
                 // Total Beli

@@ -31,33 +31,33 @@ class KeranjangResource extends Resource
 
     public static function form(Form $form): Form
     {
-        // return $form
-            // ->schema([
-            //     Forms\Components\Card::make()
-            //         ->schema([
-            //             // Relasi ke pembeli
-            //             Forms\Components\Select::make('id_pembeli')
-            //                 ->label('Nama Pembeli')
-            //                 ->relationship('customer', 'id')
-            //                 ->getOptionLabelFromRecordUsing(fn (Model $record) => "{$record->id} - {$record->nama_pembeli}") // pastikan relasi 'pembeli' ada di model Keranjang
-            //                 // ->searchable()
-            //                 ->required(),
+        return $form
+            ->schema([
+                Forms\Components\Card::make()
+                    ->schema([
+                        // Relasi ke pembeli
+                        Forms\Components\Select::make('id_pembeli')
+                            ->label('Nama Pembeli')
+                            ->relationship('customer', 'id')
+                            ->getOptionLabelFromRecordUsing(fn (Model $record) => "{$record->id} - {$record->nama_pembeli}") // pastikan relasi 'pembeli' ada di model Keranjang
+                            // ->searchable()
+                            ->required(),
     
-            //             // Relasi ke produk
-            //             Forms\Components\Select::make('id_produk')
-            //                 ->label('Nama Produk')
-            //                 ->relationship('produk', 'id') // pastikan relasi 'produk' ada di model Keranjang
-            //                 // ->searchable()
-            //                 ->getOptionLabelFromRecordUsing(fn (Model $record) => "{$record->id} - {$record->nama_produk}")
-            //                 ->required(),
+                        // Relasi ke produk
+                        Forms\Components\Select::make('id_produk')
+                            ->label('Nama Produk')
+                            ->relationship('produk', 'id') // pastikan relasi 'produk' ada di model Keranjang
+                            // ->searchable()
+                            ->getOptionLabelFromRecordUsing(fn (Model $record) => "{$record->id} - {$record->nama_produk}")
+                            ->required(),
     
-            //             // Jumlah Beli
-            //             Forms\Components\TextInput::make('jumlah_beli')
-            //                 ->label('Jumlah Beli')
-            //                 ->numeric()
-            //                 ->required(),
-            //         ]),
-            // ]);
+                        // Jumlah Beli
+                        Forms\Components\TextInput::make('jumlah_beli')
+                            ->label('Jumlah Beli')
+                            ->numeric()
+                            ->required(),
+                    ]),
+            ]);
     }
 
     
