@@ -21,11 +21,11 @@ class CheckoutResource extends Resource
     protected static ?string $navigationIcon = 'heroicon-o-inbox-arrow-down';
 
     
-    protected static ?string $navigationGroup = 'Master Data';
+    protected static ?string $navigationGroup = 'Transaksi Dll.';
 
     public static function getNavigationSort(): ?int
     {
-        return 3;
+        return 1;
     }
 
     public static function form(Form $form): Form

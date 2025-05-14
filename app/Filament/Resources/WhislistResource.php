@@ -20,11 +20,11 @@ class WhislistResource extends Resource
     protected static ?string $navigationIcon = 'heroicon-o-heart';
 
     
-    protected static ?string $navigationGroup = 'Master Data';
+    protected static ?string $navigationGroup = 'Tentang sistem';
 
     public static function getNavigationSort(): ?int
     {
-        return 9;
+        return 2;
     }
 
     public static function form(Form $form): Form

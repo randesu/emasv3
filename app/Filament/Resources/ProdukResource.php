@@ -21,11 +21,11 @@ class ProdukResource extends Resource
 
     protected static ?string $navigationIcon = 'heroicon-o-archive-box';
 
-    protected static ?string $navigationGroup = 'Master Data';
+    protected static ?string $navigationGroup = 'Tentang sistem';
 
     public static function getNavigationSort(): ?int
     {
-        return 2;
+        return 3;
     }
 
     public static function form(Form $form): Form

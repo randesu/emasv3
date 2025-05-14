@@ -22,11 +22,11 @@ class KeranjangResource extends Resource
     protected static ?string $navigationIcon = 'heroicon-o-shopping-bag';
 
     
-    protected static ?string $navigationGroup = 'Master Data';
+    protected static ?string $navigationGroup = 'Transaksi Dll.';
 
     public static function getNavigationSort(): ?int
     {
-        return 8;
+        return 2;
     }
 
     public static function form(Form $form): Form

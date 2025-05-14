@@ -21,11 +21,12 @@ class HerobannerResource extends Resource
     protected static ?string $navigationIcon = 'heroicon-o-photo';
 
     
-    protected static ?string $navigationGroup = 'Master Data';
+
+    protected static ?string $navigationGroup = 'Tentang sistem';
 
     public static function getNavigationSort(): ?int
     {
-        return 7;
+        return 4;
     }
 
     public static function form(Form $form): Form

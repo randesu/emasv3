@@ -28,11 +28,11 @@ class TransaksiResource extends Resource
     protected static ?string $navigationIcon = 'heroicon-o-banknotes';
 
     
-    protected static ?string $navigationGroup = 'Master Data';
+    protected static ?string $navigationGroup = 'Palung Mariana';
 
     public static function getNavigationSort(): ?int
     {
-        return 10;
+        return 3;
     }
 
     public static function form(Form $form): Form

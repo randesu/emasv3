@@ -23,6 +23,13 @@ class TransactionV2Resource extends Resource
 
     protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
 
+    protected static ?string $navigationGroup = 'Transaksi Dll.';
+
+    public static function getNavigationSort(): ?int
+    {
+        return 3;
+    }
+
     public static function form(Form $form): Form
     {
         
@@ -146,8 +153,9 @@ Textarea::make('address')
     {
         return [
             'index' => Pages\ListTransactionV2S::route('/'),
-            'create' => Pages\CreateTransactionV2::route('/create'),
-            'edit' => Pages\EditTransactionV2::route('/{record}/edit'),
+            'view'  => Pages\ViewTransaction::route('/{record}'),
+            // 'create' => Pages\CreateTransactionV2::route('/create'),
+            // 'edit' => Pages\EditTransactionV2::route('/{record}/edit'),
         ];
     }
 }
