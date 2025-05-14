@@ -15,7 +15,7 @@ class TransactionChart extends ChartWidget
     protected function getData(): array
     {
         // Ambil data transaksi per bulan untuk tahun ini
-        $data = Trend::query(Transaction::where('status', 'success'))
+        $data = Trend::query(TransactionV2::where('status', 'success'))
             ->between(
                 start: now()->startOfMonth(),
                 end: now()->endOfMonth()
