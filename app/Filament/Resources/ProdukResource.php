@@ -99,13 +99,13 @@ class ProdukResource extends Resource
                     ->sortable(),
     
                 // Harga produk
-                Tables\Columns\TextColumn::make('harga_produk')
+                Tables\Columns\TextColumn::make('harga')
                     ->label('Harga')
                     ->money('IDR')
                     ->sortable(),
     
                 // Stok produk
-                Tables\Columns\TextColumn::make('stok_produk')
+                Tables\Columns\TextColumn::make('stok')
                     ->label('Stok')
                     ->sortable(),
     
