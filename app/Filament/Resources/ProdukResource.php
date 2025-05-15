@@ -110,7 +110,7 @@ class ProdukResource extends Resource
                     ->sortable(),
     
                 // Kategori (jika ada relasi)
-                Tables\Columns\TextColumn::make('kategori.nama')
+                Tables\Columns\TextColumn::make('produkToCategory.nama')
                     ->label('Kategori')
                     ->sortable(),
             ])
