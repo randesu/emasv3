@@ -14,10 +14,14 @@ class produk extends Model
         return $this->belongsTo(keranjang::class);
     }
 
-    public function produkToCategory()
-    {
-        return $this->hasMany(category::class);
-    }
+    public function category()
+{
+    return $this->belongsTo(Category::class, 'category_id');
+}
+    // public function produkToCategory()
+    // {
+    //     return $this->hasMany(category::class);
+    // }
 
     public function produkToCheckout()
     {

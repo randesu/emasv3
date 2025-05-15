@@ -40,6 +40,11 @@ class HerobannerResource extends Resource
                             ->label('Nama Banner')
                             ->required()
                             ->maxLength(255),
+                        
+                        Forms\Components\TextInput::make('link_gambar')
+                            ->label('Link Banner')
+                            ->required(),
+                            
 
                         Forms\Components\Select::make('set_active')
                             ->label('Status banner')
@@ -65,6 +70,15 @@ class HerobannerResource extends Resource
             ->columns([
                 Tables\Columns\TextColumn::make('nama')
                     ->label('Nama Banner')
+                    ->searchable()
+                    ->sortable(),
+
+                Tables\Columns\TextColumn::make('link_gambar')
+                ->copyable()
+                ->copyableState(fn (Herobanner $record): string => "URL: {$record->link_gambar}")
+                    // ->prefix('https://')
+                    // ->suffix('.com')
+                    ->label('Link Banner')
                     ->searchable()
                     ->sortable(),
     

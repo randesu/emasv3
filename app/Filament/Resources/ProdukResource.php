@@ -52,7 +52,7 @@ class ProdukResource extends Resource
 
                       Forms\Components\Select::make('category_id')
                       ->label('Kategori Produk')
-                      ->relationship('produkToCategory', 'name')
+                      ->relationship('category', 'name')
                       ->required(),
                       
 
@@ -105,12 +105,12 @@ class ProdukResource extends Resource
                     ->sortable(),
     
                 // Stok produk
-                Tables\Columns\TextColumn::make('stok')
-                    ->label('Stok')
+                Tables\Columns\TextColumn::make('berat_barang')
+                    ->label('Berat Barang')
                     ->sortable(),
     
                 // Kategori (jika ada relasi)
-                Tables\Columns\TextColumn::make('produkToCategory.nama')
+                Tables\Columns\TextColumn::make('category.name')
                     ->label('Kategori')
                     ->sortable(),
             ])

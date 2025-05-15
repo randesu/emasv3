@@ -11,10 +11,10 @@ class category extends Model
     protected $fillable = ['image', 'name', 'slug'];
 
 
-public function products()
-    {
-        return $this->hasMany(produk::class);
-    }
+public function produks()
+{
+    return $this->hasMany(Produk::class, 'category_id');
+}
 
 
     protected static function boot()
