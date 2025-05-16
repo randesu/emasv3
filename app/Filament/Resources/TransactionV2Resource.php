@@ -127,7 +127,11 @@ Textarea::make('address')
                 'expired' => 'gray',
                 'failed' => 'danger',
             }),
-            Tables\Columns\TextColumn::make('created_at'),
+            
+            Tables\Columns\TextColumn::make('created_at')
+            ->label('Dibuat Pada')
+            ->dateTime('l, d M Y, H:i'),
+
         ])
             ->filters([
                 //
