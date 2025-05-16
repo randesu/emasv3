@@ -4,7 +4,9 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
-class customer extends Model
+use Illuminate\Foundation\Auth\User as Authenticatable;
+
+class customer extends Authenticatable
 {
     //
     protected $fillable = ['nama_pembeli','username_pembeli','password_pembeli','alamat_pembeli','no_hp'];

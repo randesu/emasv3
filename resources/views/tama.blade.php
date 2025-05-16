@@ -15,8 +15,7 @@
     <title>@yield('title')</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css" rel="stylesheet">
-    {{-- <link rel="stylesheet" href="{{ asset('css/header.css') }}"> --}}
-     {{-- <x-menus.header /> --}}
+    <link rel="stylesheet" href="{{ asset('css/header.css') }}">
     @livewireStyles
     @vite(['resources/css/app.css'])
 </head>
@@ -26,8 +25,8 @@
     {{ $slot }}
     <!-- end render content -->
 
-    <x-menus.bottom />
-   
+    {{-- <x-menus.bottom /> --}}
+    <x-menus.header />
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.min.js"></script>
