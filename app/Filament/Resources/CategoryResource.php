@@ -37,6 +37,9 @@ class CategoryResource extends Resource
 
                 //image
                 Forms\Components\FileUpload::make('image')
+                ->disk('s3')
+                ->directory('public')
+                ->visibility('public')
                   ->label('Category Image')
                   ->placeholder('Category Image')
                   ->required(),
@@ -55,7 +58,9 @@ public static function table(Table $table): Table
 {
     return $table
         ->columns([
-            Tables\Columns\ImageColumn::make('image')->circular(),
+            Tables\Columns\ImageColumn::make('image')
+            ->disk('s3')
+            ->circular(),
             Tables\Columns\TextColumn::make('name')->searchable(),
         ])
         ->filters([

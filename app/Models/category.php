@@ -27,6 +27,13 @@ public function produks()
                 $category->slug = Str::slug($category->name);
             }
         });
+
+        static::saving(function ($category) {
+            if (empty($category->imagelink)) {
+                $category->imagelink = 'https://vlcyusrxdnldvwmpqhcy.supabase.co/storage/v1/object/public/image-bucker/storage/v1/s3/image-bucker/image-bucker/'.$category->image;
+                //Str::slug($category->name);
+            }
+        });
     }
 
 }
