@@ -1,0 +1,95 @@
+/* Header Wrapper */
+.header-wrapper {
+    background-color: #FF6B00; /* Warna orange */
+    color: white;
+    padding: 1rem 1.5rem;
+    font-family: sans-serif;
+}
+
+/* Logo + Nama */
+.header-logo {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+}
+
+.header-logo img {
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    background: white;
+    padding: 4px;
+}
+
+.header-text h1 {
+    font-size: 1.25rem;
+    font-weight: bold;
+    margin: 0;
+}
+
+.header-text small {
+    font-size: 0.75rem;
+    color: #f0f0f0;
+}
+
+/* Search Bar */
+.header-search {
+    flex: 1;
+    max-width: 400px;
+    display: flex;
+    border-radius: 9999px;
+    overflow: hidden;
+    background: white;
+    margin: 0 1rem;
+}
+
+.header-search input {
+    border: none;
+    padding: 0.5rem 1rem;
+    flex: 1;
+    outline: none;
+    color: #333;
+}
+
+.header-search button {
+    background: white;
+    color: #FF6B00;
+    border: none;
+    padding: 0.5rem 1rem;
+    cursor: pointer;
+}
+
+/* Icon Buttons */
+.header-icons {
+    display: flex;
+    gap: 0.5rem;
+}
+
+.header-icons button {
+    background: white;
+    color: #FF6B00;
+    border: none;
+    padding: 0.5rem;
+    border-radius: 8px;
+    cursor: pointer;
+}
+
+/* Navigation Links */
+.header-nav {
+    margin-top: 1rem;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 1rem;
+    font-size: 0.9rem;
+    font-weight: 500;
+}
+
+.header-nav a {
+    color: white;
+    text-decoration: none;
+}
+
+.header-nav a:hover {
+    text-decoration: underline;
+}
