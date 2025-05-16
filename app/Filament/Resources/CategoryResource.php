@@ -44,6 +44,9 @@ class CategoryResource extends Resource
                   ->placeholder('Category Image')
                   ->required(),
 
+                Forms\Components\FileUpload::make('imagelink')
+                ->disabled(),
+
                 //name
                 Forms\Components\TextInput::make('name')
                   ->label('Category Name')
@@ -58,7 +61,7 @@ public static function table(Table $table): Table
 {
     return $table
         ->columns([
-            Tables\Columns\ImageColumn::make('image')
+            Tables\Columns\ImageColumn::make('imagelink')
             ->disk('s3')
             ->circular(),
             Tables\Columns\TextColumn::make('name')->searchable(),
