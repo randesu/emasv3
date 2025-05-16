@@ -23,7 +23,7 @@
     test
 
     <!-- render content -->
-    {{ $slot }}
+    {{-- {{ $slot }} --}}
     <!-- end render content -->
 
     <x-menus.bottom />
