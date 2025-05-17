@@ -7,9 +7,9 @@ use App\Models\Customer;
 
 class Register extends Component
 {
-    public $name;
-    public $email;
-    public $password;
+    public $nama_pembeli;
+    public $username_pembeli;
+    public $password_pembeli;
     public $password_confirmation;
     
     /**
@@ -26,6 +26,13 @@ class Register extends Component
         ];
     }
     
+    public function mount()
+    {
+        // redirect if user is already logged in
+        if(auth()->guard('customer')->check()) {
+            return $this->redirect('/account/my-orders', navigate: true);
+        }
+    }
     /**
      * register
      *
@@ -38,9 +45,9 @@ class Register extends Component
 
         //create customer
         Customer::create([
-            'nama_pembeli'      => $this->name,
-            'username_pembeli'     => $this->email,
-            'password_pembeli'  => $this->password,
+            'nama_pembeli'      => $this->nama_pembeli,
+            'username_pembeli'     => $this->username_pembeli,
+            'password_pembeli'  => $this->password_pembeli,
         ]);
 
         //session flash
