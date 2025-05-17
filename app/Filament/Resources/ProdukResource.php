@@ -37,6 +37,9 @@ class ProdukResource extends Resource
     
                     //image
                     Forms\Components\FileUpload::make('gambar_produk')
+                        ->disk('s3')
+                        ->directory('public')
+                        ->visibility('public')
                     
                        
                       ->label('Gambar Produk')
@@ -52,8 +55,8 @@ class ProdukResource extends Resource
 
                       Forms\Components\Select::make('category_id')
                       ->label('Kategori Produk')
-                      ->relationship('category', 'name')
-                      ->required(),
+                      ->relationship('category', 'name'),
+                    //   ->required(),
                       
 
                     Forms\Components\TextInput::make('harga')
@@ -88,7 +91,8 @@ class ProdukResource extends Resource
         return $table
             ->columns([
                 // Gambar produk
-                Tables\Columns\ImageColumn::make('gambar_produk')
+                Tables\Columns\ImageColumn::make('linkgambar')
+                ->disk('s3')
                     ->label('Gambar')
                     ->circular(),
     

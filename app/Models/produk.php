@@ -48,5 +48,12 @@ class produk extends Model
                 $product->slug = Str::slug($product->nama_produk);
             }
         });
+
+        static::saving(function ($product) {
+            if (empty($product->linkgambar)) {
+                $product->linkgambar = 'https://vlcyusrxdnldvwmpqhcy.supabase.co/storage/v1/object/public/image-bucker/storage/v1/s3/image-bucker/image-bucker/'.$product->gambar_produk;
+                //Str::slug($category->name);
+            }
+        });
     }
 }
