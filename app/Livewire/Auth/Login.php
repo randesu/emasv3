@@ -6,8 +6,56 @@ use Livewire\Component;
 
 class Login extends Component
 {
+    public $username_pembeli;
+    public $password_pembeli;
+        
+    /**
+     * rules
+     *
+     * @return void
+     */
+    protected function rules()
+    {
+        return [
+            'username_pembeli' => ['required', 'username_pembeli'],
+            'password_pembeli' => ['required'],
+        ];
+    }
+
+    /**
+     * login
+     *
+     * @return void
+     */
+    public function login()
+    {
+        // validate the input
+        $this->validate();
+
+        // attempt to login
+        if (auth()->guard('customer')->attempt([
+            'username_pembeli' => $this->username_pembeli,
+            'password_pembeli' => $this->password_pembeli,
+        ])) {
+            // session flash
+            session()->flash('success', 'Login Berhasil');
+
+            // redirect to the desired page
+            return $this->redirect('/account/my-orders', navigate: true);
+        }
+
+        // flash error message if login fails
+        session()->flash('error', 'Periksa email dan password Anda.');
+
+        // redirect to the desired page
+        return $this->redirect('/login', navigate: true);
+
+        
+    }
+
     public function render()
     {
         return view('livewire.auth.login');
     }
 }
+
