@@ -67,6 +67,7 @@
 
 .header-icons button {
     background: white;
+    width: 50px;
     color: #FF6B00;
     border: none;
     padding: 0.5rem;
@@ -92,4 +93,10 @@
 
 .header-nav a:hover {
     text-decoration: underline;
+}
+
+.header {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
 }

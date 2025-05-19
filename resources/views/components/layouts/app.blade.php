@@ -13,19 +13,22 @@
     <meta content="@yield('description')" property="og:description">
     <meta content="@yield('image')" property="og:image">
     <title>@yield('title')</title>
+    <script src="https://kit.fontawesome.com/c88cf729d4.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css" rel="stylesheet">
-    {{-- <link rel="stylesheet" href="{{ asset('css/header.css') }}"> --}}
+    <link rel="stylesheet" href="{{ asset('css/header.css') }}">
      {{-- <x-menus.header /> --}}
     @livewireStyles
     @vite(['resources/css/app.css'])
 </head>
 <body>
+    <x-menus.header />
 
     <!-- render content -->
-    {{ $slot }}
+    {{-- {{ $slot }} --}}
     <!-- end render content -->
-
+<x-menus.wangsaff />
     <x-menus.bottom />
    
 

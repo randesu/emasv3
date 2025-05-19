@@ -1,5 +1,5 @@
 <div class="header-wrapper">
-    <div class="flex items-center justify-between flex-wrap gap-4">
+    <div class="header">
         <!-- Logo -->
         <div class="header-logo">
             <img src="{{ asset('img/logo.png') }}" alt="Logo">
