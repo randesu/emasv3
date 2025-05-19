@@ -23,10 +23,10 @@
     @vite(['resources/css/app.css'])
 </head>
 <body>
-    <x-menus.header />
+    {{-- <x-menus.header /> --}}
 
     <!-- render content -->
-    {{-- {{ $slot }} --}}
+    {{ $slot }}
     <!-- end render content -->
 <x-menus.wangsaff />
     <x-menus.bottom />

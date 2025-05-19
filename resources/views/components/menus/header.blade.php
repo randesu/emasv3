@@ -2,11 +2,11 @@
     <div class="header">
         <!-- Logo -->
         <div class="header-logo">
-            <img src="{{ asset('img/logo.png') }}" alt="Logo">
-            <div class="header-text">
+            <img src="assets/TokeEmasMitraBaru.png" alt="Logo">
+            {{-- <div class="header-text">
                 <h1>Mitra Baru</h1>
                 <small>Jalan Muchran Ali, Mentawa Baru Ketapang, Sampit</small>
-            </div>
+            </div> --}}
         </div>
 
         <!-- Search -->

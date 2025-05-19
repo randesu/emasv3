@@ -9,7 +9,7 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 class customer extends Authenticatable
 {
     //
-    protected $fillable = ['nama_pembeli','username_pembeli','password_pembeli','alamat_pembeli','no_hp'];
+    protected $fillable = ['nama_pembeli','username_pembeli','password','alamat_pembeli','no_hp'];
 
 
     public function customerToProduk()

@@ -16,7 +16,7 @@
                     <form wire:submit.prevent="register">
 
                         <div class="input-group mb-3">
-                            <input type="text" wire:model.blur="name" value="{{ old('name') }}" class="form-control rounded @error('name') is-invalid @enderror" placeholder="Full Name">
+                            <input type="text" wire:model.blur="nama_pembeli" value="{{ old('nama_pembeli') }}" class="form-control rounded @error('name') is-invalid @enderror" placeholder="Full Name">
                         </div>
                         @error('name')
                             <div class="alert alert-danger mt-2 rounded border-0">
@@ -25,7 +25,7 @@
                         @enderror
 
                         <div class="input-group mb-3">
-                            <input type="email" wire:model.blur="email" value="{{ old('email') }}" class="form-control rounded @error('email') is-invalid @enderror" placeholder="Email Address">
+                            <input type="text" wire:model.blur="username_pembeli" value="{{ old('username_pembeli') }}" class="form-control rounded @error('email') is-invalid @enderror" placeholder="Email Address">
                         </div>
                         @error('email')
                             <div class="alert alert-danger mt-2 rounded border-0">

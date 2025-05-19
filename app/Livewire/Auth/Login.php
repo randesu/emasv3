@@ -7,7 +7,7 @@ use Livewire\Component;
 class Login extends Component
 {
     public $username_pembeli;
-    public $password_pembeli;
+    public $password;
         
     /**
      * rules
@@ -18,7 +18,7 @@ class Login extends Component
     {
         return [
             'username_pembeli' => ['required', 'username_pembeli'],
-            'password_pembeli' => ['required'],
+            'password' => ['required'],
         ];
     }
 
@@ -38,12 +38,12 @@ class Login extends Component
     public function login()
     {
         // validate the input
-        $this->validate();
+        // $this->validate();
 
         // attempt to login
         if (auth()->guard('customer')->attempt([
             'username_pembeli' => $this->username_pembeli,
-            'password_pembeli' => $this->password_pembeli,
+            'password' => $this->password,
         ])) {
             // session flash
             session()->flash('success', 'Login Berhasil');

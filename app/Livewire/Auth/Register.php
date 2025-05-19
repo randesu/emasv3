@@ -9,7 +9,7 @@ class Register extends Component
 {
     public $nama_pembeli;
     public $username_pembeli;
-    public $password_pembeli;
+    public $password;
     public $password_confirmation;
     
     /**
@@ -22,7 +22,7 @@ class Register extends Component
         return [
             'nama_pembeli' => ['required'],
             'username_pembeli' => ['required'],
-            'password_pembeli' => ['required', 'confirmed'],
+            'password' => ['required', 'confirmed'],
         ];
     }
     
@@ -47,7 +47,7 @@ class Register extends Component
         Customer::create([
             'nama_pembeli'      => $this->nama_pembeli,
             'username_pembeli'     => $this->username_pembeli,
-            'password_pembeli'  => $this->password_pembeli,
+            'password'  => bcrypt($this->password),
         ]);
 
         //session flash
