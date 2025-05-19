@@ -132,6 +132,11 @@
                                     </div>
                                 </div>
                             </div>
+
+                            <!-- component modal rating -->
+                            <livewire:account.my-orders.modal-rating :item="$item" :transaction="$transaction" />
+                            <!-- end component modal rating -->
+
                         </div>
                         @endforeach
 
