@@ -32,32 +32,31 @@
     color: #f0f0f0;
 }
 
-/* Search Bar */
 .header-search {
     flex: 1;
-    max-width: 400px;
+    max-width: 800px;
     display: flex;
-    border-radius: 9999px;
-    overflow: hidden;
-    background: white;
-    margin: 0 1rem;
+    align-items: center;
+    gap: 5px;
+    margin: 20 0px;
 }
 
 .header-search input {
-    border: none;
-    padding: 0.5rem 1rem;
     flex: 1;
-    outline: none;
-    color: #333;
+    padding: 10px 15px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    font-size: 16px;
 }
 
 .header-search button {
-    background: white;
-    color: #FF6B00;
+    background-color: #fff;
     border: none;
-    padding: 0.5rem 1rem;
     cursor: pointer;
+    font-size: 24px;
+    color: orange;
 }
+
 
 /* Icon Buttons */
 .header-icons {
