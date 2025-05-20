@@ -27,8 +27,8 @@ Food Store - Eat Your Favorite Foods
                     <div class="carousel-inner">
         
                         @foreach ($sliders as $key => $slider)
-                            <div class="carousel-item @if($key == 0) active @endif">
-                                <img src="{{ asset('/storage/' . $slider->image) }}" class="d-block w-100 rounded">
+                            <div class="carousel-item @if($slider->set_active == TRUE) active @endif">
+                                <img src="{{ asset($slider->link_gambar) }}" class="d-block w-100 rounded">
                             </div>
                         @endforeach
         

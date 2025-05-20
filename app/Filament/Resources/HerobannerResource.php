@@ -43,7 +43,8 @@ class HerobannerResource extends Resource
                         
                         Forms\Components\TextInput::make('link_gambar')
                             ->label('Link Banner')
-                            ->required(),
+                            ->disabled(),
+                            // ->required(),
                             
 
                         Forms\Components\Select::make('set_active')
@@ -57,8 +58,11 @@ class HerobannerResource extends Resource
                         // Gambar Banner
                         Forms\Components\FileUpload::make('gambar')
                             ->label('Gambar Banner')
-                            ->image()
-                            ->directory('hero-banners') // direktori penyimpanan di storage/app/public
+                            ->disk('s3')
+                            ->directory('public')
+                            ->visibility('public')
+                            // ->image()
+                            // ->directory('hero-banners') // direktori penyimpanan di storage/app/public
                             ->required(),
                     ]),
             ]);
