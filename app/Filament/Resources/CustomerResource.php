@@ -43,7 +43,7 @@ class CustomerResource extends Resource
                         ->placeholder('Masukkan username')
                         ->required(),
 
-                    Forms\Components\TextInput::make('password_pembeli')
+                    Forms\Components\TextInput::make('password')
                         ->label('Password')
                         ->placeholder('Masukkan password')
                         ->password()
