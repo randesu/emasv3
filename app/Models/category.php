@@ -2,6 +2,7 @@
 
 namespace App\Models;
 use Illuminate\Support\Str;
+use App\Models\Produk; 
 
 use Illuminate\Database\Eloquent\Model;
 
