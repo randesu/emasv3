@@ -2,7 +2,7 @@
 
 namespace App\Livewire\Web\Home;
 
-use App\Models\Slider;
+use App\Models\herobanner;
 use Livewire\Component;
 
 class Index extends Component
@@ -12,7 +12,7 @@ class Index extends Component
         return view('livewire.web.home.index', [
 
             //get sliders
-            'sliders' => Slider::latest()->get(),
+            'sliders' => $sliders = HeroBanner::all(),
             
         ]);
     }
