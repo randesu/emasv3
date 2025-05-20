@@ -20,6 +20,10 @@
                     </div>
                     <div>
                         <!-- button add to cart -->
+                        <div>
+                    <!-- button add to cart -->
+                    <livewire:web.cart.btn-add-to-cart :id_produk='$produk->id' />
+                </div>
                     </div>
                 </div>
             </div>
