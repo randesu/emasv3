@@ -5,6 +5,7 @@ namespace App\Livewire\Account\MyProfile;
 use Livewire\Component;
 use App\Models\Customer;
 use Livewire\WithFileUploads;
+use Illuminate\Validation\Rule;
 //use Illuminate\Validation\Rule;
 
 class Index extends Component
@@ -31,28 +32,28 @@ class Index extends Component
      *
      * @return void
      */
-    // public function rules()
-    // {
-    //     return [
-    //         'nama_pembeli' => 'required',
-    //         'username_pembeli' => [
-    //             'required',
-    //             Rule::unique('customers', 'username_pembeli')->where(function ($query) {
-    //                 return $query->where('id', auth()->guard('customer')->user()->id);
-    //             }),
-    //         ],
-    //     ];
-    // }
-
-
     public function rules()
     {
         return [
-            // 'image' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
-            'nama_pembeli'  => 'required',
-            'username_pembeli' => 'required|username_pembeli|unique:username_pembeli,username_pembeli,'. auth()->guard('customer')->user()->id,
+            'nama_pembeli' => 'required',
+            'username_pembeli' => [
+                'required',
+                Rule::unique('customers', 'username_pembeli')->where(function ($query) {
+                    return $query->where('id', auth()->guard('customer')->user()->id);
+                }),
+            ],
         ];
     }
+
+
+    // public function rules()
+    // {
+    //     return [
+    //         // 'image' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+    //         'nama_pembeli'  => 'required',
+    //         'username_pembeli' => 'required|username_pembeli|unique:username_pembeli,username_pembeli,'. auth()->guard('customer')->user()->id,
+    //     ];
+    // }
 
     public function update()
     {
