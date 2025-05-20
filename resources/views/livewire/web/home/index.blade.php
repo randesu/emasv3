@@ -1,3 +1,32 @@
+@section('title')
+Food Store - Eat Your Favorite Foods
+@stop
+
+@section('keywords')
+Food Store, Eat Your Favorite Foods
+@stop
+
+@section('description')
+Food Store - Eat Your Favorite Foods
+@stop
+
+@section('image')
+{{ asset('images/logo.png') }}
+@stop
+
 <div>
-    {{-- The best athlete wants his opponent at his best. --}}
+    <div class="container" style="margin-bottom: 120px">
+        
+        <!-- Search Bar -->
+        <x-utils.search-bar />
+
+        <!-- Sliders -->
+
+        <!-- Categories -->
+
+        <!-- Products Popular -->
+
+        <!-- Products Latest -->
+
+    </div>
 </div>
