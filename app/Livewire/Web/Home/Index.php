@@ -4,6 +4,7 @@ namespace App\Livewire\Web\Home;
 
 use App\Models\herobanner;
 use Livewire\Component;
+use App\Models\Category;
 
 class Index extends Component
 {
@@ -14,6 +15,9 @@ class Index extends Component
             //get sliders
             'sliders' => $sliders = HeroBanner::all(),
             
+             //get categories
+            'categories' => Category::latest()->get(),
+
         ]);
     }
 }
