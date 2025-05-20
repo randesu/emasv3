@@ -9,6 +9,15 @@ use App\Models\herobanner;
 
 class Index extends Component
 {
+    protected function getPopularProducts()
+    {
+        return produk::with('category', 'ratings.customer')
+            // ->withAvg('ratings', 'rating') // Menghitung rata-rata rating
+            // ->having('ratings_avg_rating', '>=', 4)
+            ->limit(5)
+            ->get();
+    }
+
      protected function getLatestProducts()
     {
         //get products
