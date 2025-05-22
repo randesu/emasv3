@@ -99,39 +99,6 @@ Checkout - Food Store - Eat Your Favorite Foods
                 </div>
             </div>
         </div>
-    </div><div class="container fixed-total">
-        <div class="row justify-content-center">
-            <div class="col-12 col-md-6">
-                <div class="card rounded shadow-sm border-0 mb-5">
-                    <div class="card-body">
-                        <div class="d-flex justify-content-between">
-                            <div>
-                                <h6 class="mb-0">Total</h6>
-                            </div>
-                            <div class="ms-auto">
-                                <h6 class="mb-0">Rp. {{ number_format($totalPrice) }}</h6>
-                            </div>
-                        </div>
-                        <div class="d-flex justify-content-between mt-3">
-                            <div>
-                                <h6 class="mb-0">Ongkos Kirim</h6>
-                            </div>
-                            <div class="ms-auto">
-                                <h6 class="mb-0">Rp. {{ number_format($selectCost) }}</h6>
-                            </div>
-                        </div>
-                        <div class="d-flex justify-content-between mt-3">
-                            <div>
-                                <h5 class="fw-bold mb-0">Grand Total</h5>
-                            </div>
-                            <div class="ms-auto">
-                                <h5 class="fw-bold mb-0">Rp. {{ number_format($grandTotal) }}</h5>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
     </div>
 
     
