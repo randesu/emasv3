@@ -95,25 +95,25 @@ Checkout - Food Store - Eat Your Favorite Foods
                                 <h5 class="fw-bold mb-0">Rp. {{ number_format($totalPrice) }}</h5>
                             </div>
                         </div>
+                         @if($totalPrice > 0)
+                        <hr style="border: dotted 1px #e92715;">
+
+                            <livewire:web.checkout.btn-checkout 
+                                key="{{ now() }}" 
+                                
+                                :address="$address" 
+                                :totalPrice="$totalPrice" 
+                                
+                            />
+                             @endif
                     </div>
+
                 </div>
             </div>
         </div>
     </div>
 
-    <hr style="border: dotted 1px #e92715;">
-
-                            <livewire:web.checkout.btn-checkout 
-                                key="{{ now() }}" 
-                                :province_id="$province_id" 
-                                :city_id="$city_id" 
-                                :address="$address" 
-                                :grandTotal="$grandTotal" 
-                                :totalWeight="$totalWeight" 
-                                :selectCourier="$selectCourier" 
-                                :selectService="$selectService" 
-                                :selectCost="$selectCost" 
-                            />
+    
 
 
 </div>

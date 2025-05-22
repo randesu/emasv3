@@ -10,7 +10,7 @@ class TransactionV2 extends Model
     protected $fillable = [
         'customer_id',
         'invoice',
-        // 'weight',
+        'weight',
         'address',
         'total',
         'status',
