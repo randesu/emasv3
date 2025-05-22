@@ -35,18 +35,25 @@ Checkout - Food Store - Eat Your Favorite Foods
                                 <path d="M12.166 8.94c-.524 1.062-1.234 2.12-1.96 3.07A32 32 0 0 1 8 14.58a32 32 0 0 1-2.206-2.57c-.726-.95-1.436-2.008-1.96-3.07C3.304 7.867 3 6.862 3 6a5 5 0 0 1 10 0c0 .862-.305 1.867-.834 2.94M8 16s6-5.686 6-10A6 6 0 0 0 2 6c0 4.314 6 10 6 10" />
                                 <path d="M8 8a2 2 0 1 1 0-4 2 2 0 0 1 0 4m0 1a3 3 0 1 0 0-6 3 3 0 0 0 0 6" />
                             </svg>
-                            Shipping Information
+                            Informasi Pembelian
                         </h6>
                         <hr />
 
-                        <select class="form-select rounded mb-3" wire:model.live="province_id">
+                        {{-- <select class="form-select rounded mb-3" wire:model.live="province_id">
                             <option value="">-- Select Province --</option>
                             @foreach ($provinces as $province)
                                 <option value="{{ $province->id }}">
                                     {{ $province->name }}
                                 </option>
                             @endforeach
-                        </select>
+                        </select> --}}
+
+                        {{-- <select class="form-select rounded mb-3" wire:model.live="city_id" wire:key="{{ $province_id }}">
+                            <option value="">-- Select City --</option>
+                            @foreach (\App\Models\Province::where('province_id', $province_id)->get() as $city)
+                                <option value="{{ $city->id }}">{{ $city->name }}</option>
+                            @endforeach
+                        </select> --}}
 
                         <div class="mb-3">
                             <textarea class="form-control rounded" wire:model.live="address" rows="3" placeholder="Address:  Jl. Kebon Jeruk No. 1, Jakarta Barat"></textarea>
@@ -57,6 +64,73 @@ Checkout - Food Store - Eat Your Favorite Foods
 
             </div>
 
+        </div>
+    </div>
+    <div class="container fixed-total">
+        <div class="row justify-content-center">
+            <div class="col-12 col-md-6">
+                <div class="card rounded shadow-sm border-0 mb-5">
+                    <div class="card-body">
+                        <div class="d-flex justify-content-between">
+                            <div>
+                                <h6 class="mb-0">Total</h6>
+                            </div>
+                            <div class="ms-auto">
+                                <h6 class="mb-0">Rp. {{ number_format($totalPrice) }}</h6>
+                            </div>
+                        </div>
+                        <div class="d-flex justify-content-between mt-3">
+                            <div>
+                                <h6 class="mb-0">Ongkos Kirim</h6>
+                            </div>
+                            <div class="ms-auto">
+                                <h6 class="mb-0">Rp. {{ number_format($selectCost) }}</h6>
+                            </div>
+                        </div>
+                        <div class="d-flex justify-content-between mt-3">
+                            <div>
+                                <h5 class="fw-bold mb-0">Grand Total</h5>
+                            </div>
+                            <div class="ms-auto">
+                                <h5 class="fw-bold mb-0">Rp. {{ number_format($totalPrice) }}</h5>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div><div class="container fixed-total">
+        <div class="row justify-content-center">
+            <div class="col-12 col-md-6">
+                <div class="card rounded shadow-sm border-0 mb-5">
+                    <div class="card-body">
+                        <div class="d-flex justify-content-between">
+                            <div>
+                                <h6 class="mb-0">Total</h6>
+                            </div>
+                            <div class="ms-auto">
+                                <h6 class="mb-0">Rp. {{ number_format($totalPrice) }}</h6>
+                            </div>
+                        </div>
+                        <div class="d-flex justify-content-between mt-3">
+                            <div>
+                                <h6 class="mb-0">Ongkos Kirim</h6>
+                            </div>
+                            <div class="ms-auto">
+                                <h6 class="mb-0">Rp. {{ number_format($selectCost) }}</h6>
+                            </div>
+                        </div>
+                        <div class="d-flex justify-content-between mt-3">
+                            <div>
+                                <h5 class="fw-bold mb-0">Grand Total</h5>
+                            </div>
+                            <div class="ms-auto">
+                                <h5 class="fw-bold mb-0">Rp. {{ number_format($grandTotal) }}</h5>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 
