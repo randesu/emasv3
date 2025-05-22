@@ -101,6 +101,19 @@ Checkout - Food Store - Eat Your Favorite Foods
         </div>
     </div>
 
-    
+    <hr style="border: dotted 1px #e92715;">
+
+                            <livewire:web.checkout.btn-checkout 
+                                key="{{ now() }}" 
+                                :province_id="$province_id" 
+                                :city_id="$city_id" 
+                                :address="$address" 
+                                :grandTotal="$grandTotal" 
+                                :totalWeight="$totalWeight" 
+                                :selectCourier="$selectCourier" 
+                                :selectService="$selectService" 
+                                :selectCost="$selectCost" 
+                            />
+
 
 </div>
