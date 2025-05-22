@@ -5,6 +5,6 @@
  */
 
 return [
-    'api_key' => '3e5e9d875369f766321a01f7ad077783'
+    'api_key' => env('RAJAONGKIR_API_KEY')
     //env('RAJAONGKIR_API_KEY')
 ];

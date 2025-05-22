@@ -5,6 +5,7 @@ namespace App\Livewire\Web\Checkout;
 use Livewire\Component;
 use App\Models\Province;
 use App\Models\keranjang;
+use Illuminate\Support\Facades\Http;
 
 class Index extends Component
 {
@@ -36,10 +37,10 @@ class Index extends Component
             ->latest()
             ->get();
 
-        // Menghitung total berat
-        // $totalWeight = $carts->sum(function ($cart) {
-        //     return $cart->produk->harga * $keranjang->jumlah_beli;
-        // });
+        //Menghitung total berat
+        $totalWeight = $carts->sum(function ($cart) {
+            return $cart->produk->berat_barang;
+        });
 
         // Menghitung total harga
         $totalPrice = $carts->sum(function ($cart) {
@@ -48,24 +49,72 @@ class Index extends Component
 
         // Return as an array
         return [
-            //'totalWeight' => $totalWeight,
+            'totalWeight' => $totalWeight,
             'totalPrice'  => $totalPrice,
         ];
     }
 
-    public function getServiceAndCost()
+    public function changeCourier($value)
+    {
+        if (!empty($value)) {
+
+            //set courier
+            $this->selectCourier = $value;
+
+            //set loading
+            $this->loading = true;
+
+            //set show cost false
+            $this->showCost = false;
+
+            //call method CheckOngkir
+            $this->CheckOngkir();
+        }
+    }
+
+    public function CheckOngkir()
+    {
+        try {
+
+            // Ambil data cart
+            $cartData = $this->getCartsData();
+
+            // Fetch Rest API
+            $response = Http::withHeaders([
+                'key' => config('rajaongkir.api_key')
+            ])->post('https://api.rajaongkir.com/starter/cost', [
+                'origin'      => 113, // ID kota Demak
+                'destination' => $this->city_id,
+                'weight'      => $cartData['totalWeight'],
+                'courier'     => $this->selectCourier,
+            ]);
+
+            // Process costs (optional: store in a variable)
+            $this->costs = $response['rajaongkir']['results'][0]['costs'];
+        } catch (\Exception $e) {
+            // Handle error (optional: set an error message)
+            session()->flash('error', 'Gagal mengambil ongkir.');
+        } finally {
+            // Always update loading and cost visibility
+            $this->loading = false;
+            $this->showCost = true;
+        }
+    }
+
+    public function getServiceAndCost($data)
     {
         // Pecah data menjadi nilai cost dan service
-        //[$cost, $service] = explode('|', $data);
+        [$cost, $service] = explode('|', $data);
 
         // Set nilai cost dan service
-        //s
+        $this->selectCost = (int) $cost;
+        $this->selectService = $service;
 
         // Ambil total harga dari cart
         $cartData = $this->getCartsData();
 
         // Hitung grand total
-        $this->grandTotal = $cartData['totalPrice'] ;
+        $this->grandTotal = $cartData['totalPrice'] + $this->selectCost;
         //+ $this->selectCost;
     }
 
@@ -77,8 +126,8 @@ class Index extends Component
 
         $cartData = $this->getCartsData();
         $totalPrice     = $cartData['totalPrice'];
-       // $totalWeight    = $cartData['totalWeight'];
+       $totalWeight    = $cartData['totalWeight'];
 
-        return view('livewire.web.checkout.index', compact('provinces', 'totalPrice'));
+        return view('livewire.web.checkout.index', compact('provinces', 'totalPrice', 'totalWeight'));
     }
 }

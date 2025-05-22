@@ -4,26 +4,25 @@ namespace App\Livewire\Web\Checkout;
 
 use Midtrans\Snap;
 use App\Models\Cart;
-use Midtrans\Config;
 use Livewire\Component;
 use App\Models\keranjang;
 use App\Models\Transaction;
 use App\Models\TransactionV2;
 use Illuminate\Support\Facades\DB;
-use Illuminate\Support\Facades\Log;
 
 class BtnCheckout extends Component
 {
-    public $province_id;
-    public $city_id;
+    public $province_id ;
+    public $city_id ;
     public $address;
 
     public $selectCourier;
-    public $selectService;
+    public $selectService ;
     public $selectCost;
 
     public $totalWeight;
     public $totalPrice;
+    public $grandTotal ;
 
     public $response;
     public $loading;
@@ -36,18 +35,18 @@ class BtnCheckout extends Component
     public function __construct()
     {
         // Set midtrans configuration
-        Config::$serverKey    = config('midtrans.server_key');
+        \Midtrans\Config::$serverKey    = config('midtrans.server_key');
         \Midtrans\Config::$isProduction = config('midtrans.is_production');
         \Midtrans\Config::$isSanitized  = config('midtrans.is_sanitized');
         \Midtrans\Config::$is3ds        = config('midtrans.is_3ds');
     }
 
-    public function mount($selectCourier = null, $selectService = null, $selectCost = null)
-    {
-        $this->selectCourier = $selectCourier;
-        $this->selectService = $selectService;
-        $this->selectCost = $selectCost;
-    }
+    // public function mount($selectCourier = null, $selectService = null, $selectCost = null)
+    // {
+    //     $this->selectCourier = $selectCourier;
+    //     $this->selectService = $selectService;
+    //     $this->selectCost = $selectCost;
+    // }
     
     /**
      * storeCheckout
@@ -66,35 +65,35 @@ class BtnCheckout extends Component
             session()->flash('error', 'Data tidak lengkap. Silakan periksa kembali.');
             return;
         }
-        
+
         try {
-            Log::info(
             DB::transaction(function () use ($customer) {
+                
                 // Buat kode invoice
-                $invoice = 'INV' . mt_rand(0, 9999);
+                $invoice = 'INV-' . mt_rand(1000, 9999);
 
                 // Buat transaksi
                 $transaction = TransactionV2::create([
                     'customer_id' => $customer->id,
                     'invoice'     => $invoice,
-                    //'province_id' => $this->province_id,
-                    //'city_id'     => $this->city_id,
+                    'province_id' => $this->province_id,
+                    'city_id'     => $this->city_id,
                     'address'     => $this->address,
-                    //'weight'      => $this->totalWeight,
+                    'weight'      => $this->totalWeight,
                     'total'       => $this->totalPrice,
-                    'status'      => 'pending',
+                    'status'      => 'PENDING',
                 ]);
 
                 // Buat data pengiriman
-                // $transaction->shipping()->create([
-                //     'shipping_courier' => $this->selectCourier,
-                //     'shipping_service' => $this->selectService,
-                //     'shipping_cost'    => $this->selectCost,
-                // ]);
+                $transaction->shipping()->create([
+                    'shipping_courier' => $this->selectCourier,
+                    'shipping_service' => $this->selectService,
+                    'shipping_cost'    => $this->selectCost,
+                ]);
 
                 // Detail item
                 $item_details = [];
-                $carts = keranjang::where('id', $customer->id)->with('produk')->get();
+                $carts = keranjang::where('id_pembeli', $customer->id)->with('produk')->get();
 
                 foreach ($carts as $cart) {
                     // Tambahkan detail transaksi
@@ -105,26 +104,25 @@ class BtnCheckout extends Component
                     ]);
 
                     $item_details[] = [
-                        'id_produk'       => $cart->produk->id,
+                        'id'       => $cart->produk->id,
                         'price'    => $cart->produk->harga,
                         'quantity' => $cart->jumlah_beli,
                         'name'     => $cart->produk->nama_barang,
                     ];
                 }
 
-                //Tambahkan ongkos kirim ke item details
+                // Tambahkan ongkos kirim ke item details
                 $item_details[] = [
                     'id'       => 'shipping',
-                    'price'    => $this->totalPrice,
+                    'price'    => $this->selectCost,
                     'quantity' => 1,
-                    //'name'     => 'Ongkos Kirim: ' . $this->selectCourier . ' - ' . $this->selectService,
+                    'name'     => 'Ongkos Kirim:',
                 ];
 
                 // Hapus keranjang setelah checkout
-                keranjang::where('id', $customer->id)->delete();
+                keranjang::where('id_pembeli', $customer->id)->delete();
 
                 // Payload untuk Midtrans
-                
                 $payload = [
                     'transaction_details' => [
                         'order_id'     => $invoice,
@@ -132,12 +130,11 @@ class BtnCheckout extends Component
                     ],
                     'customer_details' => [
                         'first_name'       => $customer->nama_pembeli,
-                        //'username'            => $customer->username_pembeli,
+                        'email'            => $customer->nama_pembeli,
                         'shipping_address' => $this->address,
                     ],
-                    //'item_details' => $item_details,
+                    'item_details' => $item_details,
                 ];
-            
 
                 // Dapatkan token snap Midtrans
                 $snapToken = Snap::getSnapToken($payload);
@@ -151,9 +148,7 @@ class BtnCheckout extends Component
 
                 // Set loading
                 $this->loading = false;
-                
-            }));
-           
+            });
 
             // Flash session dan redirect
             session()->flash('success', 'Silahkan lakukan pembayaran untuk melanjutkan proses checkout.');

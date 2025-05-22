@@ -14,6 +14,7 @@ class TransactionV2 extends Model
         'address',
         'total',
         'status',
+        'snap_token',
     ];
 
 //     public function customer()

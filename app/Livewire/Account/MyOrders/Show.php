@@ -4,6 +4,7 @@ namespace App\Livewire\Account\MyOrders;
 
 use Livewire\Component;
 use App\Models\Transaction;
+use App\Models\TransactionV2;
 
 class Show extends Component
 {
@@ -28,9 +29,9 @@ class Show extends Component
     public function render()
     {
         //get transaction
-        $transaction = Transaction::query()
-            ->with( 'customer', 'shipping', 'province', 'city', 'transactionDetails.product')
-            ->where('customer_id', auth()->guard('customer')->user()->id)
+        $transaction = TransactionV2::query()
+            ->with( 'customer', 'transactionDetails.product')
+            ->where('id_pembeli', auth()->guard('customer')->user()->id)
             ->where('snap_token', $this->snap_token)
             ->firstOrFail();
 
