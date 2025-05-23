@@ -28,8 +28,8 @@ Food Store - Eat Your Favorite Foods
         <div id="carouselExample" class="carousel slide w-100">
             <div class="carousel-inner">
 
-                @foreach ($sliders as $key => $slider)
-                    <div class="carousel-item @if($slider->set_active == TRUE) active @endif">
+                @foreach ($sliders->shuffle() as $key => $slider)
+                    <div class="carousel-item @if($loop->first) active @endif">
                         <img src="{{ asset($slider->link_gambar) }}" class="d-block w-100 rounded" style="height: 300px; object-fit: cover;">
                     </div>
                 @endforeach
@@ -49,11 +49,11 @@ Food Store - Eat Your Favorite Foods
 </div>
 </div>
 
-<x-utils.search-bar />
+{{-- <x-utils.search-bar /> --}}
 
 
         <!-- Categories -->
-        <div class="row justify-content-center mt-4 mb-5">
+        {{-- <div class="row justify-content-center mt-4 mb-5">
             <div class="col-md-6">
                 <span class="fs-6 fw-bold">
                     <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor"
@@ -70,11 +70,11 @@ Food Store - Eat Your Favorite Foods
                     @endforeach
                 </div>
             </div>
-        </div>
+        </div> --}}
 
         <!-- Products Popular -->
         
-        <div class="row justify-content-center mt-5">
+        {{-- <div class="row justify-content-center mt-5">
             <div class="col-md-6">
                 <div class="d-flex justify-content-between">
                     <div>
@@ -104,7 +104,7 @@ Food Store - Eat Your Favorite Foods
 
                 </div>
             </div>
-        </div>
+        </div> --}}
 
         <!-- Products Latest -->
         <div class="row justify-content-center mt-5">

@@ -40,16 +40,24 @@ class Index extends Component
     //         ->get();
     // }
 
-     protected function getLatestProducts()
-    {
-        //get products
-        return produk::query()
-            // ->with('category', 'ratings.customer')
-            // ->withAvg('ratings', 'rating')
-            ->limit(5)
-            ->orderBy('created_at')
-            ->get();
-    }
+    //  protected function getLatestProducts()
+    // {
+    //     //get products
+    //     return produk::query()
+    //         // ->with('category', 'ratings.customer')
+    //         // ->withAvg('ratings', 'rating')
+    //         ->limit(5)
+    //         ->orderBy('created_at')
+    //         ->get();
+    // }
+
+    protected function getLatestProducts()
+{
+    return produk::query()
+        ->inRandomOrder() // ambil data secara acak
+        ->limit(5)        // batasi hanya 5 produk
+        ->get();
+}
 
     public function render()
     {

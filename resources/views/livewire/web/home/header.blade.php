@@ -3,7 +3,7 @@
         <!-- Logo -->
         <a href="/" class="nav-link text-dark fw-bold" wire:navigate>
         <div class="header-logo">
-            <img src="assets/TokeEmasMitraBaru.png" alt="Logo">
+            <img src="https://raw.githubusercontent.com/randesu/emasv3/refs/heads/main/TokeEmasMitraBaru.png" alt="Logo">
             {{-- <div class="header-text">
                 <h1>Mitra Baru</h1>
                 <small>Jalan Muchran Ali, Mentawa Baru Ketapang, Sampit</small>
@@ -39,7 +39,7 @@
     </div>
 
     <!-- Navigasi -->
-    <div class="header-nav">
+    <div class="header-nav" >
         @foreach ($categories as $category)
                         <x-cards.category :category="$category" />
                     @endforeach
