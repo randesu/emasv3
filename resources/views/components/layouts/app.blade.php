@@ -23,7 +23,9 @@
     @vite(['resources/css/app.css'])
 </head>
 <body>
-    <x-menus.header />
+    
+    <livewire:web.home.header/>
+   
 
     <!-- render content -->
     {{ $slot }}

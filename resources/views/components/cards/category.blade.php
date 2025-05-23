@@ -1,10 +1,10 @@
-<div class="col-6 col-md-4 mb-4">
+<div class="">
     <a href="/category/{{ $category->slug }}" wire:navigate class="text-decoration-none">
-        <div class="card border-0 rounded shadow-sm">
-            <div class="card-body text-center">
-                <img src="{{ asset( $category->imagelink) }}" class="img-fluid" width="50">
-                <label class="text-center">{{ $category->name }}</label>
-            </div>
-        </div>
+        {{-- <div class="card border-0 rounded shadow-sm">
+            <div class="card-body text-center"> --}}
+                {{-- <img src="{{ asset( $category->imagelink) }}" class="img-fluid" width="50"> --}}
+                <p class="text-center" style="margin-block-end: 0; margin-inline-end: 0;">{{ $category->name }}</p>
+            {{-- </div>
+        </div> --}}
     </a>
 </div>

@@ -11,7 +11,7 @@ Food Store - Eat Your Favorite Foods
 @stop
 
 @section('image')
-{{ asset('/storage/' . $category->image) }}
+{{ asset('assets/TokeEmasMitraBaru.png') }}
 @stop
 
 <div class="container" style="margin-bottom: 150px">

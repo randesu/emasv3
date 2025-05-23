@@ -12,10 +12,10 @@ class Index extends Component
     {
         //get products
         $products = produk::query()
-            ->with('category', 'ratings.customer')
+            //->with('category', 'ratings.customer')
             //->withAvg('ratings', 'rating')
             ->when(request()->has('search'), function ($query) {
-                $query->where('nama_produk', 'like', '%' . request()->search . '%');
+                $query->where('slug', 'like', '%' . request()->search . '%');
             })
             ->simplePaginate(5);
 

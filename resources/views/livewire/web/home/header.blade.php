@@ -1,6 +1,7 @@
 <div class="header-wrapper" style="margin-block-end: 18px">
     <div class="header">
         <!-- Logo -->
+        <a href="/" class="nav-link text-dark fw-bold" wire:navigate>
         <div class="header-logo">
             <img src="assets/TokeEmasMitraBaru.png" alt="Logo">
             {{-- <div class="header-text">
@@ -8,6 +9,7 @@
                 <small>Jalan Muchran Ali, Mentawa Baru Ketapang, Sampit</small>
             </div> --}}
         </div>
+        </a>
 
         <!-- Search -->
         <div class="header-search">
@@ -38,11 +40,9 @@
 
     <!-- Navigasi -->
     <div class="header-nav">
-        <button>
         @foreach ($categories as $category)
                         <x-cards.category :category="$category" />
                     @endforeach
-        </button>
         {{-- @foreach (['Emas Batangan', 'Souvenir', 'Gift', 'Liontin', 'Anting', 'Kalung', 'Cincin', 'Gelang'] as $kategori)
             <a href="#">{{ $kategori }}</a>
         @endforeach --}}
