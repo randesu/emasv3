@@ -15,7 +15,7 @@
         "laravel/tinker": "^2.10.1",
         "league/flysystem-aws-s3-v3": "^3.29",
         "livewire/livewire": "^3.6",
-        "midtrans/midtrans-php": "2.6.1",
+        "midtrans/midtrans-php": "^2.6",
         "mokhosh/filament-rating": "^1.4"
     },
     "require-dev": {

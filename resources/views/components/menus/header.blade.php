@@ -1,4 +1,4 @@
-<div class="header-wrapper">
+<div class="header-wrapper" style="margin-block-end: 18px">
     <div class="header">
         <!-- Logo -->
         <div class="header-logo">
@@ -17,8 +17,13 @@
 
         <!-- Ikon -->
         <div class="header-icons">
+            <a href="/cart" class="nav-link text-dark fw-bold" wire:navigate>
             <button><i class="fas fa-shopping-cart"></i></button>
+            </a>
+
+            <a href="/login" class="nav-link text-dark fw-bold" wire:navigate>
             <button><i class="fas fa-user"></i></button>
+             </a>
         </div>
     </div>
 
