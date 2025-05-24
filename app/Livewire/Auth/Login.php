@@ -2,6 +2,7 @@
 
 namespace App\Livewire\Auth;
 
+use App\Models\produk;
 use Livewire\Component;
 
 class Login extends Component
@@ -63,7 +64,9 @@ class Login extends Component
 
     public function render()
     {
-        return view('livewire.auth.login');
+        return view('livewire.auth.login', [
+             'produk' => produk::latest()->get(),
+        ]);
     }
 }
 

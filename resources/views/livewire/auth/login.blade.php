@@ -3,10 +3,10 @@
 
         <!-- Kolom Kiri (Gambar dan Brand) -->
         <div class="col-md-6 d-none d-md-block p-0">
-            <div class="h-100 w-100" style="background-image: url('/path/to/your-image.jpg'); background-size: cover; background-position: center; position: relative;">
-                <div class="position-absolute top-0 start-0 p-4 d-flex align-items-center">
-                    <img src="/path/to/logo.png" alt="Logo" style="width: 40px; height: 40px; object-fit: contain;">
-                    <div class="ms-3 text-white">
+            <div class="h-100 w-100" style="background-image: url('{{ asset($produk->first()->linkgambar) }}'); background-size: cover; background-position: center; position: relative;">
+                <div class="position-absolute top-0 start-0 d-flex align-items-center">
+                    <img src="assets/logoEmas.png" alt="Logo" style="width: 100px; height: 100px; object-fit: contain;">
+                    <div class=" text-white">
                         <h5 class="mb-0">Mitra Baru</h5>
                         <small>Toko Perhiasan Emas</small>
                     </div>
