@@ -4,6 +4,7 @@ namespace App\Filament\Resources;
 
 use Filament\Forms;
 use Filament\Tables;
+use Filament\Tables\Actions\Action;
 use Filament\Forms\Form;
 use App\Models\Herobanner;
 use Filament\Tables\Table;
@@ -78,6 +79,7 @@ class HerobannerResource extends Resource
                     ->sortable(),
 
                 Tables\Columns\TextColumn::make('link_gambar')
+                ->limit(40)
                 ->copyable()
                 ->copyableState(fn (Herobanner $record): string => "URL: {$record->link_gambar}")
                     // ->prefix('https://')
@@ -87,6 +89,7 @@ class HerobannerResource extends Resource
                     ->sortable(),
     
                     Tables\Columns\ImageColumn::make('gambar')
+                ->disk('s3')
                     ->label('Gambar')
                     ->circular(),
             ])
@@ -95,6 +98,8 @@ class HerobannerResource extends Resource
             ])
             ->actions([
                 Tables\Actions\EditAction::make(),
+                Tables\Actions\DeleteAction::make(),
+                
             ])
             ->bulkActions([
                 Tables\Actions\BulkActionGroup::make([
