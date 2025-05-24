@@ -21,6 +21,15 @@
      {{-- <x-menus.header /> --}}
     @livewireStyles
     @vite(['resources/css/app.css'])
+    <style>
+    .text-truncate-multiline {
+        display: -webkit-box;
+        -webkit-box-orient: vertical;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        -webkit-line-clamp: 2; /* Ubah ke 3 jika ingin maksimal 3 baris */
+    }
+</style>
 </head>
 <body>
     

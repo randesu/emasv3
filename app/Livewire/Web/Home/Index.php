@@ -55,7 +55,7 @@ class Index extends Component
 {
     return produk::query()
         ->inRandomOrder() // ambil data secara acak
-        ->limit(5)        // batasi hanya 5 produk
+        ->limit(12)        // batasi hanya 5 produk
         ->get();
 }
 
