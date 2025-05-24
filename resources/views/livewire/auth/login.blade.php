@@ -1,52 +1,54 @@
-<div class="container">
+<div class="container vh-100 d-flex align-items-center justify-content-center">
+    <div class="row w-100 shadow-lg rounded overflow-hidden" style="max-width: 900px;">
 
-    <div class="row justify-content-center mt-0">
-        <div class="col-md-6">
-            <div class="bg-white rounded-bottom-custom shadow-sm p-3 sticky-top mb-5">
-                <div class="d-flex justify-content-start">
-                    <div>
-                        <x-buttons.back />
+        <!-- Kolom Kiri (Gambar dan Brand) -->
+        <div class="col-md-6 d-none d-md-block p-0">
+            <div class="h-100 w-100" style="background-image: url('/path/to/your-image.jpg'); background-size: cover; background-position: center; position: relative;">
+                <div class="position-absolute top-0 start-0 p-4 d-flex align-items-center">
+                    <img src="/path/to/logo.png" alt="Logo" style="width: 40px; height: 40px; object-fit: contain;">
+                    <div class="ms-3 text-white">
+                        <h5 class="mb-0">Mitra Baru</h5>
+                        <small>Toko Perhiasan Emas</small>
                     </div>
                 </div>
             </div>
-
-            <div class="card border-0 shadow-sm rounded mt-80">
-                <div class="card-body p-5">
-                    <h5 class="text-muted text-center mb-4">Login to your Account</h5>
-                    <form wire:submit.prevent="login">
-
-                        <div class="input-group mb-3">
-                            <input type="text" wire:model.blur="username_pembeli" value="{{ old('email') }}" class="form-control rounded @error('email') is-invalid @enderror" placeholder="Email Address">
-                        </div>
-                        @error('email')
-                        <div class="alert alert-danger mt-2 rounded border-0">
-                            {{ $message }}
-                        </div>
-                        @enderror
-
-                        <div class="input-group mb-3">
-                            <input type="password" wire:model.blur="password" class="form-control rounded @error('password') is-invalid @enderror" placeholder="Password">
-                        </div>
-
-                        @error('password')
-                        <div class="alert alert-danger mt-2 rounded border-0">
-                            {{ $message }}
-                        </div>
-                        @enderror
-
-                        <button class="btn btn-orange-2 w-100 rounded" type="submit">Sign In</button>
-                    </form>
-                </div>
-            </div>
-
-            <div class="mt-4">
-                <div class="text-center">
-                    <span>Don't have an account?</span>
-                    <a href="/register" class="text-decoration-none fw-bold text-orange ms-2" wire:navigate>Sign Up</a>
-                </div>
-            </div>
-
         </div>
-    </div>
 
+        <!-- Kolom Kanan (Form Login) -->
+        <div class="col-md-6 bg-white p-5 d-flex flex-column justify-content-center">
+            <h3 class="text-center mb-4 fw-bold">Login</h3>
+            <form wire:submit.prevent="login">
+
+                <div class="mb-3">
+                    <label class="form-label">Email</label>
+                    <div class="input-group">
+                        <span class="input-group-text"><i class="bi bi-envelope"></i></span>
+                        <input type="text" wire:model.blur="username_pembeli" class="form-control @error('email') is-invalid @enderror" placeholder="Email Address">
+                    </div>
+                    @error('email')
+                        <div class="text-danger small mt-1">{{ $message }}</div>
+                    @enderror
+                </div>
+
+                <div class="mb-3">
+                    <label class="form-label">Password</label>
+                    <div class="input-group">
+                        <span class="input-group-text"><i class="bi bi-lock"></i></span>
+                        <input type="password" wire:model.blur="password" class="form-control @error('password') is-invalid @enderror" placeholder="Password">
+                    </div>
+                    @error('password')
+                        <div class="text-danger small mt-1">{{ $message }}</div>
+                    @enderror
+                </div>
+
+                <button type="submit" class="btn btn-warning text-white w-100 mt-3">Login</button>
+
+                <div class="d-flex justify-content-between mt-3">
+                    <a href="/register" class="text-decoration-none small">Create an account</a>
+                    <a href="/forgot-password" class="text-decoration-none small">Forgot password?</a>
+                </div>
+            </form>
+        </div>
+
+    </div>
 </div>
