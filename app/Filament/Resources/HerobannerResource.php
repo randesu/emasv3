@@ -87,6 +87,18 @@ class HerobannerResource extends Resource
                     ->label('Link Banner')
                     ->searchable()
                     ->sortable(),
+                
+                    Tables\Columns\TextColumn::make('set_active')
+                    ->label('Status Banner')
+                    ->badge()
+                    ->color(fn(string $state): string => match ($state) {
+                        '1' => 'success',
+                        '0' => 'danger',
+                    })
+                    ->formatStateUsing(fn(string $state): string => match ($state) {
+                        '1' => 'Aktif',
+                        '0' => 'Non-Aktif',
+                    }),
     
                     Tables\Columns\ImageColumn::make('gambar')
                 ->disk('s3')
