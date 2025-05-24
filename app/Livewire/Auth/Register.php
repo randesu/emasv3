@@ -2,6 +2,7 @@
 
 namespace App\Livewire\Auth;
 
+use App\Models\produk;
 use Livewire\Component;
 use App\Models\Customer;
 
@@ -59,6 +60,12 @@ class Register extends Component
 
     public function render()
     {
-        return view('livewire.auth.register');
+        $produk = produk::latest()->get();
+        $randomProduk = $produk->random(); // Ambil satu produk secara acak
+
+        return view('livewire.auth.register', [
+            'produk' => $produk,
+            'randomProduk' => $randomProduk,
+        ]);
     }
 }
