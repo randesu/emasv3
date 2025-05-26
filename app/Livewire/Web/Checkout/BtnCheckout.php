@@ -34,8 +34,28 @@ class BtnCheckout extends Component
         Config::$is3ds        = config('midtrans.is_3ds');
     }
 
+      public function test()
+    {
+ $this->loading = true;
+
+        $customer = auth()->guard('customer')->user();
+
+        return $customer;
+
+        if (!$customer || !$this->address || !$this->totalPrice) {
+            session()->flash('error', 'Data tidak lengkap. Silakan periksa kembali.');
+            $this->loading = false;
+            return "eror";
+        }
+
+         DB::transaction(function () use ($customer) {
+            return $customer;
+         });
+    }
+
     public function storeCheckout()
     {
+      
         $this->loading = true;
 
         $customer = auth()->guard('customer')->user();
@@ -47,7 +67,7 @@ class BtnCheckout extends Component
         }
 
         try {
-            DB::transaction(function () use ($customer) {
+            
                 $invoice = 'INV-' . time() . '-' . mt_rand(1000, 9999);
 
                 $carts = keranjang::where('id_pembeli', $customer->id)->with('produk')->get();
@@ -58,7 +78,7 @@ class BtnCheckout extends Component
                         'id'       => $cart->produk->id,
                         'price'    => $cart->produk->harga,
                         'quantity' => $cart->jumlah_beli,
-                        'name'     => $cart->produk->nama_barang,
+                        'name'     => $cart->produk->nama_produk,
                     ];
                 }
 
@@ -75,16 +95,20 @@ class BtnCheckout extends Component
                     'item_details' => $item_details,
                 ];
 
+              
                 $snapToken = Snap::getSnapToken($payload);
+
+                 
 
                 $transaction = TransactionV2::create([
                     'customer_id' => $customer->id,
                     'invoice'     => $invoice,
                     'address'     => $this->address,
                     'total'       => $this->totalPrice,
-                    'status'      => 'PENDING',
+                    'status'      => 'pending',
                     'snap_token'  => $snapToken,
                 ]);
+
 
                 foreach ($carts as $cart) {
                     $transaction->transactionDetails()->create([
@@ -98,7 +122,7 @@ class BtnCheckout extends Component
 
                 $this->response['snap_token'] = $snapToken;
                 $this->loading = false;
-            });
+            
 
             session()->flash('success', 'Silahkan lakukan pembayaran untuk melanjutkan proses checkout.');
             return $this->redirect('/account/my-orders/' . $this->response['snap_token'], navigate: true);
@@ -106,7 +130,10 @@ class BtnCheckout extends Component
         } catch (\Exception $e) {
             session()->flash('error', 'Terjadi kesalahan saat memproses checkout. Silakan coba lagi.');
             $this->loading = false;
-            return;
+            return $response = [
+                'payload' => $payload,
+                'error' => $e->getMessage(),
+            ];
         }
     }
 

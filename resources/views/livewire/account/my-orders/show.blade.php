@@ -67,7 +67,7 @@
                     </h6>
                     <hr />
 
-                    <div class="table-responsive">
+                    {{-- <div class="table-responsive">
                         <table class="table">
                             <tbody>
                                 <tr>
@@ -87,7 +87,7 @@
                                 </tr>
                             </tbody>
                         </table>
-                    </div>
+                    </div> --}}
 
                     <h6 class="mt-3">
                         <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="currentColor" class="bi bi-bag mb-1" viewBox="0 0 16 16">

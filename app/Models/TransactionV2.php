@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use App\Models\TransactionDetail;
 
 class TransactionV2 extends Model
 {
@@ -16,6 +17,12 @@ class TransactionV2 extends Model
         'status',
         'snap_token',
     ];
+
+
+public function transactionDetails()
+{
+    return $this->hasMany(TransactionDetail::class, 'transaction_id');
+}
 
 //     public function customer()
 // {
