@@ -15,7 +15,8 @@ class Index extends Component
             //->with('category', 'ratings.customer')
             //->withAvg('ratings', 'rating')
             ->when(request()->has('search'), function ($query) {
-                $query->where('slug', 'like', '%' . request()->search . '%');
+                $slug = str_replace(' ', '-', request()->search);
+                $query->where('slug', 'like', '%' . $slug . '%');
             })
             ->simplePaginate(5);
 

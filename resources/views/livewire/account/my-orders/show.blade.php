@@ -23,6 +23,11 @@
                                     <td>{{ $transaction->invoice }}</td>
                                 </tr>
                                 <tr>
+                                    <td style="width: 25%;">Alamat Pengirim</td>
+                                    <td style="width: 5%;">:</td>
+                                    <td>{{ $transaction->address }}</td>
+                                </tr>
+                                <tr>
                                     <td>Order Date</td>
                                     <td>:</td>
                                     <td>{{ $transaction->created_at }}</td>

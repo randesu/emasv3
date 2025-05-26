@@ -40,7 +40,7 @@ class BtnAddToCartFull extends Component
         if ($item) {
 
             //update cart qty
-            $item->increment('jummlah_beli');
+            $item->increment('jumlah_beli');
 
         } else {
 
@@ -48,7 +48,7 @@ class BtnAddToCartFull extends Component
             $item = keranjang::create([
                 'id_pembeli'   => auth()->guard('customer')->user()->id,
                 'id_produk'    => $this->id_produk,
-                'jummlah_beli' => 1
+                'jumlah_beli' => 1
             ]);
 
         }
