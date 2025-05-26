@@ -2,12 +2,13 @@
 
 namespace App\Livewire\Web\Checkout;
 
-use Livewire\Component;
 use Midtrans\Snap;
 use Midtrans\Config;
-use Illuminate\Support\Facades\DB;
+use Livewire\Component;
 use App\Models\keranjang;
 use App\Models\TransactionV2;
+use App\Models\TransactionDetail;
+use Illuminate\Support\Facades\DB;
 
 class BtnCheckout extends Component
 {
@@ -111,8 +112,8 @@ class BtnCheckout extends Component
 
 
                 foreach ($carts as $cart) {
-                    $transaction->transactionDetails()->create([
-                        'product_id' => $cart->produk->id,
+                    $transactiondetail= TransactionDetail::create([
+                        'product_id' => $cart->produk->id_produk,
                         'qty'        => $cart->jumlah_beli,
                         'price'      => $cart->produk->harga,
                     ]);

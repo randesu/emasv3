@@ -104,13 +104,13 @@
                             <div class="card rounded border">
                                 <div class="row g-0">
                                     <div class="col-5 col-md-4">
-                                        <img src="{{ asset('/storage/' . $item->product->image) }}" class="img-fluid w-100 h-100 object-fit-cover rounded-start">
+                                        <img src="{{ $item->produk->linkgambar }}" class="img-fluid w-100 h-100 object-fit-cover rounded-start">
                                     </div>
                                     <div class="col-7 col-md-8">
                                         <div class="card-body">
                                             <div class="d-flex justify-content-between mt-4">
                                                 <div class="text-start">
-                                                    <h6 class="card-title">{{ $item->product->title }}</h6>
+                                                    <h6 class="card-title">{{ $item->produk->nama_produk }}</h6>
                                                 </div>
                                                 @if($transaction->status == 'success')
                                                     <div class="text-end">
@@ -125,7 +125,7 @@
                                             <div class="d-flex justify-content-between mt-2">
                                                 <div class="text-start">
                                                     <p class="text-muted">Qty: <strong>{{ $item->qty }}</strong></p>
-                                                    <span class="text-success fw-bold">Rp. {{ number_format($item->product->price * $item->qty) }}</span>
+                                                    <span class="text-success fw-bold">Rp. {{ number_format($item->produk->harga * $item->qty) }}</span>
                                                 </div>
                                             </div>
                                         </div>

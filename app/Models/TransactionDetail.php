@@ -11,7 +11,7 @@ class TransactionDetail extends Model
     //
     protected $fillable = [
         'transaction_id',
-        'id_produk',
+        'product_id',
         'qty',
         'price',
     ];
@@ -21,8 +21,12 @@ class TransactionDetail extends Model
         return $this->belongsTo(TransactionV2::class, 'id');
     }
 
-    public function product()
-    {
-        return $this->belongsTo(produk::class, 'id');
-    }
+    public function produk()
+{
+    return $this->belongsTo(Produk::class, 'product_id'); // sesuaikan nama kolom foreign key jika berbeda
+}
+    // public function product()
+    // {
+    //     return $this->belongsTo(produk::class, 'id');
+    // }
 }
