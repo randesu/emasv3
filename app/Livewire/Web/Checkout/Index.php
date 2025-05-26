@@ -139,7 +139,7 @@ class Index extends Component
     public function render()
     {
         //get provinces
-        $provinces = Province::query()->get();
+        // $provinces = Province::query()->get();
 
         //get total cart price
         $cartData = $this->getCartsData();

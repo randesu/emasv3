@@ -17,13 +17,20 @@ class TransactionDetail extends Model
     ];
 
     public function transaction()
-    {
-        return $this->belongsTo(TransactionV2::class, 'id');
-    }
+{
+    return $this->belongsTo(TransactionV2::class, 'transaction_id');
+}
+
+    
+
+    // public function transaction()
+    // {
+    //     return $this->belongsTo(TransactionV2::class, 'id');
+    // }
 
     public function produk()
 {
-    return $this->belongsTo(Produk::class, 'product_id'); // sesuaikan nama kolom foreign key jika berbeda
+    return $this->belongsTo(produk::class, 'product_id'); // sesuaikan nama kolom foreign key jika berbeda
 }
     // public function product()
     // {

@@ -30,7 +30,7 @@ class Show extends Component
     {
         //get transaction
         $transaction = TransactionV2::query()
-            ->with( 'customer', 'transactionDetails.product')
+            ->with( 'customer', 'transactionDetails.produk')
             ->where('customer_id', auth()->guard('customer')->user()->id)
             ->where('snap_token', $this->snap_token)
             ->firstOrFail();
