@@ -35,14 +35,22 @@
 </head>
 <body>
     
-    <livewire:web.home.header/>
+    {{-- <livewire:web.home.header/> --}}
+    @if (!Request::is('login') && !Request::is('register'))
+    <livewire:web.home.header />
+    @endif
    
 
     <!-- render content -->
     {{ $slot }}
     <!-- end render content -->
-<x-menus.wangsaff />
+
+    @if (!Request::is('login') && !Request::is('register'))
+    <x-menus.wangsaff />
     <x-menus.bottom />
+    @endif
+{{-- <x-menus.wangsaff />
+    <x-menus.bottom /> --}}
    
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
