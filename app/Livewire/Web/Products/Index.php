@@ -18,7 +18,7 @@ class Index extends Component
                 $slug = str_replace(' ', '-', request()->search);
                 $query->where('slug', 'like', '%' . $slug . '%');
             })
-            ->simplePaginate(5);
+            ->simplePaginate(8);
 
         return view('livewire.web.products.index', compact('products'));
     }
