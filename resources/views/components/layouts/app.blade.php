@@ -31,6 +31,18 @@
         text-overflow: ellipsis;
         -webkit-line-clamp: 2; /* Ubah ke 3 jika ingin maksimal 3 baris */
     }
+
+    .btn-cart-custom {
+    background-color: white;
+    border: 1px solid #FFA500;
+    color: #FFA500;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+.btn-cart-custom:hover {
+    background-color: #FFA500;
+    color: white;
+}
 </style>
 </head>
 <body>
