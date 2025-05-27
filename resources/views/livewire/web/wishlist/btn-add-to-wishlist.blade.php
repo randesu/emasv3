@@ -1,5 +1,5 @@
 <button wire:click="addToWishlist({{ $id_produk }})"
- class="btn text-white flex-fill h-100 " style="background-color: #ff6600"
-    >>
-    Tambahkan ke Wishlist
+    class="btn d-flex justify-content-center align-items-center rounded-circle"
+    style="width: 40px; height: 40px; border: 2px solid #ff6600; background-color: white; color: #ff6600;">
+    <i class="fas fa-heart"></i>
 </button>
