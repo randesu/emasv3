@@ -2,20 +2,22 @@
 
 namespace App\Filament\Resources;
 
-use App\Filament\Resources\WhislistResource\Pages;
-use App\Filament\Resources\WhislistResource\RelationManagers;
-use App\Models\Whislist;
 use Filament\Forms;
-use Filament\Forms\Form;
-use Filament\Resources\Resource;
 use Filament\Tables;
+// use App\Models\whislist;
+use Forms\Components\Select;
+use App\Models\wishlist;
+use Filament\Forms\Form;
 use Filament\Tables\Table;
+use Filament\Resources\Resource;
 use Illuminate\Database\Eloquent\Builder;
+use App\Filament\Resources\WhislistResource\Pages;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
+use App\Filament\Resources\WhislistResource\RelationManagers;
 
 class WhislistResource extends Resource
 {
-    protected static ?string $model = Whislist::class;
+    protected static ?string $model = wishlist::class;
 
     protected static ?string $navigationIcon = 'heroicon-o-heart';
 
@@ -31,19 +33,24 @@ class WhislistResource extends Resource
     {
         return $form
             ->schema([
-                Forms\Components\Card::make()
-                    ->schema([
-                        Forms\Components\TextInput::make('id_pembeli')
-                            ->label('ID Pembeli')
-                            ->numeric()
-                            ->required(),
-    
-                        Forms\Components\TextInput::make('id_produk')
-                            ->label('ID Produk')
-                            ->numeric()
-                            ->required(),
-                    ]),
-            ]);
+    Forms\Components\Card::make()
+        ->schema([
+            // Dropdown untuk Pembeli
+            Forms\Components\Select::make('id_pembeli')
+                ->label('Pembeli')
+                ->relationship('pembeli', 'nama_pembeli') // jika sudah ada relasi di model
+                ->searchable()
+                ->required(),
+
+            // Dropdown untuk Produk
+            Forms\Components\Select::make('id_produk')
+                ->label('Produk')
+                ->relationship('produk', 'nama_produk') // jika sudah ada relasi di model
+                ->searchable()
+                ->required(),
+        ]),
+    ]);
+
     }
     
     public static function table(Table $table): Table
@@ -55,9 +62,8 @@ class WhislistResource extends Resource
                     ->label('Nama Pembeli')
                     ->searchable()
                     ->sortable(),
-    
-                // Kolom Nama Produk
-                Tables\Columns\TextColumn::make('produk.name')
+
+                Tables\Columns\TextColumn::make('produk.nama_produk')
                     ->label('Nama Produk')
                     ->searchable()
                     ->sortable(),
@@ -66,6 +72,7 @@ class WhislistResource extends Resource
                 Tables\Columns\TextColumn::make('created_at')
                     ->label('Ditambahkan Pada')
                     ->dateTime()
+                    ->disabled()
                     ->sortable(),
             ])
             ->filters([

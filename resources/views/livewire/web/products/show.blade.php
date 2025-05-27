@@ -55,8 +55,17 @@
                 <span class="ms-2 text-muted">Stok: {{ $produk->stok }}</span>
             </div>
 
-            <div class="d-flex gap-3 mb-4">
-                  <livewire:web.cart.btn-add-to-cart-full :id_produk="$produk->id" /> </div>
+            <div class="d-flex gap-3 mb-4 align-items-stretch">
+    <livewire:web.cart.btn-add-to-cart-full :id_produk="$produk->id" />
+
+    {{-- <button 
+        wire:click="$set('product_id', {{ $produk->id }}); addToWishlist()" 
+        class="btn text-white flex-fill h-100 " style="background-color: #ff6600"
+    >
+        Tambahkan ke Wishlist
+    </button> --}}
+    <livewire:web.wishlist.btn-add-to-wishlist :id_produk="$produk->id" />
+</div>
 
             <!-- Spesifikasi Produk -->
             <div class="bg-light rounded p-3 mt-3">
