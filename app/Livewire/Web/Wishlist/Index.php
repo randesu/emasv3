@@ -7,6 +7,9 @@ use App\Models\Wishlist;
 
 class Index extends Component
 {
+
+    public $selectedWishlists = []; // <-- untuk menampung ID wishlist terpilih
+
     public function render()
     {
         // Ambil wishlist berdasarkan user yang sedang login
@@ -14,6 +17,8 @@ class Index extends Component
             ->where('id_pembeli', auth()->guard('customer')->user()->id)
             ->latest()
             ->get();
+        
+        
 
         return view('livewire.web.wishlist.index', compact('wishlists'));
     }
