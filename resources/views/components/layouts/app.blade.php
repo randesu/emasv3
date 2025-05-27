@@ -24,6 +24,9 @@
     @livewireStyles
     @vite(['resources/css/app.css'])
     <style>
+        .bg-orange {
+    background-color: #FF6600 !important;
+}
     .text-truncate-multiline {
         display: -webkit-box;
         -webkit-box-orient: vertical;
