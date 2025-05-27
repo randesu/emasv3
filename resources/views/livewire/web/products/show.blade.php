@@ -41,7 +41,8 @@
                 </tr>
                 <tr>
                     <td><strong>Kategori</strong></td>
-                    <td>: {{ $produk->kategori }}</td>
+                    <td>: {{ $produk->category->name }}</td>
+
                 </tr>
             </table>
 

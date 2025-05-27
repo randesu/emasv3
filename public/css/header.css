@@ -1,5 +1,7 @@
 /* Header Wrapper */
 .header-wrapper {
+     position: sticky;
+    top: 0;
     background-color: #FF6B00; /* Warna orange */
     color: white;
     padding: 1rem 1.5rem;

@@ -14,9 +14,7 @@
             <tbody>
                 @forelse ($keranjangs as $keranjang)
                 <tr class="bg-white border-b">
-                    <td class="px-4 py-3">
-                        <input type="checkbox" />
-                    </td>
+                
                     <td class="flex items-center px-4 py-4 space-x-3">
                         <img src="{{ $keranjang->produk->linkgambar }}" class="w-20 h-20 object-cover rounded" />
                         <span>{{ $keranjang->produk->nama_produk }}</span>
