@@ -66,7 +66,7 @@
         <!-- Menu -->
         <ul class="list-unstyled flex-grow-1">
     <li class="mb-3">
-        <div class="sidebar-item {{ request()->is('account/my-profile') ? 'active' : '' }}">
+        <div class="sidebar-item {{ request()->is('account/my-profile') ? 'active' : '' }}fw-bold">
         <i class="bi bi-person"></i>
         <a href="{{ route('account.my-profile') }}" wire:navigate>
             Akun saya
@@ -85,7 +85,7 @@
     </li>
 
     <li class="mb-3">
-        <div class="sidebar-item {{ request()->is('account/password') ? 'active' : '' }} fw-bold">
+        <div class="sidebar-item {{ request()->is('account/password') ? 'active' : '' }}">
     <i class="bi bi-bell"></i>
     <a href="/account/password" wire:navigate>
         Password
