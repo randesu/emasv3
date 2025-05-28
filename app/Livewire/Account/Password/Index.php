@@ -9,18 +9,40 @@ class Index extends Component
 {
     public $password;
     public $password_confirmation;
+    public $nama_pembeli;
+    public $username_pembeli;
+
+    public function mount()
+    {
+        $this->nama_pembeli = auth()->guard('customer')->user()->nama_pembeli;
+        $this->username_pembeli = auth()->guard('customer')->user()->username_pembeli;
+    }
+
+     public function rules()
+    {
+        return [
+            'password'  => 'required|confirmed',
+            'nama_pembeli' => 'required',
+            'username_pembeli' => [
+                'required',
+                Rule::unique('customers', 'username_pembeli')->where(function ($query) {
+                    return $query->where('id', auth()->guard('customer')->user()->id);
+                }),
+            ],
+        ];
+    }
 
     /**
      * rules
      *
      * @return void
      */
-    public function rules()
-    {
-        return [
-            'password'  => 'required|confirmed',
-        ];
-    }
+    // public function rules()
+    // {
+    //     return [
+    //         'password'  => 'required|confirmed',
+    //     ];
+    // }
     
     /**
      * update

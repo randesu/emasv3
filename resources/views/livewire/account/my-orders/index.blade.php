@@ -72,8 +72,9 @@
             <li class="mb-3 fw-bold"><i class="bi bi-list-task"></i> 
              <a href="/account/my-orders" style="text-decoration: none; color: white" wire:navigate>
                             Pesanan Saya</a></li>
-            <li class="mb-3"><i class="bi bi-bell"></i> Notifikasi</li>
-        </ul>
+<li class="mb-3"><i class="bi bi-bell" ></i> <a href="/account/password" wire:navigate class="text-decoration-none" style="color: white">
+                 Password
+            </a></li>        </ul>
 
         <!-- Logout -->
         <div class="mt-auto">

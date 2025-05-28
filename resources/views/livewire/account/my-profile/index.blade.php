@@ -72,7 +72,9 @@
             <li class="mb-3"><i class="bi bi-list-task"></i> 
              <a href="/account/my-orders" style="text-decoration: none; color: white" wire:navigate>
                             Pesanan Saya</a></li>
-            <li class="mb-3"><i class="bi bi-bell"></i> Notifikasi</li>
+            <li class="mb-3"><i class="bi bi-bell" ></i> <a href="/account/password" wire:navigate class="text-decoration-none" style="color: white">
+                 Password
+            </a></li>
         </ul>
 
         <!-- Logout -->
@@ -105,7 +107,7 @@
                 <!-- Username -->
                 <div class="mb-3">
                     <label class="form-label">Username</label>
-                    <input type="text" class="form-control" value="{{ $username_pembeli }}" disabled>
+                    <input type="text" class="form-control" value="{{ $username_pembeli }}" >
                 </div>
 
                 <!-- Nama -->
