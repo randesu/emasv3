@@ -76,3 +76,259 @@
         </div>
     </div>
 </div>
+
+
+<!-- <!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Daftar Produk</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background-color: #f5f5f5;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .product-card {
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+            margin-bottom: 16px;
+            padding: 20px;
+            display: flex;
+            align-items: center;
+            gap: 16px;
+        }
+
+        .product-image {
+            width: 80px;
+            height: 80px;
+            border-radius: 8px;
+            object-fit: cover;
+            flex-shrink: 0;
+        }
+
+        .product-info {
+            flex: 1;
+        }
+
+        .product-title {
+            font-size: 16px;
+            font-weight: 600;
+            color: #333;
+            margin-bottom: 4px;
+        }
+
+        .product-variant {
+            font-size: 14px;
+            color: #666;
+            margin-bottom: 2px;
+        }
+
+        .product-quantity {
+            font-size: 14px;
+            color: #666;
+        }
+
+        .pricing-section {
+            text-align: right;
+            margin-right: 20px;
+        }
+
+        .price-row {
+            margin-bottom: 8px;
+        }
+
+        .original-price {
+            font-size: 14px;
+            color: #999;
+            text-decoration: line-through;
+            margin-right: 8px;
+        }
+
+        .current-price {
+            font-size: 16px;
+            color: #ff6b35;
+            font-weight: 600;
+        }
+
+        .total-label {
+            font-size: 14px;
+            color: #333;
+            margin-right: 8px;
+        }
+
+        .total-price {
+            font-size: 18px;
+            color: #ff6b35;
+            font-weight: 700;
+        }
+
+        .action-buttons {
+            display: flex;
+            gap: 8px;
+            flex-direction: column;
+        }
+
+        .btn {
+            padding: 8px 16px;
+            border: none;
+            border-radius: 6px;
+            font-size: 14px;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.2s;
+            min-width: 120px;
+        }
+
+        .btn-primary {
+            background-color: #ff6b35;
+            color: white;
+        }
+
+        .btn-primary:hover {
+            background-color: #e55a2b;
+        }
+
+        .btn-secondary {
+            background-color: #f0f0f0;
+            color: #333;
+            border: 1px solid #ddd;
+        }
+
+        .btn-secondary:hover {
+            background-color: #e0e0e0;
+        }
+
+        @media (max-width: 640px) {
+            .product-card {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .pricing-section {
+                text-align: center;
+                margin-right: 0;
+                margin: 16px 0;
+            }
+
+            .action-buttons {
+                flex-direction: row;
+                justify-content: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Product Card 1 -->
+        <div class="product-card">
+            <img src="/placeholder.svg?height=80&width=80" alt="Cincin Aurum lab Emas 9 karat" class="product-image">
+            
+            <div class="product-info">
+                <h3 class="product-title">Cincin Aurum lab Emas 9 karat</h3>
+                <p class="product-variant">Variasi : Cincin</p>
+                <p class="product-quantity">x1</p>
+            </div>
+
+            <div class="pricing-section">
+                <div class="price-row">
+                    <span class="original-price">Rp. 999.000</span>
+                    <span class="current-price">Rp. 819.000</span>
+                </div>
+                <div>
+                    <span class="total-label">Total Pesanan:</span>
+                    <span class="total-price">Rp. 819.000</span>
+                </div>
+            </div>
+
+            <div class="action-buttons">
+                <button class="btn btn-primary">Beli Lagi</button>
+                <button class="btn btn-secondary">Hubungi Penjual</button>
+            </div>
+        </div>
+
+        <!-- Product Card 2 -->
+        <div class="product-card">
+            <img src="/placeholder.svg?height=80&width=80" alt="Cincin Aurum lab Emas 9 karat" class="product-image">
+            
+            <div class="product-info">
+                <h3 class="product-title">Cincin Aurum lab Emas 9 karat</h3>
+                <p class="product-variant">Variasi : Cincin</p>
+                <p class="product-quantity">x1</p>
+            </div>
+
+            <div class="pricing-section">
+                <div class="price-row">
+                    <span class="original-price">Rp. 999.000</span>
+                    <span class="current-price">Rp. 819.000</span>
+                </div>
+                <div>
+                    <span class="total-label">Total Pesanan:</span>
+                    <span class="total-price">Rp. 819.000</span>
+                </div>
+            </div>
+
+            <div class="action-buttons">
+                <button class="btn btn-primary">Beli Lagi</button>
+                <button class="btn btn-secondary">Hubungi Penjual</button>
+            </div>
+        </div>
+
+        <!-- Product Card 3 -->
+        <div class="product-card">
+            <img src="/placeholder.svg?height=80&width=80" alt="Cincin Aurum lab Emas 9 karat" class="product-image">
+            
+            <div class="product-info">
+                <h3 class="product-title">Cincin Aurum lab Emas 9 karat</h3>
+                <p class="product-variant">Variasi : Cincin</p>
+                <p class="product-quantity">x1</p>
+            </div>
+
+            <div class="pricing-section">
+                <div class="price-row">
+                    <span class="original-price">Rp. 999.000</span>
+                    <span class="current-price">Rp. 819.000</span>
+                </div>
+                <div>
+                    <span class="total-label">Total Pesanan:</span>
+                    <span class="total-price">Rp. 819.000</span>
+                </div>
+            </div>
+
+            <div class="action-buttons">
+                <button class="btn btn-primary">Beli Lagi</button>
+                <button class="btn btn-secondary">Hubungi Penjual</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Add click handlers for buttons
+        document.querySelectorAll('.btn-primary').forEach(button => {
+            button.addEventListener('click', function() {
+                alert('Fitur "Beli Lagi" akan segera tersedia!');
+            });
+        });
+
+        document.querySelectorAll('.btn-secondary').forEach(button => {
+            button.addEventListener('click', function() {
+                alert('Menghubungi penjual...');
+            });
+        });
+    </script>
+</body>
+</html> -->
