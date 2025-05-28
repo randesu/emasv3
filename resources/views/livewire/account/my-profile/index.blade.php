@@ -52,23 +52,26 @@
     </div>
 </div> --}}
 
-<div class="d-flex" style="min-height: 100vh;">
+<div class="d-flex" style="min-height: 77vh;">
     <!-- Sidebar -->
     <div class="bg-orange text-white p-4 d-flex flex-column" style="width: 250px;">
         <!-- Foto Profil dan Nama -->
-        <div class="text-center mb-4">
-            <img src="{{ $imagePreview ?? 'https://via.placeholder.com/80' }}"
-                 class="rounded-circle mb-2"
-                 style="width: 80px; height: 80px; object-fit: cover;">
-            <h5>{{ $username_pembeli }}</h5>
-        </div>
+        <div class="d-flex flex-column align-items-center text-center mb-4">
+    <img src="{{ $imagePreview ?? 'https://www.seekpng.com/png/detail/143-1435868_headshot-silhouette-person-placeholder.png' }}"
+         class="rounded-circle mb-2"
+         style="width: 80px; height: 80px; object-fit: cover;">
+    <h5 class="mb-0">{{ $username_pembeli }}</h5>
+</div>
 
         <!-- Menu -->
         <ul class="list-unstyled flex-grow-1">
             <li class="mb-3 fw-bold">
-                <i class="bi bi-person"></i> Akun Saya
+                <i class="bi bi-person"></i>
+                <a href="{{ route('account.my-profile') }}" style="text-decoration: none; color: white" wire:navigate>Akun saya</a>
             </li>
-            <li class="mb-3"><i class="bi bi-list-task"></i> Pesanan Saya</li>
+            <li class="mb-3"><i class="bi bi-list-task"></i> 
+             <a href="/account/my-orders" style="text-decoration: none; color: white" wire:navigate>
+                            Pesanan Saya</a></li>
             <li class="mb-3"><i class="bi bi-bell"></i> Notifikasi</li>
         </ul>
 
