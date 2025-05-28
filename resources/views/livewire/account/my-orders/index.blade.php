@@ -75,7 +75,7 @@
     </li>
 
     <li class="mb-3">
-       <div class="sidebar-item {{ request()->is('account/my-orders') ? 'active' : '' }}">
+       <div class="sidebar-item {{ request()->is('account/my-orders') ? 'active' : '' }} fw-bold">
     <i class="bi bi-list-task"></i>
     <a href="/account/my-orders" wire:navigate>
         Pesanan Saya
@@ -85,7 +85,7 @@
     </li>
 
     <li class="mb-3">
-        <div class="sidebar-item {{ request()->is('account/password') ? 'active' : '' }} fw-bold">
+        <div class="sidebar-item {{ request()->is('account/password') ? 'active' : '' }}">
     <i class="bi bi-bell"></i>
     <a href="/account/password" wire:navigate>
         Password
