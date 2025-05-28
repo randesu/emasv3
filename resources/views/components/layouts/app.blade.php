@@ -46,6 +46,35 @@
     background-color: #FFA500;
     color: white;
 }
+
+    .sidebar-item {
+        width: 100%;
+        padding: 0.5rem;
+        border-radius: 0.375rem;
+        transition: background-color 0.3s, color 0.3s;
+        color: white;
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+    }
+
+    .sidebar-item:hover,
+    .sidebar-item.active {
+        background-color: white;
+        color: black;
+    }
+
+    .sidebar-item a {
+        color: inherit;
+        text-decoration: none;
+        flex-grow: 1;
+    }
+
+    .sidebar-item:hover a,
+    .sidebar-item.active a {
+        color: black;
+    }
+
 </style>
 </head>
 <body>

@@ -64,34 +64,37 @@
 </div>
 
         <!-- Menu -->
-        <ul class="list-unstyled flex-grow-1">
+       <ul class="list-unstyled flex-grow-1">
     <li class="mb-3">
-        <div class="p-2 rounded" style="width: 250px; transition: 0.3s;" onmouseover="this.style.backgroundColor='white'; this.style.color='black'; this.querySelector('a').style.color='black';" onmouseout="this.style.backgroundColor=''; this.style.color='white'; this.querySelector('a').style.color='white';">
-            <i class="bi bi-person"></i>
-            <a href="{{ route('account.my-profile') }}" style="text-decoration: none; color: white;" wire:navigate>
-                Akun saya
-            </a>
-        </div>
+        <div class="sidebar-item {{ request()->is('account/my-profile') ? 'active' : '' }}">
+        <i class="bi bi-person"></i>
+        <a href="{{ route('account.my-profile') }}" wire:navigate>
+            Akun saya
+        </a>
+    </div>
     </li>
 
     <li class="mb-3">
-        <div class="p-2 rounded" style="width: 250px; transition: 0.3s;" onmouseover="this.style.backgroundColor='white'; this.style.color='black'; this.querySelector('a').style.color='black';" onmouseout="this.style.backgroundColor=''; this.style.color='white'; this.querySelector('a').style.color='white';">
-            <i class="bi bi-list-task"></i>
-            <a href="/account/my-orders" style="text-decoration: none; color: white;" wire:navigate>
-                Pesanan Saya
-            </a>
-        </div>
+       <div class="sidebar-item {{ request()->is('account/my-orders') ? 'active' : '' }}">
+    <i class="bi bi-list-task"></i>
+    <a href="/account/my-orders" wire:navigate>
+        Pesanan Saya
+    </a>
+</div>
+
     </li>
 
     <li class="mb-3">
-        <div class="p-2 rounded fw-bold" style="width: 250px; transition: 0.3s;" onmouseover="this.style.backgroundColor='white'; this.style.color='black'; this.querySelector('a').style.color='black';" onmouseout="this.style.backgroundColor=''; this.style.color='white'; this.querySelector('a').style.color='white';">
-            <i class="bi bi-bell"></i>
-            <a href="/account/password" wire:navigate class="text-decoration-none" style="color: white;">
-                Password
-            </a>
-        </div>
+        <div class="sidebar-item {{ request()->is('account/password') ? 'active' : '' }} fw-bold">
+    <i class="bi bi-bell"></i>
+    <a href="/account/password" wire:navigate>
+        Password
+    </a>
+</div>
+
     </li>
 </ul>
+
 
         {{-- <ul class="list-unstyled flex-grow-1">
             <li class="mb-3">

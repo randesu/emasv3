@@ -52,7 +52,7 @@
     </div>
 </div> --}}
 
-<div class="d-flex" style="min-height: 60vh;">
+<div class="d-flex" style="height:598px">
     <!-- Sidebar -->
     <div class="bg-orange text-white p-4 d-flex flex-column" style="width: 250px;">
         <!-- Foto Profil dan Nama -->
@@ -64,17 +64,36 @@
 </div>
 
         <!-- Menu -->
-        <ul class="list-unstyled flex-grow-1">
-            <li class="mb-3 ">
-                <i class="bi bi-person"></i>
-                <a href="{{ route('account.my-profile') }}" style="text-decoration: none; color: white" wire:navigate>Akun saya</a>
-            </li>
-            <li class="mb-3 fw-bold"><i class="bi bi-list-task"></i> 
-             <a href="/account/my-orders" style="text-decoration: none; color: white" wire:navigate>
-                            Pesanan Saya</a></li>
-<li class="mb-3"><i class="bi bi-bell" ></i> <a href="/account/password" wire:navigate class="text-decoration-none" style="color: white">
-                 Password
-            </a></li>        </ul>
+         <ul class="list-unstyled flex-grow-1">
+    <li class="mb-3">
+        <div class="sidebar-item {{ request()->is('account/my-profile') ? 'active' : '' }}">
+        <i class="bi bi-person"></i>
+        <a href="{{ route('account.my-profile') }}" wire:navigate>
+            Akun saya
+        </a>
+    </div>
+    </li>
+
+    <li class="mb-3">
+       <div class="sidebar-item {{ request()->is('account/my-orders') ? 'active' : '' }}">
+    <i class="bi bi-list-task"></i>
+    <a href="/account/my-orders" wire:navigate>
+        Pesanan Saya
+    </a>
+</div>
+
+    </li>
+
+    <li class="mb-3">
+        <div class="sidebar-item {{ request()->is('account/password') ? 'active' : '' }} fw-bold">
+    <i class="bi bi-bell"></i>
+    <a href="/account/password" wire:navigate>
+        Password
+    </a>
+</div>
+
+    </li>
+</ul>
 
         <!-- Logout -->
         <div class="mt-auto">
@@ -89,12 +108,23 @@
     <div class="flex-grow-1 bg-light pt-0 px-4 p-4">
         <!-- Tab -->
         <div class="bg-orange d-flex justify-content-around text-white p-2 mb-4 rounded">
+    @foreach(['semua' => 'Semua', 'pembayaran' => 'Pembayaran', 'kemas' => 'Proses Kemas', 'dikirim' => 'Dikirim', 'selesai' => 'Selesai'] as $key => $label)
+        <div 
+            role="button"
+            wire:click="setFilter('{{ $key }}')" 
+            class="px-3 py-1 rounded {{ $filter === $key ? 'bg-white text-dark fw-bold' : '' }}"
+            style="cursor: pointer;">
+            {{ $label }}
+        </div>
+    @endforeach
+</div>
+        {{-- <div class="bg-orange d-flex justify-content-around text-white p-2 mb-4 rounded">
             <div>Semua</div>
             <div>Pembayaran</div>
             <div>Proses Kemas</div>
             <div>Dikirim</div>
             <div>Selesai</div>
-        </div>
+        </div> --}}
 
             @forelse ($transactions as $transaction)
     <div class="card border mb-3 shadow-sm">
@@ -143,7 +173,7 @@
         </div>
     </div>
 @empty
-    <div class="card rounded border mb-3">
+    <div class="card rounded border mb-3 ">
         <div class="card-body">
             <div class="text-center py-3">
                 <span class="fw-bold">You don't have any orders.</span>
