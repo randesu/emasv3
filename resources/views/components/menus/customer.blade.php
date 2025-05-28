@@ -6,14 +6,14 @@
                     ? asset('/storage/avatars/' . auth()->guard('customer')->user()->image) 
                     : 'https://cdn.jsdelivr.net/gh/SantriKoding-com/assets-food-store/images/user.png';
             @endphp
-            <img src="{{ $image }}" class="object-fit-cover rounded-circle" height="45" />
+            {{-- <img src="{{ $image }}" class="object-fit-cover rounded-circle" height="45" /> --}}
             <span class="fw-bold fs-6 ms-2">{{ auth()->guard('customer')->user()->nama_pembeli }}</span>
         </div>
-        <div>
+        {{-- <div>
             <!-- component logout livewire -->
             <livewire:auth.logout />
             <!-- end component logout livewire -->
-        </div>
+        </div> --}}
     </div>
     <hr />
     <div class="d-flex justify-content-evenly">

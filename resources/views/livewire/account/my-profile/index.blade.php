@@ -74,22 +74,23 @@
 
         <!-- Logout -->
         <div class="mt-auto">
-            <a href="#" class="text-white d-flex align-items-center">
+            <livewire:auth.logout />
+            {{-- <a href="#" class="text-white d-flex align-items-center">
                 <i class="bi bi-box-arrow-left me-2"></i> Logout
-            </a>
+            </a> --}}
         </div>
     </div>
 
     <!-- Konten Utama -->
     <div class="flex-grow-1 bg-light p-4">
         <!-- Tab -->
-        <div class="bg-orange d-flex justify-content-around text-white p-2 mb-4 rounded">
+        {{-- <div class="bg-orange d-flex justify-content-around text-white p-2 mb-4 rounded">
             <div>Semua</div>
             <div>Pembayaran</div>
             <div>Proses Kemas</div>
             <div>Dikirim</div>
             <div>Selesai</div>
-        </div>
+        </div> --}}
 
         <!-- Form Profil -->
         <div class="bg-white p-4 shadow rounded">
@@ -112,21 +113,21 @@
                 </div>
 
                 <!-- Email -->
-                <div class="mb-3">
+                {{-- <div class="mb-3">
                     <label class="form-label">Email</label>
                     <input type="email" wire:model="email" class="form-control @error('email') is-invalid @enderror">
                     @error('email') <div class="invalid-feedback">{{ $message }}</div> @enderror
-                </div>
+                </div> --}}
 
                 <!-- Nomor Telepon -->
-                <div class="mb-3">
+                {{-- <div class="mb-3">
                     <label class="form-label">Nomor Telepon</label>
                     <input type="text" wire:model="no_hp" class="form-control @error('no_hp') is-invalid @enderror">
                     @error('no_hp') <div class="invalid-feedback">{{ $message }}</div> @enderror
-                </div>
+                </div> --}}
 
                 <!-- Jenis Kelamin -->
-                <div class="mb-3">
+                {{-- <div class="mb-3">
                     <label class="form-label">Jenis Kelamin</label><br>
                     <div class="form-check form-check-inline">
                         <input class="form-check-input" type="radio" wire:model="jenis_kelamin" value="Laki-Laki">
@@ -136,21 +137,21 @@
                         <input class="form-check-input" type="radio" wire:model="jenis_kelamin" value="Perempuan">
                         <label class="form-check-label">Perempuan</label>
                     </div>
-                </div>
+                </div> --}}
 
                 <!-- Tanggal Lahir -->
-                <div class="mb-3">
+                {{-- <div class="mb-3">
                     <label class="form-label">Tanggal Lahir</label>
                     <input type="date" wire:model="tanggal_lahir" class="form-control">
-                </div>
+                </div> --}}
 
                 <!-- Upload Gambar -->
-                <div class="mb-3">
+                {{-- <div class="mb-3">
                     <label class="form-label">Foto Profil</label>
                     <input type="file" wire:model="image" class="form-control @error('image') is-invalid @enderror">
                     @error('image') <div class="invalid-feedback">{{ $message }}</div> @enderror
                     <small class="text-muted">Ukuran gambar maks. 1 MB. Format: JPEG, PNG</small>
-                </div>
+                </div> --}}
 
                 <!-- Submit -->
                 <button type="submit" class="btn btn-warning text-white fw-semibold">Update Profile</button>

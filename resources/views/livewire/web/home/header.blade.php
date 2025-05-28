@@ -27,7 +27,7 @@
         </div>
 
         <!-- Ikon -->
-        <div class="header-icons">
+        {{-- <div class="header-icons">
             <a href="/cart" class="nav-link text-dark fw-bold" wire:navigate>
             <button><i class="fas fa-shopping-cart"></i></button>
             </a>
@@ -35,7 +35,23 @@
             <a href="/login" class="nav-link text-dark fw-bold" wire:navigate>
             <button><i class="fas fa-user"></i></button>
              </a>
+        </div> --}}
+        <div class="header-icons">
+            <a href="/cart" class="nav-link text-dark fw-bold" wire:navigate>
+                <button><i class="fas fa-shopping-cart"></i></button>
+            </a>
+
+            @auth
+                <a href="{{ route('account.my-profile') }}" class="nav-link text-dark fw-bold" wire:navigate>
+                    <button><i class="fas fa-user"></i></button>
+                </a>
+            @else
+                <a href="{{ route('login') }}" class="nav-link text-dark fw-bold" wire:navigate>
+                    <button><i class="fas fa-user"></i></button>
+                </a>
+            @endauth
         </div>
+
     </div>
 
     <!-- Navigasi -->
