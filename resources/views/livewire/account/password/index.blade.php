@@ -1,4 +1,4 @@
-<div class="container">
+{{-- <div class="container">
     <div class="row justify-content-center mt-0" style="margin-bottom: 150px;">
         <div class="col-md-6">
 
@@ -34,6 +34,43 @@
 
                     </form>
 
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div> --}}
+
+<div class="container">
+    <div class="row justify-content-center mt-0" style="margin-bottom: 150px;">
+        <div class="col-md-6">
+
+            <x-menus.customer />
+
+            <div class="card border-0 shadow-sm rounded">
+                <div class="card-body p-4">
+                    <h5 class="fw-bold">Profil Saya</h5>
+                    <p class="text-muted">Kelola informasi profil Anda untuk mengontrol, melindungi dan mengamankan akun</p>
+
+                    <form wire:submit.prevent="updateProfile">
+
+                        <div class="mb-3">
+                            <label for="username" class="form-label">Username</label>
+                            <input type="text" id="username" class="form-control bg-light" value="{{ $username }}" readonly>
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="name" class="form-label">Nama</label>
+                            <input type="text" id="name" wire:model="name" class="form-control @error('name') is-invalid @enderror">
+                            @error('name')
+                                <div class="alert alert-danger mt-2 rounded border-0">
+                                    {{ $message }}
+                                </div>
+                            @enderror
+                        </div>
+
+                        <button type="submit" class="btn btn-warning text-white fw-bold px-4">Update Profile</button>
+                    </form>
                 </div>
             </div>
 
