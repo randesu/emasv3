@@ -14,6 +14,7 @@ use Illuminate\Database\Eloquent\Builder;
 use App\Filament\Resources\ProdukResource\Pages;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
 use App\Filament\Resources\ProdukResource\RelationManagers;
+use Forms\Components\Text;
 
 class ProdukResource extends Resource
 {
@@ -82,6 +83,11 @@ class ProdukResource extends Resource
                         ->placeholder('Kadar Barang')
                         ->required(),
 
+                    Forms\Components\Text::make('deskripsi')
+                                        ->label('deskripsi')
+                                        ->placeholder('deskripsi')
+                                        ->required(),
+
                 ])
             ]);
     }
@@ -116,6 +122,11 @@ class ProdukResource extends Resource
                 // Kategori (jika ada relasi)
                 Tables\Columns\TextColumn::make('category.name')
                     ->label('Kategori')
+                    ->sortable(),
+
+                Tables\Columns\TextColumn::make('deskripsi')
+                    ->label('deskripsi')
+                    ->searchable()
                     ->sortable(),
             ])
             ->filters([

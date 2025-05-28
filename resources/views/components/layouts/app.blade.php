@@ -91,7 +91,7 @@
 
     @if (!Request::is('login') && !Request::is('register'))
     <x-menus.wangsaff />
-    <x-menus.bottom />
+    {{-- <x-menus.bottom /> --}}
     @endif
 {{-- <x-menus.wangsaff />
     <x-menus.bottom /> --}}
