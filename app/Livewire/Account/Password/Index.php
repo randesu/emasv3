@@ -4,6 +4,7 @@ namespace App\Livewire\Account\Password;
 
 use Livewire\Component;
 use App\Models\Customer;
+use Illuminate\Validation\Rule;
 
 class Index extends Component
 {
@@ -18,19 +19,25 @@ class Index extends Component
         $this->username_pembeli = auth()->guard('customer')->user()->username_pembeli;
     }
 
-     public function rules()
-    {
-        return [
-            'password'  => 'required|confirmed',
-            'nama_pembeli' => 'required',
-            'username_pembeli' => [
-                'required',
-                Rule::unique('customers', 'username_pembeli')->where(function ($query) {
-                    return $query->where('id', auth()->guard('customer')->user()->id);
-                }),
-            ],
-        ];
-    }
+    public function rules()
+{
+    return [
+        'password'  => 'required|confirmed',
+    ];
+}
+    //  public function rules()
+    // {
+    //     return [
+    //         'password'  => 'required|confirmed',
+    //         'nama_pembeli' => 'required',
+    //         'username_pembeli' => [
+    //             'required',
+    //             Rule::unique('customers', 'username_pembeli')->where(function ($query) {
+    //                 return $query->where('id', auth()->guard('customer')->user()->id);
+    //             }),
+    //         ],
+    //     ];
+    // }
 
     /**
      * rules
