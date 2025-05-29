@@ -105,6 +105,18 @@ Food Store - Eat Your Favorite Foods
                 </div>
             </div>
         </div> --}}
+       <!-- Harga Logam -->
+<div class="row justify-content-center mt-5">
+    <div class="col-md-16">
+        <div class="card shadow-sm p-4">
+            <h5 class="fw-bold mb-3">
+                Harga Logam Mulia <span class="text-orange">Terkini</span>
+            </h5>
+            <livewire:harga-logam />
+        </div>
+    </div>
+</div>
+
 
         <!-- Products Latest -->
         <div class="row justify-content-center mt-5">

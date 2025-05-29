@@ -84,8 +84,8 @@ class ProdukResource extends Resource
                         ->placeholder('Kadar Barang')
                         ->required(),
 
-                    Textarea::make('deskripsi')
-                        >rows(6)
+                     Forms\Components\Textarea::make('deskripsi')
+                        ->rows(6)
                         ->label('deskripsi')
                         ->placeholder('deskripsi'),
                                       
