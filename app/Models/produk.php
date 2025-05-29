@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class produk extends Model
 {
-    protected $fillable = ['nama_produk','harga','kode_produk', 'slug','berat_barang','kadar_barang','gambar_produk', 'category_id'];
+    protected $fillable = ['nama_produk','harga','kode_produk', 'slug','berat_barang','kadar_barang','gambar_produk', 'category_id', 'deskripsi'];
 
     public function produkToKeranjang()
     {

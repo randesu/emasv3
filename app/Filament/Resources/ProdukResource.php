@@ -7,6 +7,8 @@ use Filament\Tables;
 use App\Models\Produk;
 use Filament\Forms\Form;
 use Filament\Tables\Table;
+use Forms\Components\Text;
+use Forms\Components\Textarea;
 use Forms\Components\TextInput;
 use Filament\Resources\Resource;
 use Forms\Components\FileUpload;
@@ -14,7 +16,6 @@ use Illuminate\Database\Eloquent\Builder;
 use App\Filament\Resources\ProdukResource\Pages;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
 use App\Filament\Resources\ProdukResource\RelationManagers;
-use Forms\Components\Text;
 
 class ProdukResource extends Resource
 {
@@ -83,10 +84,11 @@ class ProdukResource extends Resource
                         ->placeholder('Kadar Barang')
                         ->required(),
 
-                    Forms\Components\Text::make('deskripsi')
-                                        ->label('deskripsi')
-                                        ->placeholder('deskripsi')
-                                        ->required(),
+                    Textarea::make('deskripsi')
+                        >rows(6)
+                        ->label('deskripsi')
+                        ->placeholder('deskripsi'),
+                                      
 
                 ])
             ]);
