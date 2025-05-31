@@ -3,7 +3,7 @@
     <div class="row justify-content-center mt-0" style="margin-bottom: 150px;">
         <div class="col-md-6">
 
-            <x-menus.customer />
+            {{-- <x-menus.customer /> --}}
 
             <div class="card border-0 shadow-sm rounded">
                 <div class="card-body p-4">
