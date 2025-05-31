@@ -57,37 +57,69 @@ class Index extends Component
     // }
 
     public function update()
-    {
-        // Validasi input
-        $this->validate();
-
-        // Cek apakah ada gambar yang di-upload
-        if ($this->image) {
-    $filename = $this->image->hashName(); // atau getClientOriginalName() jika kamu ingin nama asli
-    $this->image->storeAs('avatars', $filename, 's3');
+{
+    $this->validate();
 
     $profile = Customer::findOrFail(auth()->guard('customer')->user()->id);
-    $profile->update([
-        'nama_pembeli'  => $this->nama_pembeli,
-        'username_pembeli' => $this->username_pembeli,
-        'image' => $filename, // hanya simpan nama file, tanpa path
-    ]);
 
-        } else {
-            // Update tanpa gambar
-            $profile = Customer::findOrFail(auth()->guard('customer')->user()->id);
-            $profile->update([
-                'nama_pembeli'  => $this->nama_pembeli,
-                'username_pembeli' => $this->username_pembeli,
-            ]);
-        }
+    // hanya jika file valid dan di-upload
+    if ($this->image && $this->image->isValid()) {
+        $filename = $this->image->hashName();
+        $this->image->storeAs('avatars', $filename, 's3');
 
-        // Kirim pesan sukses
-        session()->flash('success', 'Update Profil Berhasil');
-
-        // redirect to the desired page
-        return $this->redirect('/account/my-profile', navigate: true);
+        $profile->update([
+            'nama_pembeli'       => $this->nama_pembeli,
+            'username_pembeli'   => $this->username_pembeli,
+            'image'              => $filename,
+        ]);
+    } else {
+        $profile->update([
+            'nama_pembeli'       => $this->nama_pembeli,
+            'username_pembeli'   => $this->username_pembeli,
+        ]);
     }
+
+    // $this->reset('image'); // RESET FILE INPUT
+
+    session()->flash('success', 'Update Profil Berhasil');
+            return $this->redirect('/account/my-profile', navigate: true);
+
+}
+
+
+
+    // public function update()
+    // {
+    //     // Validasi input
+    //     $this->validate();
+
+    //     // Cek apakah ada gambar yang di-upload
+    //     if ($this->image) {
+    // $filename = $this->image->hashName(); // atau getClientOriginalName() jika kamu ingin nama asli
+    // $this->image->storeAs('avatars', $filename, 's3');
+
+    // $profile = Customer::findOrFail(auth()->guard('customer')->user()->id);
+    // $profile->update([
+    //     'nama_pembeli'  => $this->nama_pembeli,
+    //     'username_pembeli' => $this->username_pembeli,
+    //     'image' => $filename, // hanya simpan nama file, tanpa path
+    // ]);
+
+    //     } else {
+    //         // Update tanpa gambar
+    //         $profile = Customer::findOrFail(auth()->guard('customer')->user()->id);
+    //         $profile->update([
+    //             'nama_pembeli'  => $this->nama_pembeli,
+    //             'username_pembeli' => $this->username_pembeli,
+    //         ]);
+    //     }
+
+    //     // Kirim pesan sukses
+    //     session()->flash('success', 'Update Profil Berhasil');
+
+    //     // redirect to the desired page
+    //     return $this->redirect('/account/my-profile', navigate: true);
+    // }
 
     public function render()
     {

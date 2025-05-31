@@ -177,7 +177,11 @@
                 </div>
 
                 <!-- Submit -->
-                <button type="submit" class="btn btn-warning text-white fw-semibold">Update Profile</button>
+                <button type="submit" class="btn btn-warning text-white fw-semibold" wire:loading.attr="disabled">
+    <span wire:loading.remove wire:target="update">Update Profile</span>
+    <span wire:loading wire:target="update">Menyimpan...</span>
+</button>
+                {{-- <button type="submit" class="btn btn-warning text-white fw-semibold">Update Profile</button> --}}
             </form>
         </div>
     </div>
