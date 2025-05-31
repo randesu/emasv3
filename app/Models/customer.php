@@ -9,7 +9,7 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 class customer extends Authenticatable
 {
     //
-    protected $fillable = ['nama_pembeli','username_pembeli','password','alamat_pembeli','no_hp'];
+    protected $fillable = ['nama_pembeli','username_pembeli','password','alamat_pembeli','no_hp','image','linkfoto'];
 
 
     public function customerToProduk()
@@ -36,4 +36,15 @@ class customer extends Authenticatable
     // {
     //     return $this->belongsTo(keranjang::class, 'nama_pembeli');
     // }
+     protected static function boot()
+    {
+        parent::boot();
+
+        static::saving(function ($customer) {
+            if (empty($customer->linkfoto)) {
+                $customer->linkfoto = 'https://vlcyusrxdnldvwmpqhcy.supabase.co/storage/v1/object/public/image-bucker/storage/v1/s3/image-bucker/image-bucker/'.$customer->fotoprofil;
+                //Str::slug($category->name);
+            }
+        });
+    }
 }

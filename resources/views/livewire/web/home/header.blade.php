@@ -3,7 +3,7 @@
         <!-- Logo -->
         <a href="/" class="nav-link text-dark fw-bold" wire:navigate>
         <div class="header-logo">
-            <img src="assets/logobaru3.png" alt="Logo">
+            <img src="https://raw.githubusercontent.com/randesu/emasv3/refs/heads/main/public/assets/logobaru3.png" alt="Logo">
             {{-- <div class="header-text">
                 <h1>Mitra Baru</h1>
                 <small>Jalan Muchran Ali, Mentawa Baru Ketapang, Sampit</small>

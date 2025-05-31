@@ -57,7 +57,7 @@
     <div class="bg-orange text-white p-4 d-flex flex-column" style="width: 250px;">
         <!-- Foto Profil dan Nama -->
         <div class="d-flex flex-column align-items-center text-center mb-4">
-    <img src="{{ $imagePreview ?? 'https://www.seekpng.com/png/detail/143-1435868_headshot-silhouette-person-placeholder.png' }}"
+    <img src="{{ 'https://vlcyusrxdnldvwmpqhcy.supabase.co/storage/v1/object/public/image-bucker/storage/v1/s3/image-bucker/image-bucker/'}}avatars/{{ $image  ?? 'https://www.seekpng.com/png/detail/143-1435868_headshot-silhouette-person-placeholder.png' }}"
          class="rounded-circle mb-2"
          style="width: 80px; height: 80px; object-fit: cover;">
     <h5 class="mb-0">{{ $username_pembeli }}</h5>
@@ -169,12 +169,12 @@
                 </div> --}}
 
                 <!-- Upload Gambar -->
-                {{-- <div class="mb-3">
+                <div class="mb-3">
                     <label class="form-label">Foto Profil</label>
                     <input type="file" wire:model="image" class="form-control @error('image') is-invalid @enderror">
                     @error('image') <div class="invalid-feedback">{{ $message }}</div> @enderror
                     <small class="text-muted">Ukuran gambar maks. 1 MB. Format: JPEG, PNG</small>
-                </div> --}}
+                </div>
 
                 <!-- Submit -->
                 <button type="submit" class="btn btn-warning text-white fw-semibold">Update Profile</button>

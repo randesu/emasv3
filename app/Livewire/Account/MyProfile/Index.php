@@ -12,9 +12,10 @@ class Index extends Component
 {
     use WithFileUploads;
 
-    public $image;
+    public $fotoprofil;
     public $nama_pembeli;
     public $username_pembeli;
+    public $image;
     
     /**
      * mount
@@ -25,6 +26,7 @@ class Index extends Component
     {
         $this->nama_pembeli = auth()->guard('customer')->user()->nama_pembeli;
         $this->username_pembeli = auth()->guard('customer')->user()->username_pembeli;
+        $this->image = auth()->guard('customer')->user()->image;
     }
     
     /**
@@ -35,13 +37,12 @@ class Index extends Component
     public function rules()
     {
         return [
+            'image' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:81920', // Maksimal 8MB
             'nama_pembeli' => 'required',
             'username_pembeli' => [
-                'required',
-                Rule::unique('customers', 'username_pembeli')->where(function ($query) {
-                    return $query->where('id', auth()->guard('customer')->user()->id);
-                }),
-            ],
+            'required',
+            Rule::unique('customers', 'username_pembeli')->ignore(auth()->guard('customer')->user()->id),
+           ],
         ];
     }
 
@@ -49,7 +50,7 @@ class Index extends Component
     // public function rules()
     // {
     //     return [
-    //         // 'image' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+    //         'image' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
     //         'nama_pembeli'  => 'required',
     //         'username_pembeli' => 'required|username_pembeli|unique:username_pembeli,username_pembeli,'. auth()->guard('customer')->user()->id,
     //     ];
@@ -62,17 +63,16 @@ class Index extends Component
 
         // Cek apakah ada gambar yang di-upload
         if ($this->image) {
-            // Upload gambar
-            $imageName = $this->image->hashName();
-            $this->image->storeAs('avatars', $imageName);
+    $filename = $this->image->hashName(); // atau getClientOriginalName() jika kamu ingin nama asli
+    $this->image->storeAs('avatars', $filename, 's3');
 
-            // Update data pengguna dengan gambar
-            $profile = Customer::findOrFail(auth()->guard('customer')->user()->id);
-            $profile->update([
-                'nama_pembeli'  => $this->nama_pembeli,
-                'username_pembeli' => $this->username_pembeli,
-                'image' => $imageName,
-            ]);
+    $profile = Customer::findOrFail(auth()->guard('customer')->user()->id);
+    $profile->update([
+        'nama_pembeli'  => $this->nama_pembeli,
+        'username_pembeli' => $this->username_pembeli,
+        'image' => $filename, // hanya simpan nama file, tanpa path
+    ]);
+
         } else {
             // Update tanpa gambar
             $profile = Customer::findOrFail(auth()->guard('customer')->user()->id);
