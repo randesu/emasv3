@@ -93,6 +93,15 @@
 </div>
 
     </li>
+    <li class="mb-3">
+        <div class="sidebar-item {{ request()->is('account/faq') ? 'active' : '' }}">
+    <i class="bi bi-bell"></i>
+    <a href="/account/faq" wire:navigate>
+        FAQ
+    </a>
+</div>
+
+    </li>
 </ul>
 
         <!-- Logout -->

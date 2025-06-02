@@ -27,6 +27,9 @@ Route::middleware('auth:customer')->group(function () {
         //route password
         Route::get('/password', Account\Password\Index::class)->name('account.password');
 
+        Route::get('/faq', Account\FaqPage::class)->name('account.faq');
+
+
 
 
     });
@@ -53,4 +56,4 @@ Route::get('/checkout', Web\Checkout\Index::class)->name('web.checkout.index')->
 
 Route::get('/wishlist', Web\wishlist\Index::class)->name('web.wishlist.index')->middleware('auth:customer');
 
-        Route::get('/faq', Account\Faq::class)->name('account.faq');
+        // Route::get('/faq', Account\Faq::class)->name('account.faq');
