@@ -27,6 +27,13 @@
         .bg-orange {
     background-color: #FF6600 !important;
 }
+
+    .button-detail-product{
+        display: flex; 
+        flex-wrap: wrap;
+        margin-inline-end: none;
+        align-items: flex-end;
+    }
     .text-truncate-multiline {
         display: -webkit-box;
         -webkit-box-orient: vertical;

@@ -47,25 +47,18 @@
             </table>
 
             <!-- Kuantitas dan Tombol -->
-            <div class="d-flex align-items-center gap-2 mb-3">
+            {{-- <div class="d-flex align-items-center gap-2 mb-3">
                 <strong>Kuantitas</strong>
                 <button class="btn btn-outline-secondary btn-sm" onclick="kurangiJumlah()">-</button>
                 <input type="number" min="1" max="{{ $produk->stok }}" value="1" id="jumlah" class="form-control d-inline-block text-center" style="width: 60px;">
                 <button class="btn btn-outline-secondary btn-sm" onclick="tambahJumlah()">+</button>
                 <span class="ms-2 text-muted">Stok: {{ $produk->stok }}</span>
+            </div> --}}
+
+            <div class="button-detail-product">
+                <livewire:web.cart.btn-add-to-cart-full :id_produk="$produk->id" />
+                <livewire:web.wishlist.btn-add-to-wishlist :id_produk="$produk->id" />
             </div>
-
-            <div class="d-flex gap-3 mb-4 align-items-stretch">
-    <livewire:web.cart.btn-add-to-cart-full :id_produk="$produk->id" />
-
-    {{-- <button 
-        wire:click="$set('product_id', {{ $produk->id }}); addToWishlist()" 
-        class="btn text-white flex-fill h-100 " style="background-color: #ff6600"
-    >
-        Tambahkan ke Wishlist
-    </button> --}}
-    <livewire:web.wishlist.btn-add-to-wishlist :id_produk="$produk->id" />
-</div>
 
             <!-- Spesifikasi Produk -->
             <div class="bg-light rounded p-3 mt-3">
