@@ -41,6 +41,16 @@
     </li>
 
     <li class="mb-3">
+        <div class="sidebar-item {{ request()->is('account/faq') ? 'active' : '' }}">
+    <i class="bi bi-bell"></i>
+    <a href="/wishlist" wire:navigate>
+        Wishlist
+    </a>
+</div>
+
+    </li>
+
+    <li class="mb-3">
         <div class="sidebar-item {{ request()->is('account/faq') ? 'active' : '' }}fw-bold">
     <i class="bi bi-bell"></i>
     <a href="/account/faq" wire:navigate>
