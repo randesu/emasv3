@@ -77,6 +77,12 @@ class ProdukResource extends Resource
                         ->label('Berat Barang')
                         ->placeholder('Berat Barang')
                         ->required(),
+
+                    Forms\Components\TextInput::make('stok')
+                        ->integer()
+                        ->label('Stok Barang')
+                        ->placeholder('Banyak stok Barang')
+                        ->required(),
                     
                     Forms\Components\TextInput::make('kadar_barang')
                         ->integer()
@@ -119,6 +125,10 @@ class ProdukResource extends Resource
                 // Stok produk
                 Tables\Columns\TextColumn::make('berat_barang')
                     ->label('Berat Barang')
+                    ->sortable(),
+
+                Tables\Columns\TextColumn::make('stok')
+                    ->label('Stok Barang')
                     ->sortable(),
     
                 // Kategori (jika ada relasi)
