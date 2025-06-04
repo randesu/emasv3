@@ -67,7 +67,9 @@
        <ul class="list-unstyled flex-grow-1">
     <li class="mb-3">
         <div class="sidebar-item {{ request()->is('account/my-profile') ? 'active' : '' }}">
-        <i class="bi bi-person"></i>
+        <i ><span class="material-symbols-outlined">
+    person
+    </span></i>
         <a href="{{ route('account.my-profile') }}" wire:navigate>
             Akun saya
         </a>
@@ -76,7 +78,9 @@
 
     <li class="mb-3">
        <div class="sidebar-item {{ request()->is('account/my-orders') ? 'active' : '' }}">
-    <i class="bi bi-list-task"></i>
+    <i ><span class="material-symbols-outlined">
+    shopping_bag
+    </span></i>
     <a href="/account/my-orders" wire:navigate>
         Pesanan Saya
     </a>
@@ -86,7 +90,9 @@
 
     <li class="mb-3">
         <div class="sidebar-item {{ request()->is('account/password') ? 'active' : '' }} fw-bold">
-    <i class="bi bi-bell"></i>
+    <i ><span class="material-symbols-outlined">
+    lock
+    </span></i>
     <a href="/account/password" wire:navigate>
         Password
     </a>
@@ -96,7 +102,9 @@
 
     <li class="mb-3">
         <div class="sidebar-item {{ request()->is('account/faq') ? 'active' : '' }}">
-    <i class="bi bi-bell"></i>
+   <i ><span class="material-symbols-outlined">
+    favorite
+    </span></i>
     <a href="/wishlist" wire:navigate>
         Wishlist
     </a>
@@ -106,7 +114,9 @@
 
     <li class="mb-3">
         <div class="sidebar-item {{ request()->is('account/faq') ? 'active' : '' }}">
-    <i class="bi bi-bell"></i>
+    <i ><span class="material-symbols-outlined">
+    help
+    </span></i>
     <a href="/account/faq" wire:navigate>
         FAQ
     </a>
