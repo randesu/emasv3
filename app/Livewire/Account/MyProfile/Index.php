@@ -37,7 +37,7 @@ class Index extends Component
     public function rules()
     {
         return [
-            'image' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:81920', // Maksimal 8MB
+            'image' => 'nullable|mimes:jpeg,png,jpg,gif,svg|max:81920', // Maksimal 8MB
             'nama_pembeli' => 'required',
             'username_pembeli' => [
             'required',
@@ -63,7 +63,7 @@ class Index extends Component
     $profile = Customer::findOrFail(auth()->guard('customer')->user()->id);
 
     // hanya jika file valid dan di-upload
-    if ($this->image && $this->image->isValid()) {
+    if ($this->image) {
         $filename = $this->image->hashName();
         $this->image->storeAs('avatars', $filename, 's3');
 

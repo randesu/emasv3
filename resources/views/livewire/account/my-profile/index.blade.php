@@ -201,7 +201,7 @@
                 <!-- Upload Gambar -->
                 <div class="mb-3">
                     <label class="form-label">Foto Profil</label>
-                    <input type="file" wire:model="image" class="form-control @error('image') is-invalid @enderror">
+<input type="file" wire:model.defer="image" class="form-control @error('image') is-invalid @enderror">
                     @error('image') <div class="invalid-feedback">{{ $message }}</div> @enderror
                     <small class="text-muted">Ukuran gambar maks. 1 MB. Format: JPEG, PNG</small>
                 </div>
