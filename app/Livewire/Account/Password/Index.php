@@ -12,9 +12,12 @@ class Index extends Component
     public $password_confirmation;
     public $nama_pembeli;
     public $username_pembeli;
+    public $image;
 
     public function mount()
     {
+        $user = auth()->guard('customer')->user();
+        $this->image = $user->image;
         $this->nama_pembeli = auth()->guard('customer')->user()->nama_pembeli;
         $this->username_pembeli = auth()->guard('customer')->user()->username_pembeli;
     }

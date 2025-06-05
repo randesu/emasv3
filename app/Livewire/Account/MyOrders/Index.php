@@ -15,6 +15,7 @@ class Index extends Component
     //public $image;
     public $nama_pembeli;
     public $username_pembeli;
+    public $image;
     use WithPagination;
 
      
@@ -29,8 +30,10 @@ class Index extends Component
 
     public function mount()
     {
+        $user = auth()->guard('customer')->user();
         $this->nama_pembeli = auth()->guard('customer')->user()->nama_pembeli;
         $this->username_pembeli = auth()->guard('customer')->user()->username_pembeli;
+        $this->image = $user->image;
     }
 
      public function rules()
@@ -52,10 +55,14 @@ class Index extends Component
          $query = TransactionV2::where('customer_id', auth()->guard('customer')->id());
 
         if ($this->filter === 'pembayaran') {
-            $query->where('status', 'success');
-        } elseif (in_array($this->filter, ['kemas', 'dikirim', 'selesai'])) {
+            $query->where('status', 'pending');}
+         elseif (in_array($this->filter, ['kemas', 'dikirim'])) {
             // supaya tidak tampil data apapun untuk filter lain
             $query->where('status', '__invalid__');
+        }
+        elseif ($this->filter === 'selesai') {
+            // supaya tidak tampil data apapun untuk filter lain
+           $query->where('status', 'success');
         }
 
         $transactions = $query->latest()->paginate(3);

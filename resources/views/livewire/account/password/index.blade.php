@@ -57,9 +57,9 @@
     <div class="bg-orange text-white p-4 d-flex flex-column" style="width: 250px;">
         <!-- Foto Profil dan Nama -->
         <div class="d-flex flex-column align-items-center text-center mb-4">
-    <img src="{{ 'https://vlcyusrxdnldvwmpqhcy.supabase.co/storage/v1/object/public/image-bucker/storage/v1/s3/image-bucker/image-bucker/'}}avatars/{{ $image  ?? 'https://www.seekpng.com/png/detail/143-1435868_headshot-silhouette-person-placeholder.png' }}"
-         class="rounded-circle mb-2"
-         style="width: 80px; height: 80px; object-fit: cover;">
+<img src="{{ $image ? 'https://vlcyusrxdnldvwmpqhcy.supabase.co/storage/v1/object/public/image-bucker/storage/v1/s3/image-bucker/image-bucker/avatars/' . $image : 'https://www.seekpng.com/png/detail/143-1435868_headshot-silhouette-person-placeholder.png' }}"
+     class="rounded-circle mb-2"
+     style="width: 80px; height: 80px; object-fit: cover;">
     <h5 class="mb-0">{{ $username_pembeli }}</h5>
 </div>
 

@@ -47,7 +47,7 @@
     </li>
 
     <li class="mb-3">
-        <div class="sidebar-item {{ request()->is('account/faq') ? 'active' : '' }}">
+        <div class="sidebar-item {{ request()->is('account/wishlist') ? 'active' : '' }}">
    <i ><span class="material-symbols-outlined">
     favorite
     </span></i>
