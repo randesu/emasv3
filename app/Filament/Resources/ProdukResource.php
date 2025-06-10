@@ -48,6 +48,28 @@ class ProdukResource extends Resource
                       ->placeholder('Gambar Produk'),
                     //   ->storeFileNamesIn('gambar_produk'),
                     //   ->required(),
+
+                    Forms\Components\FileUpload::make('gambar_produk2')
+                        ->disk('s3')
+                        ->directory('public')
+                        ->visibility('public')
+                    
+                       
+                      ->label('Gambar Produk')
+                      ->placeholder('Gambar Produk'),
+                    //   ->storeFileNamesIn('gambar_produk'),
+                    //   ->required(),
+
+                    Forms\Components\FileUpload::make('gambar_produk3')
+                        ->disk('s3')
+                        ->directory('public')
+                        ->visibility('public')
+                    
+                       
+                      ->label('Gambar Produk')
+                      ->placeholder('Gambar Produk'),
+                    //   ->storeFileNamesIn('gambar_produk'),
+                    //   ->required(),
     
                     //name
                     Forms\Components\TextInput::make('nama_produk')
@@ -106,6 +128,16 @@ class ProdukResource extends Resource
             ->columns([
                 // Gambar produk
                 Tables\Columns\ImageColumn::make('linkgambar')
+                ->disk('s3')
+                    ->label('Gambar')
+                    ->circular(),
+                
+                Tables\Columns\ImageColumn::make('linkgambar2')
+                ->disk('s3')
+                    ->label('Gambar')
+                    ->circular(),
+                
+                Tables\Columns\ImageColumn::make('linkgambar3')
                 ->disk('s3')
                     ->label('Gambar')
                     ->circular(),

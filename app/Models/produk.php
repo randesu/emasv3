@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class produk extends Model
 {
-    protected $fillable = ['nama_produk','harga','kode_produk', 'slug','berat_barang','kadar_barang','gambar_produk', 'category_id', 'deskripsi', 'stok'];
+    protected $fillable = ['nama_produk','harga','kode_produk', 'slug','berat_barang','kadar_barang','gambar_produk','gambar_produk2','gambar_produk3', 'category_id', 'deskripsi', 'stok'];
 
     public function produkToKeranjang()
     {
@@ -57,6 +57,20 @@ class produk extends Model
         static::saving(function ($product) {
             if (empty($product->linkgambar)) {
                 $product->linkgambar = 'https://vlcyusrxdnldvwmpqhcy.supabase.co/storage/v1/object/public/image-bucker/storage/v1/s3/image-bucker/image-bucker/'.$product->gambar_produk;
+                //Str::slug($category->name);
+            }
+        });
+
+        static::saving(function ($product) {
+            if (empty($product->linkgambar2)) {
+                $product->linkgambar2 = 'https://vlcyusrxdnldvwmpqhcy.supabase.co/storage/v1/object/public/image-bucker/storage/v1/s3/image-bucker/image-bucker/'.$product->gambar_produk2;
+                //Str::slug($category->name);
+            }
+        });
+
+        static::saving(function ($product) {
+            if (empty($product->linkgambar3)) {
+                $product->linkgambar3 = 'https://vlcyusrxdnldvwmpqhcy.supabase.co/storage/v1/object/public/image-bucker/storage/v1/s3/image-bucker/image-bucker/'.$product->gambar_produk3;
                 //Str::slug($category->name);
             }
         });
