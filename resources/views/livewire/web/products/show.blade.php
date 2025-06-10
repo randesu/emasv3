@@ -16,7 +16,9 @@
                 <div class="mt-2 d-flex gap-2">
                     <!-- Thumbnail tambahan jika ada -->
                     <img src="{{ asset($produk->linkgambar) }}" width="60" class="border rounded" alt="thumb1">
-                    <img src="{{ asset($produk->linkgambar) }}" width="60" class="border rounded" alt="thumb2">
+                    <img src="{{ asset($produk->linkgambar2) }}" width="60" class="border rounded" alt="thumb2">
+                    <img src="{{ asset($produk->linkgambar3) }}" width="60" class="border rounded" alt="thumb2">
+
                 </div>
             </div>
         </div>
