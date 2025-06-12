@@ -30,6 +30,8 @@ class ViewTransaction extends ViewRecord
                             'success' => 'success',
                             'expired' => 'gray',
                             'failed' => 'danger',
+                            'sedang dibungkus' => 'Sedang Dibungkus',
+                            'sedang dikirim' => 'Sedang Dikirim',
                         }),
                     TextEntry::make('created_at')->label('Created At'),
                 ])->columns(3),
