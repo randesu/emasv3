@@ -144,6 +144,11 @@
 
                         </div>
                         @endforeach
+                        <div class="text-center mt-3">
+                            <a href="{{ route('home') }}" class="btn btn-primary">
+                                ⬅ Kembali ke Beranda
+                            </a>
+                        </div>
 
                     </div>
 

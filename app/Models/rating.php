@@ -8,16 +8,16 @@ class rating extends Model
 {
     //
 
-        protected $fillable = ['pembeli_id','produk_id','checkout_id', 'rating'];
+        protected $fillable = ['pembeli_id','produk_id','checkout_id', 'rating', 'customer_id', 'review'];
 
         public function transaksi()
 {
     return $this->belongsTo(Transaksi::class);
 }
 
-public function pembeli()
+public function customer()
 {
-    return $this->belongsTo(Customer::class, 'pembeli_id');
+    return $this->belongsTo(Customer::class, 'customer_id');
 }
 
 public function produk()

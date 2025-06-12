@@ -30,9 +30,9 @@ class Show extends Component
     {
         //get product by slug
         $produk = produk::query()
-            //->with('category', 'category_id')
-            //->withCount('ratings')
-            //->withAvg('ratings', 'rating')
+            // /->with('category', 'category_id')
+            ->withCount('ratings')
+            ->withAvg('ratings', 'rating')
             ->where('slug', $this->slug)
             ->firstOrFail();
 

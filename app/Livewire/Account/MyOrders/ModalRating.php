@@ -43,7 +43,7 @@ class ModalRating extends Component
 
         //check rating already
         $check_rating = Rating::query()
-            ->where('product_id', $this->item->product->id)
+            ->where('produk_id', $this->item->produk->id)
             ->where('customer_id', auth()->guard('customer')->user()->id)
             ->first();
 
@@ -55,7 +55,7 @@ class ModalRating extends Component
         // create rating
         Rating::create([
             'transaction_detail_id' => $this->item->id,
-            'product_id'            => $this->item->product->id,
+            'produk_id'            => $this->item->produk->id,
             'rating'                => $this->rating,
             'review'                => $this->review,
             'customer_id'           => auth()->guard('customer')->user()->id

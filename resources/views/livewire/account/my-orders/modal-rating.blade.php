@@ -1,4 +1,4 @@
-<div class="modal fade" wire:ignore.self ref="modal" id="modal-{{ $item->id }}" tabindex="-1" aria-hidden="true">
+<div class="modal fade" wire:ignore.self ref="modal" id="modal-{{ $item->id }}" tabindex="-1" aria-hidden="true" style="margin-top: 250px">
     <div class="modal-dialog">
         <div class="modal-content rounded border-0 shadow-sm">
             <div class="modal-header">
