@@ -48,18 +48,18 @@ class ViewTransaction extends ViewRecord
                 //     TextEntry::make('shipping.shipping_cost')->label('Ongkos Kirim')->numeric(decimalPlaces: 0)->money('IDR', locale: 'id'),
                 // ])->columns(3),
 
-                // Transaction Details
-                // Card::make([
-                //     RepeatableEntry::make('TransactionDetails')
-                //         ->label('Items Details')
-                //         ->schema([
-                //             ImageEntry::make('product.image')->label('Product Image')->circular()->width(100)->height(100),
-                //             TextEntry::make('product.title')->label('Product Name'),
-                //             TextEntry::make('qty')->label('Quantity'),
-                //             TextEntry::make('price')->label('Price')->numeric(decimalPlaces: 0)->money('IDR', locale: 'id'),
-                //         ])
-                //         ->columns(4),
-                // ]),
+               // Transaction Details
+                Card::make([
+                    RepeatableEntry::make('TransactionDetails')
+                        ->label('Items Details')
+                        ->schema([
+                            ImageEntry::make('produk.linkgambar')->label('Product Image')->circular()->width(100)->height(100),
+                            TextEntry::make('produk.nama_produk')->label('Product Name'),
+                            TextEntry::make('qty')->label('Quantity'),
+                            TextEntry::make('produk.harga')->label('harga')->numeric(decimalPlaces: 0)->money('IDR', locale: 'id'),
+                        ])
+                        ->columns(4),
+                ]),
                 Card::make([
                     // Buat container grid untuk alignment
                     Grid::make(1)
