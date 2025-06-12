@@ -106,6 +106,9 @@ Textarea::make('address')
         'success' => 'Success',
         'expired' => 'Expired',
         'failed'  => 'Failed',
+        'sedang dibungkus' => 'blue',
+        'sedang dikirim' => 'purple',
+
     ])
     ->default('pending')
     ->required(),
@@ -126,6 +129,8 @@ Textarea::make('address')
                 'success' => 'success',
                 'expired' => 'gray',
                 'failed' => 'danger',
+                'sedang dibungkus' => 'Sedang Dibungkus',
+                'sedang dikirim' => 'Sedang Dikirim',
             }),
             
             Tables\Columns\TextColumn::make('created_at')
