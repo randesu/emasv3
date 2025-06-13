@@ -16,7 +16,7 @@ class Index extends Component
             ->withAvg('ratings', 'rating')
             ->when(request()->has('search'), function ($query) {
                 $slug = str_replace(' ', '-', request()->search);
-                $query->where('slug', 'like', '%' . $slug . '%');
+                $query->whereRaw('slug ILIKE ?', ['%' . $slug . '%']);
             })
             ->simplePaginate(8);
 
