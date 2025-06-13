@@ -7,20 +7,22 @@ use App\Models\rating;
 use Livewire\Component;
 use App\Models\Category;
 use App\Models\herobanner;
+    use Illuminate\Support\Facades\DB;
+
 
 class Index extends Component
 {
 
-    protected function getPopularProducts()
-{
-    // Ambil semua produk dengan rata-rata rating
-    $produks = Produk::withAvg('ratings', 'rating')->get();
+//     protected function getPopularProducts()
+// {
+//     // Ambil semua produk dengan rata-rata rating
+//     $produks = Produk::withAvg('ratings', 'rating')->get();
 
-    // Filter hanya yang rating-nya >= 4, lalu ambil 5 teratas
-    return $produks->filter(function ($produk) {
-        return $produk->ratings_avg_rating >= 4;
-    })->take(5);
-}
+//     // Filter hanya yang rating-nya >= 4, lalu ambil 5 teratas
+//     return $produks->filter(function ($produk) {
+//         return $produk->ratings_avg_rating >= 4;
+//     })->take(5);
+// }
 
 
 //     protected function getPopularProducts()
@@ -50,14 +52,47 @@ class Index extends Component
     //         ->orderBy('created_at')
     //         ->get();
     // }
-
-    protected function getLatestProducts()
+    //new code
+protected function getLatestProducts()
 {
-    return produk::query()
-        ->inRandomOrder() // ambil data secara acak
-        ->limit(12)        // batasi hanya 5 produk
-        ->get();
+    return Produk::query()
+        ->withAvg('ratings', 'rating')
+        ->inRandomOrder()
+        ->get()
+        ->filter(fn($produk) => $produk->ratings_avg_rating >= 4 || $produk->ratings_avg_rating === null )
+        ->take(12);
 }
+
+
+// protected function getLatestProducts()
+// {
+//     return Produk::query()
+//         ->withAvg('ratings', 'rating') // hitung rata-rata rating dari relasi
+//         ->inRandomOrder()
+//         ->get()
+//         ->filter(fn($produk) =>
+//             $produk->ratings_avg_rating === null || $produk->ratings_avg_rating >= 4
+//         )
+//         ->take(12);
+// }
+
+
+
+
+
+
+
+
+//old code
+//     protected function getLatestProducts()
+// {
+//     return produk::query()
+//         ->withAvg('ratings', 'rating')
+//         ->having('ratings_avg_rating', '>=', 4)
+//         ->inRandomOrder() // ambil data secara acak
+//         ->limit(12)        // batasi hanya 5 produk
+//         ->get();
+// }
 
     public function render()
     {
@@ -73,7 +108,7 @@ class Index extends Component
             'latestProducts' => $this->getLatestProducts(),
             
             //get popular
-            'popularProducts' => $this->getPopularProducts(),
+            // 'popularProducts' => $this->getPopularProducts(),
 
         ]);
     }

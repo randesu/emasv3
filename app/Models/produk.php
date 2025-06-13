@@ -19,10 +19,15 @@ class produk extends Model
     return $this->belongsTo(Category::class, 'category_id');
 }
 
-    public function ratings()
-    {
-        return $this->hasMany(Rating::class);
-    }
+public function ratings()
+{
+    return $this->hasMany(Rating::class, 'produk_id');
+}
+
+    // public function ratings()
+    // {
+    //     return $this->hasMany(Rating::class);
+    // }
     // public function produkToCategory()
     // {
     //     return $this->hasMany(category::class);

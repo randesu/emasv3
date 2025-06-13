@@ -13,7 +13,7 @@ class Index extends Component
         //get products
         $products = produk::query()
             //->with('category', 'ratings.customer')
-            //->withAvg('ratings', 'rating')
+            ->withAvg('ratings', 'rating')
             ->when(request()->has('search'), function ($query) {
                 $slug = str_replace(' ', '-', request()->search);
                 $query->where('slug', 'like', '%' . $slug . '%');

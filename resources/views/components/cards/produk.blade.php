@@ -9,6 +9,9 @@
     <p class="card-text mb-3">Rp. {{ number_format($produk->harga) }}</p>
 
     <div class="mt-auto">
+<span class="fw-bold">  ☆
+    {{ number_format($produk->ratings_avg_rating ?? 0, 1) }}
+</span>
         <livewire:web.cart.btn-add-to-cart :id_produk='$produk->id' />
     </div>
   </div>
