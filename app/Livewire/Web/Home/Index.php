@@ -59,7 +59,7 @@ protected function getLatestProducts()
         ->withAvg('ratings', 'rating')
         ->inRandomOrder()
         ->get()
-        ->filter(fn($produk) => $produk->ratings_avg_rating >= 4 || $produk->ratings_avg_rating === null )
+        ->filter(fn($produk) => $produk->ratings_avg_rating >= 1 || $produk->ratings_avg_rating === null )
         ->take(12);
 }
 
