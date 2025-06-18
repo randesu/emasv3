@@ -4,7 +4,7 @@ namespace App\Filament\Resources;
 
 use Filament\Forms;
 use Filament\Tables;
-use App\Models\Produk;
+use App\Models\produk;
 use Filament\Forms\Form;
 use Filament\Tables\Table;
 use Forms\Components\Text;

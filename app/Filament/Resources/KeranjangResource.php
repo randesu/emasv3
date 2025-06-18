@@ -5,7 +5,7 @@ namespace App\Filament\Resources;
 use Filament\Forms;
 use Filament\Tables;
 use Filament\Forms\Form;
-use App\Models\Keranjang;
+use App\Models\keranjang;
 use App\Models\Customer;
 use Filament\Tables\Table;
 use Filament\Resources\Resource;

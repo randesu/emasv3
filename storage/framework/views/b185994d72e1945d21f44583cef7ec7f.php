@@ -1,0 +1,146 @@
+<?php $__env->startSection('title'); ?>
+Food Store - Eat Your Favorite Foods
+<?php $__env->stopSection(); ?>
+
+<?php $__env->startSection('keywords'); ?>
+Food Store, Eat Your Favorite Foods
+<?php $__env->stopSection(); ?>
+
+<?php $__env->startSection('description'); ?>
+Food Store - Eat Your Favorite Foods
+<?php $__env->stopSection(); ?>
+
+<?php $__env->startSection('image'); ?>
+<?php echo e(asset('images/logo.png')); ?>
+
+<?php $__env->stopSection(); ?>
+
+<div>
+    <div class="container" style="margin-bottom: 120px">
+        
+        <!-- Search Bar -->
+        
+
+        
+        <!-- Sliders -->
+<div class="container-fluid">
+<div class="row justify-content-center">
+    <div class="" style="width: 1600px;">
+        <div id="carouselExample" class="carousel slide w-100">
+            <div class="carousel-inner">
+
+                <!--[if BLOCK]><![endif]--><?php $__currentLoopData = $sliders->shuffle(); $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $key => $slider): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                    <div class="carousel-item <?php if($loop->first): ?> active <?php endif; ?>">
+                        <img src="<?php echo e(asset($slider->link_gambar)); ?>" class="d-block w-100 rounded" style="height: 300px; object-fit: cover;">
+                    </div>
+                <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?><!--[if ENDBLOCK]><![endif]-->
+
+            </div>
+
+            <button class="carousel-control-prev" type="button" data-bs-target="#carouselExample" data-bs-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Previous</span>
+            </button>
+            <button class="carousel-control-next" type="button" data-bs-target="#carouselExample" data-bs-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Next</span>
+            </button>
+        </div>
+    </div>
+</div>
+</div>
+
+
+
+
+        <!-- Categories -->
+        
+
+        <!-- Products Popular -->
+        
+        
+       <!-- Harga Logam -->
+<div class="row justify-content-center mt-5">
+    <div class="col-md-16">
+        <div class="card shadow-sm p-4">
+            <h5 class="fw-bold mb-3">
+                Harga Logam Mulia <span class="text-orange">Terkini</span>
+            </h5>
+            <?php
+$__split = function ($name, $params = []) {
+    return [$name, $params];
+};
+[$__name, $__params] = $__split('harga-logam', []);
+
+$__html = app('livewire')->mount($__name, $__params, 'lw-548659978-0', $__slots ?? [], get_defined_vars());
+
+echo $__html;
+
+unset($__html);
+unset($__name);
+unset($__params);
+unset($__split);
+if (isset($__slots)) unset($__slots);
+?>
+        </div>
+    </div>
+</div>
+
+
+        <!-- Products Latest -->
+        <div class="row justify-content-center mt-5">
+    <div class="col-md-16">
+        <div class="d-flex justify-content-between mb-3">
+            <div>
+                <span class="fs-6 fw-bold">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-bag mb-1" viewBox="0 0 16 16">
+                        <path d="M8 1a2.5 2.5 0 0 1 2.5 2.5V4h-5v-.5A2.5 2.5 0 0 1 8 1m3.5 3v-.5a3.5 3.5 0 1 0-7 0V4H1v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V4zM2 5h12v9a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1z" />
+                    </svg>
+                    Rekomendasi <span class="text-orange">Produk</span>
+                </span>
+            </div>
+            <div>
+                <a href="/products" wire:navigate class="text-decoration-none text-orange fw-bold">
+                    Lihat Lainnya
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-right" viewBox="0 0 16 16">
+                        <path fill-rule="evenodd" d="M1 8a.5.5 0 0 1 .5-.5h11.793l-3.147-3.146a.5.5 0 0 1 .708-.708l4 4a.5.5 0 0 1 0 .708l-4 4a.5.5 0 0 1-.708-.708L13.293 8.5H1.5A.5.5 0 0 1 1 8" />
+                    </svg>
+                </a>
+            </div>
+        </div>
+        <hr />
+        <div class="row">
+            <!--[if BLOCK]><![endif]--><?php $__currentLoopData = $latestProducts; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $produk): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                <div class="col-6 col-md-4 col-lg-3 mb-4">
+                    <?php if (isset($component)) { $__componentOriginal4c0540cf084226e606ecc1d40629ea5d = $component; } ?>
+<?php if (isset($attributes)) { $__attributesOriginal4c0540cf084226e606ecc1d40629ea5d = $attributes; } ?>
+<?php $component = Illuminate\View\AnonymousComponent::resolve(['view' => 'components.cards.produk','data' => ['produk' => $produk]] + (isset($attributes) && $attributes instanceof Illuminate\View\ComponentAttributeBag ? $attributes->all() : [])); ?>
+<?php $component->withName('cards.produk'); ?>
+<?php if ($component->shouldRender()): ?>
+<?php $__env->startComponent($component->resolveView(), $component->data()); ?>
+<?php if (isset($attributes) && $attributes instanceof Illuminate\View\ComponentAttributeBag): ?>
+<?php $attributes = $attributes->except(\Illuminate\View\AnonymousComponent::ignoredParameterNames()); ?>
+<?php endif; ?>
+<?php $component->withAttributes(['produk' => \Illuminate\View\Compilers\BladeCompiler::sanitizeComponentAttribute($produk)]); ?>
+<?php echo $__env->renderComponent(); ?>
+<?php endif; ?>
+<?php if (isset($__attributesOriginal4c0540cf084226e606ecc1d40629ea5d)): ?>
+<?php $attributes = $__attributesOriginal4c0540cf084226e606ecc1d40629ea5d; ?>
+<?php unset($__attributesOriginal4c0540cf084226e606ecc1d40629ea5d); ?>
+<?php endif; ?>
+<?php if (isset($__componentOriginal4c0540cf084226e606ecc1d40629ea5d)): ?>
+<?php $component = $__componentOriginal4c0540cf084226e606ecc1d40629ea5d; ?>
+<?php unset($__componentOriginal4c0540cf084226e606ecc1d40629ea5d); ?>
+<?php endif; ?>
+                </div>
+            <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?><!--[if ENDBLOCK]><![endif]-->
+        </div>
+    </div>
+</div>
+
+
+
+        
+
+    </div>
+</div><?php /**PATH /var/www/emasv3/resources/views/livewire/web/home/index.blade.php ENDPATH**/ ?>

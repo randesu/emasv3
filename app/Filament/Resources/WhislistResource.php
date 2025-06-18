@@ -4,9 +4,9 @@ namespace App\Filament\Resources;
 
 use Filament\Forms;
 use Filament\Tables;
-// use App\Models\whislist;
+// use App\Models\Whislist;
 use Forms\Components\Select;
-use App\Models\wishlist;
+use App\Models\Wishlist;
 use Filament\Forms\Form;
 use Filament\Tables\Table;
 use Filament\Resources\Resource;
@@ -17,7 +17,7 @@ use App\Filament\Resources\WhislistResource\RelationManagers;
 
 class WhislistResource extends Resource
 {
-    protected static ?string $model = wishlist::class;
+    protected static ?string $model = Wishlist::class;
 
     protected static ?string $navigationIcon = 'heroicon-o-heart';
 

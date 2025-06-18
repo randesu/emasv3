@@ -6,7 +6,7 @@ use Filament\Forms;
 use Filament\Tables;
 use Filament\Tables\Actions\Action;
 use Filament\Forms\Form;
-use App\Models\Herobanner;
+use App\Models\herobanner;
 use Filament\Tables\Table;
 use Forms\Components\Select;
 use Filament\Resources\Resource;

@@ -3,7 +3,7 @@
 namespace App\Livewire\Web\Wishlist;
 
 use Livewire\Component;
-use App\Models\wishlist;
+use App\Models\Wishlist;
 
 class BtnAddToWishlist extends Component
 {
@@ -31,7 +31,7 @@ public function addToWishlist()
     $customerId = auth()->guard('customer')->user()->id;
 
     // Cek apakah produk sudah ada di wishlist
-    $item = \App\Models\wishlist::where('id_produk', $this->id_produk)
+    $item = \App\Models\Wishlist::where('id_produk', $this->id_produk)
                 ->where('id_pembeli', $customerId)
                 ->first();
 
@@ -40,7 +40,7 @@ public function addToWishlist()
         session()->flash('info', 'Produk sudah ada di wishlist');
     } else {
         // Tambahkan ke wishlist
-        \App\Models\wishlist::create([
+        \App\Models\Wishlist::create([
             'id_pembeli' => $customerId,
             'id_produk'  => $this->id_produk,
         ]);

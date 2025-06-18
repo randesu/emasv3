@@ -6,8 +6,10 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
+use Filament\Models\Contracts\FilamentUser;
+use Filament\Panel;
 
-class User extends Authenticatable
+class User extends Authenticatable implements FilamentUser
 {
     /** @use HasFactory<\Database\Factories\UserFactory> */
     use HasFactory, Notifiable;
@@ -50,4 +52,14 @@ class User extends Authenticatable
     {
         return $this->hasMany(customer::class);
     }
+
+
+public function canAccessPanel(Panel $panel): bool
+{
+    // Jika kamu ingin semua user bisa akses panel:
+    return true;
+
+    // Atau jika hanya admin yang bisa, misalnya:
+    // return $this->is_admin;
+}
 }

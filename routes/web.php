@@ -54,6 +54,6 @@ Route::get('/cart', Web\Cart\Index::class)->name('web.cart.index')->middleware('
 //route checkout
 Route::get('/checkout', Web\Checkout\Index::class)->name('web.checkout.index')->middleware('auth:customer');
 
-Route::get('/wishlist', Web\wishlist\Index::class)->name('web.wishlist.index')->middleware('auth:customer');
+Route::get('/wishlist', Web\Wishlist\Index::class)->name('web.wishlist.index')->middleware('auth:customer');
 
         // Route::get('/faq', Account\Faq::class)->name('account.faq');

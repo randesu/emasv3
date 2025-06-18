@@ -5,7 +5,7 @@ use Illuminate\Support\Str;
 
 use Illuminate\Database\Eloquent\Model;
 
-class produk extends Model
+class Produk extends Model
 {
     protected $fillable = ['nama_produk','harga','kode_produk', 'slug','berat_barang','kadar_barang','gambar_produk','gambar_produk2','gambar_produk3', 'category_id', 'deskripsi', 'stok'];
 

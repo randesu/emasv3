@@ -16,7 +16,7 @@ class keranjang extends Model
 
     public function produk()
 {
-    return $this->belongsTo(Produk::class, 'id_produk');
+    return $this->belongsTo(produk::class, 'id_produk');
 }
     
     public function keranjangToCheckout()
